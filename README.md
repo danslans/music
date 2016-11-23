@@ -1,2 +1,2 @@
 # mmm-music
-voy hacer un pull, significa hacer un cambio.
+voy hacer un pull,significa: bajar, descargar.
