@@ -1,0 +1,53 @@
+#header{
+    margin: 0;
+    padding: 10px;
+    background: #242629;
+    
+}
+#header h1,nav{
+    display: inline-block;
+      
+}
+#header ul>li{
+    display: inline-block;
+    background:  #ffffff;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-right: 40px; 
+}
+#header ul>li>a{
+    font-family: sans-serif;
+    font-size: 30px;
+    color: #00004a;
+    margin-left: 40px;
+}
+#header ul>li:hover{
+    background: aqua;
+}
+#imgBuscar ul,li{
+    display: inline-block;
+    list-style: none;
+}
+#imgBuscar li>img{
+    height: 300px;
+    width: 600px;
+    padding-bottom: 20px;
+}
+#check{
+    height: 300px;
+    width: 500px;
+    position: absolute;
+}
+#recibir{
+    padding: 30px;
+    height: 100px;
+    width: 84.6%;
+    
+    position: absolute;
+}
+form,#recibir{
+    display: inline-block;
+}
+section{
+    margin-top: 80px;
+}
