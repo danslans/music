@@ -6,16 +6,16 @@
 package cad;
 
 import datos.Conexion;
-import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Imagen;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -43,7 +43,7 @@ public class ImagenCad {
         // ArrayList<Imagen> arrayList=new ArrayList<>();
         try {
             Connection con = c.connection();
-            String sql = "SELECT * FROM TBL_IMG";
+            String sql = "SELECT * FROM TBL_ASIGNAR_CANCION";
             ResultSet resultSet = con.prepareStatement(sql).executeQuery();
             return resultSet;
         } catch (ClassNotFoundException ex) {
@@ -75,25 +75,47 @@ public class ImagenCad {
         }
         return null;
     }
-
-    public ArrayList traerLista(String cadena) {
-        if (!cadena.equals("")) {
-            String id="";
-            ArrayList<String> arrayList=new ArrayList<>();
-            String num=cadena.replace("id","");
-            for (int i = 0; i < num.length(); i++) {
-                char n= num.charAt(i);
-                try {
-                int convert=n;
-                if(convert>=0){    
-                    id +=convert;
-                }    
-                } catch (Exception e) {
-                  id="";  
+     
+    
+    public ArrayList BuscarParamId(int id) {
+        try {
+            ArrayList<Imagen> arrayList;
+            try (Connection connection = c.connection()) {
+                arrayList = new ArrayList<>();
+                String query = "SELECT * FROM TBL_IMG WHERE id = "+id;
+                ResultSet resultSet = connection.prepareStatement(query).executeQuery();
+                while (resultSet.next()) {
+                    arrayList.add(new Imagen(resultSet.getInt("id"),resultSet.getString("nombre"), resultSet.getString("descripcion"), resultSet.getString("direccion")));
                 }
             }
-            
             return arrayList;
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public ArrayList traerLista(String cadena) throws ClassNotFoundException {
+        try {
+            try {
+                ArrayList<Imagen> arrayList;
+                try (Connection connection = c.connection()) {
+                    arrayList = new ArrayList<>();
+                    String json="["+cadena+"]";
+                    JSONArray jSONArray=new JSONArray(json);
+                    for ( int i=0;i<jSONArray.length();i++) {
+                        JSONObject object=jSONArray.getJSONObject(i);
+                        int id=object.getInt("id");
+                        arrayList=  BuscarParamId(id);
+                        System.out.println(""+arrayList);
+                    }
+                }
+                return arrayList;
+            } catch (InstantiationException | IllegalAccessException | SQLException ex) {
+                Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (JSONException ex) {
+            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

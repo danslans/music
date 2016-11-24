@@ -40,7 +40,6 @@ ImagenCad imagenCad =new ImagenCad();
 							</ul>
 						</nav>
 					</header>
-
 				<!-- Main -->
 					<div id="">						
                                                 <%
@@ -49,8 +48,8 @@ ImagenCad imagenCad =new ImagenCad();
                                                    
                                                 %>
                                                 	<article class="">
-                                                            <a href="<%= resultSet.getString("direccion") %>" class=""><img src='<%= resultSet.getString("direccion") %>' alt="" height="300%" width="100%" /></a>
-                                                            <h2><%= resultSet.getString("descripcion") %></h2>
+                                                            <a href="<%= resultSet.getString("id_img") %>" class=""><img src='<%= resultSet.getString("id_img") %>' alt="" height="300%" width="100%" /></a>
+                                                            <h2><%= resultSet.getString("fecha") %></h2>
 							<p></p>
 						</article>
                                                 <%

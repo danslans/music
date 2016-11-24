@@ -3,6 +3,9 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import model.Imagen;
+import java.util.ArrayList;
+import java.lang.String;
 import cad.ImagenCad;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -15,6 +18,7 @@ import com.sun.xml.ws.transport.tcp.server.glassfish.ServletFakeArtifactSet.Fake
 public final class Buscar_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
+ArrayList<Imagen> arrayList;
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
@@ -60,7 +64,11 @@ public final class Buscar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
+      out.write("\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
@@ -71,7 +79,9 @@ public final class Buscar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <!-- jQuery library -->\n");
       out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js\"></script>\n");
       out.write("        <!-- Latest compiled JavaScript -->\n");
+      out.write("        <script type=\"text/javascript\" src=\"assets/js/jquery.min.js\"></script>\n");
       out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n");
+      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js\"></script>\n");
       out.write("        <script type=\"text/javascript\" src=\"assets/js/Validacion.js\"></script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
@@ -89,58 +99,82 @@ public final class Buscar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </header>\n");
       out.write("        ");
 
-            if(request.getParameter("dato")!=null){
-                
-      out.write("\n");
-      out.write("                <script> alert(\"holi\");</script>\n");
-      out.write("                ");
-    
-            }
-            
             String nombre = "";
             if (request.getParameter("nombreCancion") != null) {
                 nombre = request.getParameter("nombreCancion");
             }
+
+            String cadena = "";
+            if (request.getParameter("lista") != null) {
+                cadena = request.getParameter("lista");
+                ImagenCad cad = new ImagenCad();
+                arrayList = cad.traerLista(cadena);
+            }
+
         
       out.write("\n");
-      out.write("        <form action=\"Buscar.jsp\" method=\"POST\">\n");
+      out.write("        <form method=\"GET\">\n");
       out.write("            <input type=\"text\" id=\"nCancion\" value=\"");
       out.print(nombre);
       out.write("\" name=\"nombreCancion\" placeholder=\"Nombre de la canción\" required=\"required\">\n");
-      out.write("            <input type=\"submit\"  value=\"Enviar\">\n");
+      out.write("            <input type=\"text\" name=\"lista\" id=\"lista\" value=\"");
+      out.print( cadena);
+      out.write("\">\n");
+      out.write("            <input type=\"submit\"  value=\"Enviar\" >\n");
       out.write("        </form>\n");
-      out.write("            \n");
-      out.write("            <ul id=\"imgBuscar\">\n");
-      out.write("        ");
+      out.write("        <div id=\"recibir\">\n");
+      out.write("            ");
 
-            if (request.getParameter("nombreCancion") != null) {
-                if (!request.getParameter("nombreCancion").equals("")) {
-                    ImagenCad cad = new ImagenCad();
-                    ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
-                    try {
-                        while (rs.next()) {
-        
+                if (arrayList!=null) {
+                    for (int i = 0; i < arrayList.size(); i++) {
+            
       out.write("\n");
-      out.write("        <li ><input type=\"checkbox\" id=\"check\" value=\"");
-      out.print( rs.getString("id"));
-      out.write("\" placeholder=\"");
-      out.print( rs.getString("nombre"));
-      out.write("\" ><img id=\"img\" src=\"");
-      out.print(rs.getString("direccion"));
-      out.write("\" />\n");
-      out.write("        </li>\n");
-      out.write("        ");
+      out.write("            <p>");
+      out.print(arrayList.get(i).getNombre());
+      out.write("</p>\n");
+      out.write("            ");
 
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-            }
-        
+            
       out.write("\n");
-      out.write("    </ul>\n");
-      out.write("</body>\n");
+      out.write("        </div>\n");
+      out.write("        <section>\n");
+      out.write("            <ul id=\"imgBuscar\">\n");
+      out.write("                ");
+
+                    if (request.getParameter("nombreCancion") != null) {
+                        if (!request.getParameter("nombreCancion").equals("")) {
+                            ImagenCad cad = new ImagenCad();
+                            ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
+                            try {
+                                while (rs.next()) {
+                
+      out.write("\n");
+      out.write("                <li ><img id=\"img\" src=\"");
+      out.print(rs.getString("direccion"));
+      out.write("\"  title=\"");
+      out.print( rs.getString("id"));
+      out.write("\"  onclick=\"valor(");
+      out.print( rs.getString("id"));
+      out.write(")\" />\n");
+      out.write("                    <p>");
+      out.print(rs.getString("nombre"));
+      out.write("</p>\n");
+      out.write("                </li>\n");
+      out.write("                ");
+
+                                }
+                            } catch (SQLException ex) {
+                                Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+                
+      out.write("\n");
+      out.write("            </ul>\n");
+      out.write("        </section>\n");
+      out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

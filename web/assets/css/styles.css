@@ -41,8 +41,8 @@
 #recibir{
     padding: 30px;
     height: 100px;
-    width: 84.6%;
-    
+    width: 80%;
+    background: red;
     position: absolute;
 }
 form,#recibir{

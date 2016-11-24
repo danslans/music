@@ -2,9 +2,10 @@ var cadena = "";
 function valor(val) {
     var nom = $('#nCancion').val();
     var array = $("#lista").val();
-    cadena = "id" + cadena + val + " " + array;
-    //cadena=cadena+'{"id":'+'"'+val+'"'+"},"+array+"";
-    url = "?nombreCancion=" + nom + "&lista=" + cadena;
+    //cadena = "id" + cadena + val + " " + array;
+    cadena=cadena+"{'id':"+ "'"+val+"'"+"},"+array+"";
+    //jsonArray="["+cadena+"]";'"'+val+'"'+"},"+array+"";
+    url = "?nombreCancion=" + nom + "&lista="+cadena;
     location.href = "Buscar.jsp" + url;
 }
 $(document).ready(function () {

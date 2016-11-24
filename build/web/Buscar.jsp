@@ -4,6 +4,8 @@
     Author     : danslans
 --%>
 
+<%@page import="model.Imagen"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.lang.String"%>
 <%@page import="cad.ImagenCad"%>
 <%@page import="java.util.logging.Logger"%>
@@ -15,6 +17,7 @@
 <%@page import="com.sun.xml.ws.transport.tcp.server.glassfish.ServletFakeArtifactSet.FakeServletHttpRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%!ArrayList<Imagen> arrayList;%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -43,49 +46,51 @@
                 </ul>
             </nav>
         </header>
-            <%
+        <%
             String nombre = "";
             if (request.getParameter("nombreCancion") != null) {
                 nombre = request.getParameter("nombreCancion");
             }
-            
-            String cadena="";
-            if(request.getParameter("lista")!=null){
-                cadena=request.getParameter("lista");
-                ImagenCad cad=new ImagenCad();
-                cad.traerLista(cadena);
+
+            String cadena = "";
+            if (request.getParameter("lista") != null) {
+                cadena = request.getParameter("lista");
+                ImagenCad cad = new ImagenCad();
+                 arrayList= cad.traerLista(cadena);
+                 System.out.println("size= "+arrayList.size());
             }
-                
+
         %>
         <form method="GET">
             <input type="text" id="nCancion" value="<%=nombre%>" name="nombreCancion" placeholder="Nombre de la canción" required="required">
-            <input type="hidden" name="lista" id="lista" value="<%= cadena%>">
+            <input type="text" name="lista" id="lista" value="<%= cadena%>">
             <input type="submit"  value="Enviar" >
         </form>
-            <div id="recibir">
-            </div>
-            <section>
+        <div id="recibir">
+            
+        </div>
+        <section>
             <ul id="imgBuscar">
-        <%
-            if (request.getParameter("nombreCancion") != null) {
-                if (!request.getParameter("nombreCancion").equals("")) {
-                    ImagenCad cad = new ImagenCad();
-                    ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
-                    try {
-                        while (rs.next()) {
-        %>
-        <li ><img id="img" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("id")%>"  onclick="valor(<%= rs.getString("id")%>)" />
-            <p><%=rs.getString("nombre")%></p>
-        </li>
-        <%
+                <%
+                    if (request.getParameter("nombreCancion") != null) {
+                        if (!request.getParameter("nombreCancion").equals("")) {
+                            ImagenCad cad = new ImagenCad();
+                            ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
+                            try {
+                                while (rs.next()) {
+                %>
+                <li ><img id="img" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("id")%>"  onclick="valor(<%= rs.getString("id")%>)" />
+                    <p><%=rs.getString("nombre")%></p>
+                </li>
+                <%
+                                }
+                            } catch (SQLException ex) {
+                                Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }
-            }
-        %>
-    </ul>
-    </section>
-</body>
+                %>
+            </ul>
+        </section>
+    </body>
 </html>
