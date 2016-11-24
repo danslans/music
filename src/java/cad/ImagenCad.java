@@ -45,6 +45,7 @@ public class ImagenCad {
             Connection con = c.connection();
             String sql = "SELECT * FROM TBL_ASIGNAR_CANCION";
             ResultSet resultSet = con.prepareStatement(sql).executeQuery();
+            con.close();
             return resultSet;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
