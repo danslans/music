@@ -63,6 +63,7 @@ public class ImagenCad {
             Connection connection = c.connection();
             String query = "SELECT * FROM TBL_IMG WHERE `nombre` LIKE '%" + param + "%'";
             ResultSet resultSet = connection.prepareStatement(query).executeQuery();
+            connection.close();
             return resultSet;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
