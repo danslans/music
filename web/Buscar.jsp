@@ -17,7 +17,7 @@
 <%@page import="com.sun.xml.ws.transport.tcp.server.glassfish.ServletFakeArtifactSet.FakeServletHttpRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%!ArrayList<Imagen> arrayList;%>
+<%! ResultSet resultSet=null;%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -56,8 +56,8 @@
             if (request.getParameter("lista") != null) {
                 cadena = request.getParameter("lista");
                 ImagenCad cad = new ImagenCad();
-                 arrayList= cad.traerLista(cadena);
-                 System.out.println("size= "+arrayList.size());
+                resultSet = cad.traerLista(cadena);
+
             }
 
         %>
@@ -67,7 +67,15 @@
             <input type="submit"  value="Enviar" >
         </form>
         <div id="recibir">
-            
+            <%
+                if (resultSet != null) {
+                    while (resultSet.next()) {
+                        %>
+                        <p><%= resultSet.getString("nombre")%></p>
+                        <%
+                    }
+                }
+            %>
         </div>
         <section>
             <ul id="imgBuscar">

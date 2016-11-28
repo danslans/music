@@ -24,7 +24,11 @@ import org.json.JSONObject;
 public class ImagenCad {
 
     private Conexion c = new Conexion();
-
+    private static final String  idTbl=" id ";
+    private static final String or=" or ";
+    private static final String igual="=";
+    private String query="SELECT * FROM TBL_IMG WHERE ";
+    
     public void guardar(Imagen imagen) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalAccessException {
         try {
             Connection con = c.connection();
@@ -77,42 +81,31 @@ public class ImagenCad {
         }
         return null;
     }
-     
-    
-    public ArrayList BuscarParamId(int id) {
+    private ResultSet buscarIds(String cadena){
         try {
-            ArrayList<Imagen> arrayList;
-            try (Connection connection = c.connection()) {
-                arrayList = new ArrayList<>();
-                String query = "SELECT * FROM TBL_IMG WHERE id = "+id;
-                ResultSet resultSet = connection.prepareStatement(query).executeQuery();
-                while (resultSet.next()) {
-                    arrayList.add(new Imagen(resultSet.getInt("id"),resultSet.getString("nombre"), resultSet.getString("descripcion"), resultSet.getString("direccion")));
-                }
-            }
-            return arrayList;
+            Connection con=c.connection();
+            ResultSet resultSet=con.prepareStatement(cadena).executeQuery();
+            return  resultSet;
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-    
-    public ArrayList traerLista(String cadena) throws ClassNotFoundException {
+    public ResultSet traerLista(String cadena) throws ClassNotFoundException {
         try {
             try {
-                ArrayList<Imagen> arrayList;
                 try (Connection connection = c.connection()) {
-                    arrayList = new ArrayList<>();
                     String json="["+cadena+"]";
                     JSONArray jSONArray=new JSONArray(json);
                     for ( int i=0;i<jSONArray.length();i++) {
                         JSONObject object=jSONArray.getJSONObject(i);
                         int id=object.getInt("id");
-                        arrayList=  BuscarParamId(id);
-                        System.out.println(""+arrayList);
+                         query=query+idTbl+igual+id+or;
                     }
+                  query+="\'"+"\'";
+                  ResultSet resultSet=buscarIds(query);
+                 System.out.println(query);
                 }
-                return arrayList;
             } catch (InstantiationException | IllegalAccessException | SQLException ex) {
                 Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
             }
