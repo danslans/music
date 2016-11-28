@@ -45,7 +45,7 @@ public class ImagenCad {
             Connection con = c.connection();
             String sql = "SELECT * FROM TBL_ASIGNAR_CANCION";
             ResultSet resultSet = con.prepareStatement(sql).executeQuery();
-            con.close();
+          //  con.close();
             return resultSet;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,7 +64,7 @@ public class ImagenCad {
             Connection connection = c.connection();
             String query = "SELECT * FROM TBL_IMG WHERE `nombre` LIKE '%" + param + "%'";
             ResultSet resultSet = connection.prepareStatement(query).executeQuery();
-            connection.close();
+            //connection.close();
             return resultSet;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
