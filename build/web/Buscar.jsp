@@ -17,12 +17,12 @@
 <%@page import="com.sun.xml.ws.transport.tcp.server.glassfish.ServletFakeArtifactSet.FakeServletHttpRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%! ResultSet resultSet=null;%>
+<%! ResultSet resultSet;%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <title>JSP Page</title>
+        <title>MM-Music</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/styles.css">
         <!-- jQuery library -->
@@ -63,7 +63,7 @@
         %>
         <form method="GET">
             <input type="text" id="nCancion" value="<%=nombre%>" name="nombreCancion" placeholder="Nombre de la canción" required="required">
-            <input type="text" name="lista" id="lista" value="<%= cadena%>">
+            <input type="hidden" name="lista" id="lista" value="<%= cadena%>">
             <input type="submit"  value="Enviar" >
         </form>
         <div id="recibir">
@@ -71,7 +71,7 @@
                 if (resultSet != null) {
                     while (resultSet.next()) {
                         %>
-                        <p><%= resultSet.getString("nombre")%></p>
+                        <li id="<%= resultSet.getString("id")%>" onclick="quitar(this)"><p class="listaSelect"><%= resultSet.getString("nombre")%></p></li>
                         <%
                     }
                 }

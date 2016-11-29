@@ -22,7 +22,7 @@
     margin-left: 40px;
 }
 #header ul>li:hover{
-    background: aqua;
+    background: #00cccc;
 }
 #imgBuscar ul,li{
     display: inline-block;
@@ -42,7 +42,6 @@
     padding: 30px;
     height: 100px;
     width: 80%;
-    background: red;
     position: absolute;
 }
 form,#recibir{
@@ -50,4 +49,8 @@ form,#recibir{
 }
 section{
     margin-top: 80px;
+}
+.listaSelect{
+    padding: 1em 2em;
+    background: #00cccc;
 }

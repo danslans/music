@@ -105,6 +105,7 @@ public class ImagenCad {
                   query+="\'"+"\'";
                   ResultSet resultSet=buscarIds(query);
                  System.out.println(query);
+                 return resultSet;
                 }
             } catch (InstantiationException | IllegalAccessException | SQLException ex) {
                 Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
