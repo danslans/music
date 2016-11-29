@@ -1,4 +1,7 @@
+/* global $scope */
+
 var cadena = "";
+var idQuitar="";
 function valor(val) {
     var nom = $('#nCancion').val();
     var array = $("#lista").val();
@@ -20,9 +23,18 @@ $(document).ready(function () {
 function quitar(id){
     getLista=$("#lista").val();
     array="["+getLista+"]";
-    alert(array);
+    alert(getId(array));
+    idQuitar="";
     
     $(id).fadeOut();
+}
+function getId(json){
+    for (var item in json) {
+        if(json[item]>0){
+            idQuitar=idQuitar+json[item];
+        }
+    }
+    return idQuitar;
 }
 function sedAjax(datos, pag) {
     $.ajax({type: 'POST', data: datos, url: pag});
