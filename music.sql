@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-11-2016 a las 04:46:07
+-- Tiempo de generación: 29-11-2016 a las 21:25:29
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -20,6 +20,16 @@ SET time_zone = "+00:00";
 -- Base de datos: `music`
 --
 
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar` (IN `id` INTEGER, IN `fecha` DATE)  BEGIN
+INSERT Into TBL_ASIGNAR_CANCION VALUES(id,fecha);
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -30,14 +40,6 @@ CREATE TABLE `TBL_ASIGNAR_CANCION` (
   `id_img` int(11) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `TBL_ASIGNAR_CANCION`
---
-
-INSERT INTO `TBL_ASIGNAR_CANCION` (`id_img`, `fecha`) VALUES
-(1, '0000-00-00'),
-(1, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -57,17 +59,11 @@ CREATE TABLE `TBL_IMG` (
 --
 
 INSERT INTO `TBL_IMG` (`id`, `nombre`, `descripcion`, `direccion`) VALUES
-(1, 'Siria', 'Siria', 'images/thumbs/01.jpg'),
-(2, 'Three force', 'la trifuerza', 'images/thumbs/02.jpg'),
-(3, 'Link', 'Link in park', 'images/thumbs/03.jpg'),
-(4, 'Escudo', 'Escudo de Link', 'images/thumbs/04.jpg'),
-(5, 'new photo', 'Jugadores', 'images/thumbs/05.png'),
-(6, 'zelda and lira', 'Zelda tocando la lira', 'images/thumbs/06.jpg'),
-(7, 'Link and Epona', 'Link en busqueda de Zelda', 'images/thumbs/07.jpg'),
-(8, 'Link Preparado', 'Link peleando', 'images/thumbs/08.jpg'),
-(9, 'Hay Momentos', 'Hay momentos tan especiales', 'images/thumbs/09.png'),
-(10, 'Hay una fuente', 'Hay una fuente en mi', 'images/thumbs/10.png'),
-(11, 'Cuan grande es el ', 'Cuan grande es el ', 'images/thumbs/11.png');
+(1, 'Aclamad a Dios', 'Aclamad a Dios', 'images/thumbs/1 Aclamad a Dios.png'),
+(2, 'Alabad a jehova', 'Alabad a jehova', 'images/thumbs/2 Alabad a Jehova.png'),
+(3, 'Alabad a jehova', 'Alabad a jehova', 'images/thumbs/3 Alabad a Jehova.png'),
+(4, 'Alabare', 'Alabare', 'images/thumbs/4 Alabare.png'),
+(5, 'aunque otros canten', 'aunque otros canten', 'images/thumbs/5 Aunque otros Canten.png');
 
 --
 -- Índices para tablas volcadas
@@ -93,7 +89,7 @@ ALTER TABLE `TBL_IMG`
 -- AUTO_INCREMENT de la tabla `TBL_IMG`
 --
 ALTER TABLE `TBL_IMG`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Restricciones para tablas volcadas
 --
