@@ -30,7 +30,7 @@ function quitar(id){
 }
 function getId(json){
     for (var item in json) {
-        if(json[item]>0){
+        if(json[item]>0 && json[item]===json){
             idQuitar=idQuitar+json[item];
         }
     }
