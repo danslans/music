@@ -1,13 +1,10 @@
 /* global $scope */
 
 var cadena = "";
-var idQuitar="";
 function valor(val) {
     var nom = $('#nCancion').val();
     var array = $("#lista").val();
-    //cadena = "id" + cadena + val + " " + array;
     cadena="{'id':"+ "'"+val+"'"+"},"+array+"";
-    //jsonArray="["+cadena+"]";'"'+val+'"'+"},"+array+"";
     url = "?nombreCancion=" + nom + "&lista="+cadena;
     location.href = "Buscar.jsp" + url;
 }
@@ -16,25 +13,37 @@ $(document).ready(function () {
         var nom = $('#nCancion').val();
         historial = $("#lista").val();
         url = "?nombreCancion=" + nom + "&lista=" + historial;
-        //alert(url);
         location.href = "Buscar.jsp" + url;
     });
 });
-function quitar(id){
+function quitar(id,idval){
     getLista=$("#lista").val();
-    array="["+getLista+"]";
-    alert(getId(array));
-    idQuitar="";
-    
+    //array="["+getLista+"]";
+    alert(getId(getLista,idval));
     $(id).fadeOut();
-}
-function getId(json){
+}   
+function getId(json,id){
+    var idQuitar="";  
+    var newJson="";
     for (var item in json) {
-        if(json[item]>0 && json[item]===json){
+        if(json[item]!==","){
+        if(json[item]>0){
             idQuitar=idQuitar+json[item];
+            if(idQuitar===id){
+                //return idQuitar;   
+             newJson=newJson+idQuitar;   
+            }
+        }else{
+            newJson=newJson+json[item];
+            idQuitar="";
         }
+    }else{
+        break;
     }
-    return idQuitar;
+}
+    jsonNew=json.replace(newJson,"");
+    return jsonNew;
+    //return s;
 }
 function sedAjax(datos, pag) {
     $.ajax({type: 'POST', data: datos, url: pag});

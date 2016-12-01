@@ -71,7 +71,7 @@
                 if (resultSet != null) {
                     while (resultSet.next()) {
                         %>
-                        <li id="<%= resultSet.getString("id")%>" onclick="quitar(this)"><p class="listaSelect"><%= resultSet.getString("nombre")%></p></li>
+                        <li id="<%= resultSet.getString("id")%>" onclick="quitar(this,'<%=resultSet.getString("id")%>')"><p class="listaSelect"><%= resultSet.getString("nombre")%></p></li>
                         <%
                     }
                 }
