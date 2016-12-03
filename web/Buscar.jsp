@@ -57,25 +57,41 @@
                 cadena = request.getParameter("lista");
                 ImagenCad cad = new ImagenCad();
                 resultSet = cad.traerLista(cadena);
-
             }
 
         %>
-        <form method="GET">
-            <input type="text" id="nCancion" value="<%=nombre%>" name="nombreCancion" placeholder="Nombre de la canción" required="required">
+        <form id="form">
+            <input type="text" id="nCancion" class="input" value="<%=nombre%>" name="nombreCancion" placeholder="Nombre de la canción" required="required">
             <input type="hidden" name="lista" id="lista" value="<%= cadena%>">
-            <input type="submit"  value="Enviar" >
+            <input type="button" class="boton" id="buscar"  value="Buscar" onclick="redirect(false)" >
         </form>
         <div id="recibir">
-            <%
-                if (resultSet != null) {
-                    while (resultSet.next()) {
-                        %>
-                        <li id="<%= resultSet.getString("id")%>" onclick="quitar(this,'<%=resultSet.getString("id")%>')"><p class="listaSelect"><%= resultSet.getString("nombre")%></p></li>
-                        <%
+            <form id="formAgregar" method="POST" action="GetPost">
+                <%
+                    if (resultSet != null) {
+                        int cant;
+                        int c=0;
+                        if (request.getParameter("total") == null) {
+                            cant = 0;
+                        } else {
+                            cant = Integer.parseInt(request.getParameter("total"));
+                        }
+                        while (resultSet.next()) {
+                            c++;
+                %>
+                <li id="<%= resultSet.getString("id")%>" onclick="quitar(this, '<%=resultSet.getString("id")%>')">
+                    <p class="listaSelect"><%= resultSet.getString("nombre")%></p>
+                    <input type="hidden"  name="idImagen<%=c%>" value="<%= resultSet.getString("id")%>" />
+                </li>
+                <%
                     }
-                }
-            %>
+                %>
+                <input type="hidden" id="total" name="total" value="<%=cant%>" />
+                <%
+                    }
+                %>
+                <input type="submit" id="Agregar" class="boton" value="Agregar" />
+            </form>
         </div>
         <section>
             <ul id="imgBuscar">

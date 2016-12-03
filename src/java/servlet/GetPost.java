@@ -8,14 +8,13 @@ package servlet;
 import cad.ImagenCad;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.AsignarImagen;
 
 /**
  *
@@ -64,8 +63,19 @@ public class GetPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-         PrintWriter out = response.getWriter(); 
-        
+        PrintWriter out = response.getWriter();
+        AsignarImagen ai=new AsignarImagen();
+        ImagenCad cad=new ImagenCad();
+        int totalId = Integer.parseInt(request.getParameter("total"));
+        Calendar c = Calendar.getInstance();
+        String fecha =String.valueOf(c.get(Calendar.DATE) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.YEAR));
+        out.println(fecha);
+        for (int i = 1; i <= totalId; i++) {
+            ai.setFecha(fecha);
+            ai.setId_img(Integer.parseInt(request.getParameter("idImagen" + i)));
+            cad.guardarAsignar(ai);
+        }
+        response.sendRedirect("index.jsp");
     }
 
     /**

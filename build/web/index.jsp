@@ -25,10 +25,8 @@ ImagenCad imagenCad =new ImagenCad();
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
-           
 		<!-- Wrapper -->
 			<div id="wrapper">
-
 				<!-- Header -->
 					<header id="header">
 						<h1><a href="index.jsp"><strong>MMM -</strong>Music</a></h1>
@@ -48,7 +46,7 @@ ImagenCad imagenCad =new ImagenCad();
                                                    
                                                 %>
                                                 	<article class="">
-                                                            <a href="<%= resultSet.getString("id_img") %>" class=""><img src='<%= resultSet.getString("id_img") %>' alt="" height="300%" width="100%" /></a>
+                                                            <a href="<%= resultSet.getString("id_img") %>" class=""><img src='<%= resultSet.getString("direccion") %>' alt="" height="50%" width="50%" /></a>
                                                             <h2><%= resultSet.getString("fecha") %></h2>
 							<p></p>
 						</article>

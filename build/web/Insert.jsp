@@ -39,9 +39,9 @@ and open the template in the editor.
 						</nav>
 					</header>
         <form action="Servlet" method="POST">
-            <input type="number" name="cantidad" placeholder="Cantidad">
-            <input type="hidden" name="number" value="true">
-            <input type="submit">
+            <input type="number" class="input" name="cantidad" placeholder="Cantidad">
+            <input type="hidden" name="number"  value="true">
+            <input type="submit" class="boton" id="number">
         </form>
     </body>
 </html>

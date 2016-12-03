@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-11-2016 a las 21:25:29
+-- Tiempo de generación: 03-12-2016 a las 07:58:55
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -24,7 +24,7 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar` (IN `id` INTEGER, IN `fecha` DATE)  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar` (IN `id` INT, IN `fecha` VARCHAR(100))  BEGIN
 INSERT Into TBL_ASIGNAR_CANCION VALUES(id,fecha);
 END$$
 
@@ -38,7 +38,7 @@ DELIMITER ;
 
 CREATE TABLE `TBL_ASIGNAR_CANCION` (
   `id_img` int(11) NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` varchar(100) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
