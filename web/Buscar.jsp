@@ -60,7 +60,7 @@
             }
 
         %>
-        <form id="form">
+        <form id="form" method="GET">
             <input type="text" id="nCancion" class="input" value="<%=nombre%>" name="nombreCancion" placeholder="Nombre de la canción" required="required">
             <input type="hidden" name="lista" id="lista" value="<%= cadena%>">
             <input type="button" class="boton" id="buscar"  value="Buscar" onclick="redirect(false)" >

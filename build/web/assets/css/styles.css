@@ -1,8 +1,8 @@
+/*header colors and desing */
 #header{
     margin: 0;
     padding: 10px;
-    background: #512DA8;
-    
+    background: #512DA8;   
 }
 #header,a:hover{
     color: #FFFFFF;
@@ -34,6 +34,8 @@
     background: #D1C4E9;
     color: #FFFFFF;
 }
+
+
 #imgBuscar ul,li{
     display: inline-block;
     list-style: none;
@@ -95,6 +97,12 @@ section{
     left: 20px;
     top: 29px; 
 }
-#formAgregar{
-    
+/*dialogo img*/
+#dialogo{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 0;
+    border: none;
 }
