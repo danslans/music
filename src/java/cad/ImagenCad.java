@@ -27,17 +27,17 @@ import org.json.JSONObject;
 public class ImagenCad {
 
     private Conexion c = new Conexion();
-    private static final String  idTbl=" id ";
-    private static final String or=" or ";
-    private static final String igual="=";
-    private String query="SELECT * FROM TBL_IMG WHERE ";
-    
+    private static final String idTbl = " id ";
+    private static final String or = " or ";
+    private static final String igual = "=";
+    private String query = "SELECT * FROM TBL_IMG WHERE ";
+
     public void guardar(Imagen imagen) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalAccessException {
         try {
             Connection con = c.connection();
             Imagen i = imagen;
             String sql = "INSERT INTO TBL_IMG VALUES (null,'" + i.getNombre() + "','" + i.getDescripcion() + "','" + i.getDireccion() + "')";
-            System.out.println(sql);
+            //System.out.println(sql);
             int b = con.prepareStatement(sql).executeUpdate();
             con.close();
             c.disconect();
@@ -45,29 +45,34 @@ public class ImagenCad {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void guardarAsignar(AsignarImagen ai){
+
+    public void guardarAsignar(AsignarImagen ai) {
         try {
             Connection connection;
             connection = c.connection();
-            int result=connection.prepareCall("{call insertar("+ai.getId_img()+","+ai.getFecha()+") }").executeUpdate();
-            if(result>0){
-                System.out.println("inserto "+result);
-            }else{
-                    System.out.println("error");
+            String queryProcedure = "{call insertar(" + ai.getId_img() + ",'" + ai.getFecha() + "') }";
+            //System.out.println(queryProcedure);
+            int result = connection.prepareCall(queryProcedure).executeUpdate();
+            if (result > 0) {
+             //   System.out.println("inserto " + result);
+            } else {
+              //  System.out.println("error");
             }
-                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void trucateAsignar(){
+
+    public void trucateAsignar() {
     }
+
     public ResultSet buscar() {
         // ArrayList<Imagen> arrayList=new ArrayList<>();
         try {
             Connection con = c.connection();
             String sql = "SELECT * FROM TBL_ASIGNAR_CANCION a inner join TBL_IMG i on a.id_img=i.id ";
             ResultSet resultSet = con.prepareStatement(sql).executeQuery();
-          //  con.close();
+            //  con.close();
             return resultSet;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,31 +104,33 @@ public class ImagenCad {
         }
         return null;
     }
-    private ResultSet buscarIds(String cadena){
+
+    private ResultSet buscarIds(String cadena) {
         try {
-            Connection con=c.connection();
-            ResultSet resultSet=con.prepareStatement(cadena).executeQuery();
-            return  resultSet;
+            Connection con = c.connection();
+            ResultSet resultSet = con.prepareStatement(cadena).executeQuery();
+            return resultSet;
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
+
     public ResultSet traerLista(String cadena) throws ClassNotFoundException {
         try {
             try {
                 try (Connection connection = c.connection()) {
-                    String json="["+cadena+"]";
-                    JSONArray jSONArray=new JSONArray(json);
-                    for ( int i=0;i<jSONArray.length();i++) {
-                        JSONObject object=jSONArray.getJSONObject(i);
-                        int id=object.getInt("id");
-                         query=query+idTbl+igual+id+or;
+                    String json = "[" + cadena + "]";
+                    JSONArray jSONArray = new JSONArray(json);
+                    for (int i = 0; i < jSONArray.length(); i++) {
+                        JSONObject object = jSONArray.getJSONObject(i);
+                        int id = object.getInt("id");
+                        query = query + idTbl + igual + id + or;
                     }
-                  query+="\'"+"\'";
-                  ResultSet resultSet=buscarIds(query);
-                 System.out.println(query);
-                 return resultSet;
+                    query += "\'" + "\'";
+                    ResultSet resultSet = buscarIds(query);
+                    // System.out.println(query);
+                    return resultSet;
                 }
             } catch (InstantiationException | IllegalAccessException | SQLException ex) {
                 Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);

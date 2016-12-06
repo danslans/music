@@ -8,14 +8,17 @@ package servlet;
 import cad.ImagenCad;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.AsignarImagen;
-
+import sun.util.calendar.Gregorian;
 /**
  *
  * @author danslans
@@ -67,9 +70,9 @@ public class GetPost extends HttpServlet {
         AsignarImagen ai=new AsignarImagen();
         ImagenCad cad=new ImagenCad();
         int totalId = Integer.parseInt(request.getParameter("total"));
-        Calendar c = Calendar.getInstance();
-        String fecha =String.valueOf(c.get(Calendar.DATE) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.YEAR));
-        out.println(fecha);
+        Calendar c=GregorianCalendar.getInstance();
+       SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd");
+        String fecha=dateFormat.format(c.getTime());
         for (int i = 1; i <= totalId; i++) {
             ai.setFecha(fecha);
             ai.setId_img(Integer.parseInt(request.getParameter("idImagen" + i)));

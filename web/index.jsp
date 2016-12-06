@@ -62,7 +62,7 @@
         </div>
                 <dialog  id="dialogo">
                     <span id="x" onclick="salir()">x</span>
-                    <img id="imgDialog"  src="" width="100%" height="100%" />
+                    <center><img id="imgDialog"  src="" width="50%" height="650px" /></center>
                 </dialog>
 
         <!-- Scripts -->

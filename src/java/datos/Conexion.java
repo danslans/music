@@ -29,11 +29,11 @@ public class Conexion {
     public Connection connection() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
        Class.forName("com.mysql.jdbc.Driver").newInstance();
         c= (Connection) DriverManager.getConnection(URLLOCAL,USERLOCAL,PASSLOCAL);
-       // c= (Connection) DriverManager.getConnection(URL,USER,PASS);
+        //c= (Connection) DriverManager.getConnection(URL,USER,PASS);
        if(c==null){
-           System.out.println("error");
+         //  System.out.println("error");
        }else{
-       System.out.println("conecto");  
+       //System.out.println("conecto");  
        }
        return  c;
     }   
