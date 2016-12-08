@@ -69,7 +69,7 @@
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.poptrox.min.js"></script>
         <script src="assets/js/skel.min.js"></script>
-        <script type="text/javascript" src="assets/js/Validacion.js"></script>
+        <script type="text/javascript" src="assets/js/IndexController.js"></script>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->

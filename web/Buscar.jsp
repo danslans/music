@@ -103,7 +103,7 @@
                             try {
                                 while (rs.next()) {
                 %>
-                <li ><img id="img" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("id")%>"  onclick="valor(<%= rs.getString("id")%>)" />
+                <li ><img id="<%= rs.getString("id")%>" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("id")%>"  onclick="SelectImagen(<%= rs.getString("id")%>)"  />
                     <p><%=rs.getString("nombre")%></p>
                 </li>
                 <%
