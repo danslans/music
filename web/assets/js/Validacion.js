@@ -4,33 +4,35 @@
 function SelectImagen(val) {
     var nom = $('#nCancion').val();//nombre de la cancion 
     var array = $("#lista").val();//Json
-    var arrayId= creacionArrayId(array.toString());
-    if(validarIdArray(arrayId,val.toString())){
-    var cadena = "{'id':" + "'" + val + "'" + "}," + array + "";
-    var total = parseInt($("#total").val());
-    var suma = parseInt(total + 1);
-    url = "?nombreCancion=" + nom + "&lista=" + cadena + "&total=" + suma;
-    location.href = "Buscar.jsp" + url;    
-    }else{
+    var arrayId = creacionArrayId(array.toString());
+    if (validarIdArray(arrayId, val.toString())) {
+        var cadena = "{'id':" + "'" + val + "'" + "}," + array + "";
+        var total = parseInt($("#total").val());
+        var suma = parseInt(total + 1);
+        url = "?nombreCancion=" + nom + "&lista=" + cadena + "&total=" + suma;
+        location.href = "Buscar.jsp" + url;
+    } else {
         alert("ya se ha seleccionado");
     }
-    
+
 }
 $(document).ready(function () {
-    $("#form").submit(function () {
-        redirect(false);
+    $(this).keydown(function (event) {
+        if (event.which === 13) {
+            redirect(false);
+        }
     });
 });
-function validarIdArray(arrayId,val){
-    cont=0;
+function validarIdArray(arrayId, val) {
+    cont = 0;
     for (var item in arrayId) {
-        if(val===arrayId[item]){   
+        if (val === arrayId[item]) {
             cont++;
         }
     }
-    if(cont>0){
+    if (cont > 0) {
         return false;
-    }else{
+    } else {
         return true;
     }
 }
@@ -39,20 +41,20 @@ function creacionArrayId(json) {
     var arrayIds = new Array();
     var constructId = "";
     for (var item in json) {
-        
-            if (json[item] !== "'") {
-                if (json[item] >= 0) {
-                    constructId += json[item];
-                }
-            } else {
-                if(constructId>0){
-                    arrayIds[c]=constructId;
-                    c++;
-                    constructId="";
-                }
-                constructId="";
+
+        if (json[item] !== "'") {
+            if (json[item] >= 0) {
+                constructId += json[item];
             }
-        
+        } else {
+            if (constructId > 0) {
+                arrayIds[c] = constructId;
+                c++;
+                constructId = "";
+            }
+            constructId = "";
+        }
+
     }
     return arrayIds;
 }

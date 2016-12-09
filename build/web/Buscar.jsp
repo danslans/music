@@ -60,11 +60,9 @@
             }
 
         %>
-        <form id="form" method="GET">
             <input type="text" id="nCancion" class="input" value="<%=nombre%>" name="nombreCancion" placeholder="Nombre de la canción" required="required">
             <input type="hidden" name="lista" id="lista" value="<%= cadena%>">
             <input type="button" class="boton" id="buscar"  value="Buscar" onclick="redirect(false)" >
-        </form>
         <div id="recibir">
             <form id="formAgregar" method="POST" action="GetPost">
                 <%
@@ -104,7 +102,7 @@
                                 while (rs.next()) {
                 %>
                 <li ><img id="<%= rs.getString("id")%>" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("id")%>"  onclick="SelectImagen(<%= rs.getString("id")%>)"  />
-                    <p><%=rs.getString("nombre")%></p>
+                    <p onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
                 </li>
                 <%
                                 }

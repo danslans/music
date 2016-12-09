@@ -5,6 +5,7 @@
  */
 package cad;
 
+import com.mysql.jdbc.PreparedStatement;
 import datos.Conexion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -50,20 +51,28 @@ public class ImagenCad {
         try {
             Connection connection;
             connection = c.connection();
-            String queryProcedure = "{call insertar(" + ai.getId_img() + ",'" + ai.getFecha() + "') }";
-            //System.out.println(queryProcedure);
-            int result = connection.prepareCall(queryProcedure).executeUpdate();
-            if (result > 0) {
-             //   System.out.println("inserto " + result);
-            } else {
-              //  System.out.println("error");
+            if(buscarIdAsignar(ai.getId_img())){
+              String queryProcedure = "{call insertar(" + ai.getId_img() + ",'" + ai.getFecha() + "') }";
+            int result = connection.prepareCall(queryProcedure).executeUpdate();  
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void trucateAsignar() {
+    private boolean buscarIdAsignar(int id) {
+        try {
+            Connection con=c.connection();
+            String sentencia="SELECT * FROM TBL_ASIGNAR_CANCION WHERE id_img = "+id;
+            ResultSet resultSet;
+            resultSet=con.prepareStatement(sentencia).executeQuery();
+            if(resultSet.next()){
+                return false;
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
     }
 
     public ResultSet buscar() {
@@ -74,13 +83,7 @@ public class ImagenCad {
             ResultSet resultSet = con.prepareStatement(sql).executeQuery();
             //  con.close();
             return resultSet;
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -93,13 +96,7 @@ public class ImagenCad {
             ResultSet resultSet = connection.prepareStatement(query).executeQuery();
             //connection.close();
             return resultSet;
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;

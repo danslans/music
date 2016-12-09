@@ -21,35 +21,33 @@
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/styles.css">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     </head>
     <body >
-        <!-- Wrapper -->
-        <div id="wrapper">
-            <!-- Header -->
-            <header id="header">
-                <h1><a href="index.jsp"><strong>MMM -</strong>Music</a></h1>
-                <nav>
-                    <ul>
-                        <li><a href="Insert.jsp" >Insertar</a></li>
-                        <li><a href="Buscar.jsp" >Buscar</a></li>
+        <!-- Header -->
+        <header id="header">
+            <h1 class="h1"><a class="a" href="index.jsp"><strong>MMM -</strong>Music</a></h1>
+            <nav>
+                <ul id="ul">
+                    <li><a href="Insert.jsp" >Insertar</a></li>
+                    <li><a href="Buscar.jsp" >Buscar</a></li>
 
-                    </ul>
-                </nav>
-            </header>
-            <!-- Main -->
-            <div id="">	
+                </ul>
+            </nav>
+        </header>
+        <!-- Main -->
+        <div id="contenedor">
+            <section id="section">	
                 <ul>
                     <%
                         ResultSet resultSet = imagenCad.buscar();
                         while (resultSet.next()) {
 
                     %>
-                    <li><img src='<%= resultSet.getString("direccion")%>' id="<%= resultSet.getString("id_img")%>" title="<%= resultSet.getString("nombre")%>" onclick="dialogo(this,'<%= resultSet.getString("direccion")%>')" alt="" height="300px" width="500px" />
+                    <li><img src='<%= resultSet.getString("direccion")%>' id="<%= resultSet.getString("id_img")%>" title="<%= resultSet.getString("nombre")%>" onclick="dialogo(this, '<%= resultSet.getString("direccion")%>')" alt="" height="300px" width="500px" />
                         <h3><%= resultSet.getString("nombre")%></h3>
                         <input type="hidden" name="img" value="<%= resultSet.getString("direccion")%>"/>
                     </li>
@@ -57,13 +55,17 @@
                         }
                     %>
                 </ul>
-            </div>
-
+            </section>
+            <aside id="aside">
+                <nav>
+                    <input type="button" value="Borrar"  class="boton b1" />
+                </nav>
+            </aside>
         </div>
-                <dialog  id="dialogo">
-                    <span id="x" onclick="salir()">x</span>
-                    <center><img id="imgDialog"  src="" width="50%" height="650px" /></center>
-                </dialog>
+        <dialog  id="dialogo">
+            <span id="x" onclick="salir()">x</span>
+            <center><img id="imgDialog"  src="" width="50%" height="650px" /></center>
+        </dialog>
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
