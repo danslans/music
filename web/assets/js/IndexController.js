@@ -18,6 +18,12 @@ $(document).ready(function () {
             //alert(srcImg);
         }
     });
+    $(this).bind("swipeleft",function (){
+        atras();
+    });
+    $(this).bind("swiperight",function (){
+        siguiente();
+    });
     var numImg = document.getElementsByName("img");
     urlImg = numImg;
 });

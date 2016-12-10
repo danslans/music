@@ -91,7 +91,8 @@
                 <input type="submit" id="Agregar" class="boton" value="Agregar" />
             </form>
         </div>
-        <section>
+                <div>
+                <section id="section1">
             <ul id="imgBuscar">
                 <%
                     if (request.getParameter("nombreCancion") != null) {
@@ -114,5 +115,29 @@
                 %>
             </ul>
         </section>
+            <aside id="aside1">
+                <nav>
+                   <%
+                    if (request.getParameter("nombreCancion") != null) {
+                        if (!request.getParameter("nombreCancion").equals("")) {
+                            ImagenCad cad = new ImagenCad();
+                            ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
+                            try {
+                                while (rs.next()) {
+                %>
+                <li>
+                    <p onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
+                </li>
+                <%
+                                }
+                            } catch (SQLException ex) {
+                                Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+                %>
+                </nav>
+            </aside>
+            </div>
     </body>
 </html>

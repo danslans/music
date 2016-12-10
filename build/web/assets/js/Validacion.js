@@ -22,6 +22,9 @@ $(document).ready(function () {
             redirect(false);
         }
     });
+    $().submit(function () {
+        
+    });
 });
 function validarIdArray(arrayId, val) {
     cont = 0;
@@ -68,7 +71,7 @@ function redirect(valTotal) {
         location.href = "Buscar.jsp" + url;
     } else {
         var total = $("#total").val();
-        if (total !== null) {
+        if (jQuery.type(total) !== "undefined") {
             url = "?nombreCancion=" + nom + "&lista=" + historial + "&total=" + total;
             location.href = "Buscar.jsp" + url;
         } else {
@@ -94,14 +97,13 @@ function getId(json, id) {
     var array = new Array();
     for (var item in json) {
         if (json[item] !== ",") {
-            if (json[item] > 0) {
-                idQuitar = json[item];
+            if (json[item] >= 0) {
+                idQuitar += json[item];
                 newJson = newJson + json[item];
                 if (idQuitar === id) {
                     idQuitar = "";
-                    encontro++;
+                    encontro=1;
                 } else {
-                    idQuitar = "";
                     encontro = 0;
                 }
             } else {
@@ -114,6 +116,7 @@ function getId(json, id) {
                 newJson = "";
             } else {
                 newJson = "";
+                idQuitar="";
             }
         }
     }
