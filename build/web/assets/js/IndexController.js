@@ -8,6 +8,7 @@
 var urlImg;
 var srcImg;
 $(document).ready(function () {
+    $("#dialogo").fadeOut();
     $(this).keydown(function (event) {
         var num = String.fromCodePoint(event.which);
         if (event.which === 39) {

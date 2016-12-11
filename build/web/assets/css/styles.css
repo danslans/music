@@ -135,6 +135,12 @@
     display: none;
     
 }
+#x{
+    color: #512DA8;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
+}
 }
 
 /*tablet*/
@@ -315,6 +321,12 @@ section{
    width: 50%;
    height: 650px;
 }
+#x{
+    color: #512DA8;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
+}
 }
 
 /*web*/
@@ -485,5 +497,11 @@ section{
 #imgDialog{
    width: 50%;
    height: 650px;
+}
+#x{
+    color: #512DA8;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
 }
 }
