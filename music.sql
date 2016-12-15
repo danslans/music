@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-12-2016 a las 03:09:46
+-- Tiempo de generación: 15-12-2016 a las 15:03:50
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -28,6 +28,22 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar` (IN `id` INT, IN `fecha` 
 INSERT Into TBL_ASIGNAR_CANCION VALUES(id,fecha);
 END$$
 
+--
+-- Funciones
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `insertHistoria` () RETURNS VARCHAR(100) CHARSET utf8 COLLATE utf8_spanish2_ci begin 
+	declare idF int;
+    declare fecha date;
+    declare msn varchar(50);
+	set idF=(Select id_img from TBL_ASIGNAR_CANCION order by id_img desc limit 1);
+    set fecha =(select fecha from TBL_ASIGNAR_CANCION where id_img=idF);
+if idF >=0 then
+    insert into TBL_HISTORIAL_CANCION values(null,fecha,idF);
+    set msn='datos ingresados';
+    end if;
+    return msn+''+fecha;
+end$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------
@@ -38,7 +54,7 @@ DELIMITER ;
 
 CREATE TABLE `TBL_ASIGNAR_CANCION` (
   `id_img` int(11) NOT NULL,
-  `fecha` varchar(100) COLLATE utf8_spanish2_ci NOT NULL
+  `fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
@@ -46,9 +62,33 @@ CREATE TABLE `TBL_ASIGNAR_CANCION` (
 --
 
 INSERT INTO `TBL_ASIGNAR_CANCION` (`id_img`, `fecha`) VALUES
-(2, '-2024'),
-(3, '-2024'),
-(7, '-2024');
+(6, '2016-12-14'),
+(20, '2016-12-14'),
+(21, '2016-12-14'),
+(22, '2016-12-14'),
+(23, '2016-12-14');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `TBL_HISTORIAL_CANCION`
+--
+
+CREATE TABLE `TBL_HISTORIAL_CANCION` (
+  `id_historial` int(11) NOT NULL,
+  `fecha` date DEFAULT NULL,
+  `id_img` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `TBL_HISTORIAL_CANCION`
+--
+
+INSERT INTO `TBL_HISTORIAL_CANCION` (`id_historial`, `fecha`, `id_img`) VALUES
+(1, NULL, 1),
+(2, NULL, 1),
+(3, NULL, 1),
+(5, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -103,6 +143,12 @@ ALTER TABLE `TBL_ASIGNAR_CANCION`
   ADD KEY `id_img` (`id_img`);
 
 --
+-- Indices de la tabla `TBL_HISTORIAL_CANCION`
+--
+ALTER TABLE `TBL_HISTORIAL_CANCION`
+  ADD PRIMARY KEY (`id_historial`);
+
+--
 -- Indices de la tabla `TBL_IMG`
 --
 ALTER TABLE `TBL_IMG`
@@ -112,6 +158,11 @@ ALTER TABLE `TBL_IMG`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `TBL_HISTORIAL_CANCION`
+--
+ALTER TABLE `TBL_HISTORIAL_CANCION`
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `TBL_IMG`
 --
@@ -130,9 +181,3 @@ ALTER TABLE `TBL_ASIGNAR_CANCION`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-SELECT * FROM music.TBL_ASIGNAR_CANCION;
-TRUNCATE TABLE music.TBL_ASIGNAR_CANCION;
-ALTER TABLE music.TBL_ASIGNAR_CANCION MODIFY COLUMN fecha date;
- call insertar (1,'2016/12/05');

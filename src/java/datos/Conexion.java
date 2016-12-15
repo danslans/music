@@ -18,9 +18,9 @@ import java.util.logging.Logger;
  * @author danslans
  */
 public class Conexion {
-    private static final String URL =  "jdbc:mysql://node138589-mmmusic.j.layershift.co.uk/darkan";
-    private static final String USER="darkan";
-    private static final String PASS="66LqKTDucvK3cWsM";
+    private static final String URL =  "jdbc:mysql://node140843-musicoasis.j.layershift.co.uk/music";
+    private static final String USER="root";
+    private static final String PASS="SCMpby69489";
     private static final String URLLOCAL="jdbc:mysql://localhost:3306/music";
     private static final String USERLOCAL="root";
     private static final String PASSLOCAL="";
@@ -28,8 +28,8 @@ public class Conexion {
     private static Connection c=null;
     public Connection connection() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
        Class.forName("com.mysql.jdbc.Driver").newInstance();
-        c= (Connection) DriverManager.getConnection(URLLOCAL,USERLOCAL,PASSLOCAL);
-        //c= (Connection) DriverManager.getConnection(URL,USER,PASS);
+        //c= (Connection) DriverManager.getConnection(URLLOCAL,USERLOCAL,PASSLOCAL);
+        c= (Connection) DriverManager.getConnection(URL,USER,PASS);
        if(c==null){
          //  System.out.println("error");
        }else{

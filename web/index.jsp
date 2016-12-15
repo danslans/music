@@ -64,7 +64,11 @@
         </div>
         <dialog  id="dialogo">
             <span id="x" onclick="salir()">x</span>
-            <center><img id="imgDialog"  src=""  /></center>
+            <center>
+                <div id="atras" onclick="atras()"></div>
+                <img id="imgDialog"  src=""  />
+                <div id="siguiente" onclick="siguiente()"></div>
+            </center>
         </dialog>
 
         <!-- Scripts -->
