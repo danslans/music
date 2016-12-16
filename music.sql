@@ -35,13 +35,13 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `insertHistoria` () RETURNS VARCHAR(1
 	declare idF int;
     declare fecha date;
     declare msn varchar(50);
-	set idF=(Select id_img from TBL_ASIGNAR_CANCION order by id_img desc limit 1);
-    set fecha =(select fecha from TBL_ASIGNAR_CANCION where id_img=idF);
-if idF >=0 then
+	set idF=(Select a.id from TBL_ASIGNAR_CANCION a order by a.id desc limit 1);
+    set fecha =(select a.fecha from TBL_ASIGNAR_CANCION a where a.id=idF);
+if idF >0 then
     insert into TBL_HISTORIAL_CANCION values(null,fecha,idF);
     set msn='datos ingresados';
     end if;
-    return msn+''+fecha;
+    return msn;
 end$$
 
 DELIMITER ;
