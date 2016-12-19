@@ -6,12 +6,6 @@ class Conexion {
     define("pass","");
     define("db","music");
     $con=mysqli_connect(host,user,pass,db)or die("error en la conexion");
-    if($con){
-        echo "dio";
-    }else {
-        echo "no dio";
-    }   
-
     return $con;
 }
 }

@@ -5,10 +5,10 @@ class Listar {
         try{
             $con=new Conexion();
             $c= $con::con();
-            $query="SELECT * FROM TBL_IMG ";
+            $query="SELECT * FROM tbl_img";
             $result=mysqli_query($c,$query);
             $json=array();
-            while($row=mysqli_fetch_row($result)){
+            while($row=mysqli_fetch_assoc($result)){
                 $json[]=$row;
             }
             return json_encode($json);
