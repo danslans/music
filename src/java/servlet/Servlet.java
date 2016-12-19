@@ -6,19 +6,12 @@
 package servlet;
 
 import cad.ImagenCad;
-import datos.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.control.DialogPane;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 import model.Imagen;
 
 /**
@@ -82,12 +75,7 @@ public class Servlet extends HttpServlet {
                     Imagen imagen=new Imagen(0, nombre, descrip, url);
                     try {
                     cad.guardar(imagen);
-                    } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (InstantiationException ex) {
-                    Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (IllegalAccessException ex) {
-                    Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }catch(Exception e){
                     }
                 }
            }else if(request.getParameter("number").equals("true")){
