@@ -18,6 +18,7 @@ import java.util.logging.Logger;
  * @author danslans
  */
 public class Conexion {
+    private static  Conexion conexion=new Conexion();
     private static final String URL =  "jdbc:mysql://node140843-musicoasis.j.layershift.co.uk/music";
     private static final String USER="root";
     private static final String PASS="SCMpby69489";
@@ -26,10 +27,10 @@ public class Conexion {
     private static final String PASSLOCAL="";
 //DriverManager.getConnection(URL, user_name, user_password);
     private static Connection c=null;
-    public Connection connection() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+    private  Connection connection() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
        Class.forName("com.mysql.jdbc.Driver").newInstance();
-        //c= (Connection) DriverManager.getConnection(URLLOCAL,USERLOCAL,PASSLOCAL);
-        c= (Connection) DriverManager.getConnection(URL,USER,PASS);
+        c= (Connection) DriverManager.getConnection(URLLOCAL,USERLOCAL,PASSLOCAL);
+        //c= (Connection) DriverManager.getConnection(URL,USER,PASS);
        if(c==null){
          //  System.out.println("error");
        }else{
@@ -37,15 +38,23 @@ public class Conexion {
        }
        return  c;
     }   
-    public void disconect(){
+    public static Connection connectBD(){
+        try {
+            return conexion.connection();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    protected  void disconect(){
         try {
             c.close();
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-         
-    public Conexion() {
+     
+    private Conexion() {
         
     }
     

@@ -1,6 +1,4 @@
 /* global $scope */
-
-
 function SelectImagen(val) {
     var nom = $('#nCancion').val();//nombre de la cancion 
     var array = $("#lista").val();//Json
