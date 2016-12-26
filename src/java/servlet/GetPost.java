@@ -67,17 +67,12 @@ public class GetPost extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         PrintWriter out = response.getWriter();
-        AsignarImagen ai=new AsignarImagen();
+        
         ImagenCad cad=new ImagenCad();
-        int totalId = Integer.parseInt(request.getParameter("total"));
         Calendar c=GregorianCalendar.getInstance();
        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd");
         String fecha=dateFormat.format(c.getTime());
-        for (int i = 1; i <= totalId; i++) {
-            ai.setFecha(fecha);
-            ai.setId_img(Integer.parseInt(request.getParameter("idImagen" + i)));
-            cad.guardarAsignar(ai);
-        }
+        
         response.sendRedirect("index.jsp");
     }
 

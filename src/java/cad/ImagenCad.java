@@ -110,12 +110,11 @@ public class ImagenCad {
         JSONArray jSONArray = new JSONArray(json);
         for (int i = 0; i < jSONArray.length(); i++) {
             JSONObject object = jSONArray.getJSONObject(i);
-            int id = object.getInt("id");
+            int id = object.getInt("id"); 
             query = query + idTbl + igual + id + or;
         }
         query += "\'" + "\'";
         ResultSet resultSet = buscarIds(query);
-        // System.out.println(query);
         return resultSet;
     }
 }

@@ -12,15 +12,14 @@ package model;
 public class AsignarImagen {
     private int id_img;
     private String fecha;
+    private int orden;
 
-    public AsignarImagen(int id_img, String fecha) {
+    public AsignarImagen(int id_img, String fecha, int orden) {
         this.id_img = id_img;
         this.fecha = fecha;
+        this.orden = orden;
     }
-
-    public AsignarImagen() {
-    }
-
+    
     public int getId_img() {
         return id_img;
     }
@@ -36,6 +35,13 @@ public class AsignarImagen {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-    
+
+    public int getOrden() {
+        return orden;
+    }
+
+    public void setOrden(int orden) {
+        this.orden = orden;
+    }
     
 }

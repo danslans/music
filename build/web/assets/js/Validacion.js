@@ -1,12 +1,12 @@
-/* global $scope */
+/* funcion de permite selecionar las imagenes*/
 function SelectImagen(val) {
     var nom = $('#nCancion').val();//nombre de la cancion 
     var array = $("#lista").val();//Json
     var arrayId = creacionArrayId(array.toString());
     if (validarIdArray(arrayId, val.toString())) {
-        var cadena = "{'id':" + "'" + val + "'" + "}," + array + "";
         var total = parseInt($("#total").val());
         var suma = parseInt(total + 1);
+        var cadena = "{'id':" + "'" + val + "'" + ",'orden':" + "'" + suma + "'" + "}," + array + "";
         url = "?nombreCancion=" + nom + "&lista=" + cadena + "&total=" + suma;
         location.href = "Buscar.jsp" + url;
     } else {
@@ -21,9 +21,10 @@ $(document).ready(function () {
         }
     });
     $().submit(function () {
-        
+
     });
 });
+//valida que la cancion seleccionada no esté entre las que ya se habia seleccionado previamente
 function validarIdArray(arrayId, val) {
     cont = 0;
     for (var item in arrayId) {
@@ -37,25 +38,34 @@ function validarIdArray(arrayId, val) {
         return true;
     }
 }
+//crea una array con los ids ya seleccionados
 function creacionArrayId(json) {
+    var newJson = "";
+    var cantComa = 0;
     var c = 0;
     var arrayIds = new Array();
     var constructId = "";
     for (var item in json) {
-
-        if (json[item] !== "'") {
-            if (json[item] >= 0) {
-                constructId += json[item];
+        if (json[item] !== "}") {
+            if (json[item] !== "{") {
+                if (json[item] !== ",") {
+                    if (cantComa !== 1) {
+                        if (json[item] >= 0) {
+                            constructId += json[item]; 
+                        }
+                    }
+                } else {
+                    cantComa = 1;  
+                }
+            } else {
+                cantComa = 0;
             }
         } else {
-            if (constructId > 0) {
-                arrayIds[c] = constructId;
-                c++;
-                constructId = "";
-            }
-            constructId = "";
+            cantComa = 0;
+           arrayIds[c]=constructId;
+           c++;
+           constructId="";
         }
-
     }
     return arrayIds;
 }
@@ -92,34 +102,64 @@ function getId(json, id) {
     var newJson = "";
     var contador = 0;
     var encontro = 0;
+    var cantComa = 0;
     var array = new Array();
     for (var item in json) {
-        if (json[item] !== ",") {
-            if (json[item] >= 0) {
-                idQuitar += json[item];
-                newJson = newJson + json[item];
-                if (idQuitar === id) {
-                    idQuitar = "";
-                    encontro=1;
+        if (json[item] !== "}") {
+            if (json[item] !== "{") {
+                if (json[item] !== ",") {
+                    if (cantComa !== 1) {
+                        if (json[item] >= 0) {
+                            idQuitar += json[item];
+                            newJson = newJson + json[item];
+                            if (idQuitar === id) {
+                                idQuitar = "";
+                                encontro = 1;
+                            } else {
+                                encontro = 0;
+                            }
+                        } else {
+                            newJson = newJson + json[item];
+                        }
+                    } else {
+                        newJson = newJson + json[item];
+                    }
                 } else {
-                    encontro = 0;
+                    cantComa = 1;
+                    newJson = newJson + json[item];
                 }
             } else {
                 newJson = newJson + json[item];
+                cantComa = 0;
             }
         } else {
+            newJson = newJson + json[item];
+            cantComa = 0;
             if (encontro > 0) {
-                array[contador] = newJson;
+                array[contador] = limpiarObjert(newJson);
                 contador++;
                 newJson = "";
+                encontro = 0;
             } else {
                 newJson = "";
-                idQuitar="";
+                idQuitar = "";
             }
         }
     }
     jsonNew = json.replace(array + ",", "");
+    alert(jsonNew);
     return jsonNew;
+}
+//funcion que limpia el objeto encontrado de las comas
+function limpiarObjert(jsonObjet) {
+    var Json = "";
+    for (var item in jsonObjet) {
+        if (jsonObjet[item] === "," && item === "0") {
+        } else {
+            Json = Json + jsonObjet[item];
+        }
+    }
+    return Json;
 }
 function sedAjax(datos, pag) {
     $.ajax({type: 'POST', data: datos, url: pag});

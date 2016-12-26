@@ -69,7 +69,7 @@
                     if (resultSet != null) {
                         int cant;
                         int c=0;
-                        if (request.getParameter("total") == null) {
+                        if (request.getParameter("total") == null ) {
                             cant = 0;
                         } else {
                             cant = Integer.parseInt(request.getParameter("total"));
