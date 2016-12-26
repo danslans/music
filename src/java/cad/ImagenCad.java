@@ -38,22 +38,30 @@ public class ImagenCad {
                 Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (Exception e) {
-            Logger.getLogger("Error objeto Imagen "+e);
+            Logger.getLogger("Error objeto Imagen " + e);
         }
     }
 
-    public void guardarAsignar(AsignarImagen ai) {
+    public void guardarAsignar(String json, String fecha) {
+        String exceculteProcedure = "{call insertar(";
         try {
-            if (buscarIdAsignar(ai.getId_img())) {
-                String queryProcedure = "{call insertar(" + ai.getId_img() + ",'" + ai.getFecha() + "') }";
+            JSONArray array = new JSONArray(json);
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject object = array.getJSONObject(i);
+                int id = object.getInt("id");
+                int orden = object.getInt("orden");
                 try {
-                    int result = c.prepareCall(queryProcedure).executeUpdate();
+                    String sent = exceculteProcedure + "'" + id + "'," + "'" + fecha + "'," + "'" + orden + "')}";
+                    int resut = c.prepareCall(sent).executeUpdate();
+                    if (resut > 0) {
+                        c.prepareStatement("select insertHistoria()").execute();
+                    }
                 } catch (SQLException ex) {
                     Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        } catch (Exception e) {
-            Logger.getLogger("error en objeto Asignar Imagen" + e);
+        } catch (JSONException e) {
+            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -73,7 +81,7 @@ public class ImagenCad {
 
     public ResultSet buscar() {
         try {
-            String sql = "SELECT * FROM TBL_ASIGNAR_CANCION a inner join TBL_IMG i on a.id_img=i.id ";
+            String sql = "SELECT * FROM TBL_ASIGNAR_CANCION a inner join TBL_IMG i on a.id_img=i.id order by num_orden asc ";
             ResultSet resultSet = c.prepareStatement(sql).executeQuery();
             //  con.close();
             return resultSet;
@@ -110,7 +118,7 @@ public class ImagenCad {
         JSONArray jSONArray = new JSONArray(json);
         for (int i = 0; i < jSONArray.length(); i++) {
             JSONObject object = jSONArray.getJSONObject(i);
-            int id = object.getInt("id"); 
+            int id = object.getInt("id");
             query = query + idTbl + igual + id + or;
         }
         query += "\'" + "\'";

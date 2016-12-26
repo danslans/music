@@ -67,12 +67,12 @@ public class GetPost extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         PrintWriter out = response.getWriter();
-        
+        String json =request.getParameter("lista");
         ImagenCad cad=new ImagenCad();
         Calendar c=GregorianCalendar.getInstance();
        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd");
         String fecha=dateFormat.format(c.getTime());
-        
+        cad.guardarAsignar("["+json+"]", fecha);
         response.sendRedirect("index.jsp");
     }
 

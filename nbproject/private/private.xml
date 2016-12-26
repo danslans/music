@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/danslans/NetBeansProjects/mmmusic/src/java/servlet/GetPost.java</file>
-            <file>file:/Users/danslans/NetBeansProjects/mmmusic/src/java/model/Imagen.java</file>
-            <file>file:/Users/danslans/NetBeansProjects/mmmusic/src/java/model/AsignarImagen.java</file>
-            <file>file:/Users/danslans/NetBeansProjects/mmmusic/src/java/cad/ImagenCad.java</file>
-            <file>file:/Users/danslans/NetBeansProjects/mmmusic/web/assets/js/Validacion.js</file>
-            <file>file:/Users/danslans/NetBeansProjects/mmmusic/web/Buscar.jsp</file>
+            <file>file:/C:/Users/daniel.gomez/Documents/NetBeansProjects/MMMusic/web/index.jsp</file>
+            <file>file:/C:/Users/daniel.gomez/Documents/NetBeansProjects/MMMusic/web/Buscar.jsp</file>
+            <file>file:/C:/Users/daniel.gomez/Documents/NetBeansProjects/MMMusic/src/java/cad/ImagenCad.java</file>
+            <file>file:/C:/Users/daniel.gomez/Documents/NetBeansProjects/MMMusic/src/java/servlet/GetPost.java</file>
+            <file>file:/C:/Users/daniel.gomez/Documents/NetBeansProjects/MMMusic/web/assets/js/Validacion.js</file>
         </group>
     </open-files>
 </project-private>

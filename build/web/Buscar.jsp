@@ -88,6 +88,7 @@
                 <%
                     }
                 %>
+                <input type="hidden" name="lista" id="lista" value="<%= cadena%>">
                 <input type="submit" id="Agregar" class="boton" value="Agregar" />
             </form>
         </div>

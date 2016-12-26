@@ -147,7 +147,6 @@ function getId(json, id) {
         }
     }
     jsonNew = json.replace(array + ",", "");
-    alert(jsonNew);
     return jsonNew;
 }
 //funcion que limpia el objeto encontrado de las comas
