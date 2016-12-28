@@ -103,7 +103,8 @@
                             try {
                                 while (rs.next()) {
                 %>
-                <li ><img id="<%= rs.getString("id")%>" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("nombre")%>"  onclick="SelectImagen(<%= rs.getString("id")%>)"  />
+                <li ><img src="images/icons/view1.png" id="icon"/>
+                    <img id="<%= rs.getString("id")%>" class="imgSong" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("nombre")%>"  onclick="SelectImagen(<%= rs.getString("id")%>)"  />
                     <p onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
                 </li>
                 <%
@@ -140,5 +141,8 @@
                 </nav>
             </aside>
             </div>
+                <dialog id="bsDialog">
+                    
+                </dialog>
     </body>
 </html>

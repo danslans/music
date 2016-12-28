@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.AsignarImagen;
 import model.Imagen;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,6 +49,7 @@ public class ImagenCad {
                 JSONObject object = array.getJSONObject(i);
                 int id = object.getInt("id");
                 int orden = object.getInt("orden");
+                if(buscarIdAsignar(id)){
                 try {
                     String sent = exceculteProcedure + "'" + id + "'," + "'" + fecha + "'," + "'" + orden + "')}";
                     int resut = c.prepareCall(sent).executeUpdate();
@@ -59,6 +59,7 @@ public class ImagenCad {
                 } catch (SQLException ex) {
                     Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
             }
         } catch (JSONException e) {
             Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, e);

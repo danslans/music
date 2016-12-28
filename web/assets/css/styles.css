@@ -39,7 +39,7 @@
 #imgBuscar>li{
     list-style: none;
 }
-#imgBuscar>li>img{
+#imgBuscar>li>.imgSong{
     height: 0px;
     width: 0px;
     padding-bottom: 20px;
@@ -159,6 +159,27 @@
     left: 50%;
     top: 0;    
 }
+#icon{
+    position: absolute;
+    height: 40px;
+    padding-left: 0px;
+    left: 260px;
+}
+#icon:hover{
+    background-color: #f2f2f2;
+    opacity: 0.8;
+}
+
+#bsDialog{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 0;
+    border: none;
+    background:#ffffff;
+}
+
 }
 
 /*tablet*/
@@ -210,7 +231,7 @@
     display: inline-block;
     list-style: none;
 }
-#imgBuscar>li>img{
+#imgBuscar>li>.imgSong{
     height: 300px;
     width: 60px;
     padding-bottom: 20px;
@@ -329,11 +350,6 @@ section{
 #section1>ul>li{
     display: inline-block;
 }
-#section1>ul>li>img{
-    height: 200px;
-    width: 200px;
-}
-
 /*imagen del dialogo*/
 #imgDialog{
    width: 50%;
@@ -362,6 +378,27 @@ section{
     left: 50%;
     top: 0;
 }
+
+#icon{
+    position: absolute;
+    height: 40px;
+    padding-left: 0px; 
+}
+#icon:hover{
+    background-color: #f2f2f2;
+    opacity: 0.8;
+}
+
+#bsDialog{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 0;
+    border: none;
+    background:#ffffff;
+}
+
 }
 
 /*web*/
@@ -410,9 +447,9 @@ section{
     display: inline-block;
     list-style: none;
 }
-#imgBuscar>li>img{
-    height: 300px;
-    width: 600px;
+#imgBuscar>li>.imgSong{
+    height: 200px;
+    width: 300px;
     padding-bottom: 20px;
 }
 #check{
@@ -556,4 +593,26 @@ section{
     left: 50%;
     top: 0; 
 }
+/*icono para ver (impletentar en otras pantallas)*/
+#icon{
+    position: absolute;
+    height: 40px;
+    padding-left: 230px;
+}
+
+#icon:hover{
+    background-color: #f2f2f2;
+    opacity: 0.8;
+}
+
+#bsDialog{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 0;
+    border: none;
+    background:#ffffff;
+}
+
 }
