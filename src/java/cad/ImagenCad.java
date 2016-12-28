@@ -113,6 +113,19 @@ public class ImagenCad {
         return null;
     }
 
+    public boolean truncateAsignar() {
+        try {
+            ResultSet result = c.prepareCall("{call truncateAsignar()}").executeQuery();
+            result.next();
+            if(result.getInt("result")>0){
+                return true;
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ImagenCad.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+
     public ResultSet traerLista(String cadena) throws JSONException {
         String json = "[" + cadena + "]";
         JSONArray jSONArray = new JSONArray(json);

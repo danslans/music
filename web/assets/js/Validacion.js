@@ -160,7 +160,3 @@ function limpiarObjert(jsonObjet) {
     }
     return Json;
 }
-function sedAjax(datos, pag) {
-    $.ajax({type: 'POST', data: datos, url: pag});
-}
-

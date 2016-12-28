@@ -27,6 +27,13 @@ $(document).ready(function () {
     });
     var numImg = document.getElementsByName("img");
     urlImg = numImg;
+    
+    $("#borrar").click(function (){
+        sedAjax("?borrar=borrar","GetPost");   
+        setInterval(function() {
+            location.reload();
+        },100);
+    });
 });
 function siguiente() {
     var hrefimg = srcImg;
@@ -68,4 +75,9 @@ function dialogo(id, src) {
 }
 function salir() {
     var dialog = $("#dialogo").fadeOut();
+}
+function sedAjax(datos, pag) {
+    $.ajax({type: 'GET', data: datos, url: pag,success: function (data, textStatus, jqXHR) {
+            alert(data);
+        }});
 }

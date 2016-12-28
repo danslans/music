@@ -52,6 +52,13 @@ public class GetPost extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        PrintWriter out=response.getWriter();
+        ImagenCad cad=new ImagenCad();
+        if(cad.truncateAsignar()){
+        out.println("se quitan las canciones");
+        }else{
+        out.println("error");
+        }
     }
 
     /**

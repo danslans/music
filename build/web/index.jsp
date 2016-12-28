@@ -58,7 +58,7 @@
             </section>
             <aside id="aside">
                 <nav>
-                    <input type="button" value="Borrar"  class="boton b1" />
+                    <input type="button" id="borrar" value="Borrar"  class="boton b1" />
                 </nav>
             </aside>
         </div>
