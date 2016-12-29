@@ -21,9 +21,19 @@ $(document).ready(function () {
         }
     });
     $().submit(function () {
-
     });
+    salirImg();
 });
+function salirImg(){
+    $("#bsDialog").fadeOut();
+}
+//funcion que muestra la imagen 
+function mostrarImg(urlImg){
+    $("#bsDialog").show(function () {
+       document.getElementById("imgDialog").src=urlImg; 
+    });
+}
+
 //valida que la cancion seleccionada no esté entre las que ya se habia seleccionado previamente
 function validarIdArray(arrayId, val) {
     cont = 0;

@@ -54,13 +54,6 @@
     border: none;
     background:#ffffff;
 }
-
-
-
-
-
-
-
 /*boton agregar*/
 #Agregar{
     position: absolute;
@@ -97,16 +90,16 @@
 }
 /*lista de las canciones selecionadas*/
 .listaSelect{
-    padding: 1em 1.5em;
+    padding: 10px 2.8em;
     background: #efebfa;
 }
 /*contenedor div de lista de las caciones seleccionadas*/ 
 #recibir{
-    
+    width: 100%;
 }
 
 #recibir>form>li{
-    
+    list-style: none;
 }
 
 
@@ -161,8 +154,9 @@
 }
 #icon{
     position: absolute;
-    height: 40px;
+    height: 20px;
     margin-left: 240px;
+    margin-top: 15px;
 }
 #icon:hover{
     background-color: #f2f2f2;
@@ -178,7 +172,12 @@
     border: none;
     background:#ffffff;
 }
-
+.liNombreImg{
+    margin-right: 80px;
+}
+.liNombreImg:hover{
+    background: #efebfa; 
+}
 }
 
 /*tablet*/
@@ -249,13 +248,16 @@
     top: 102px;
 }
 #recibir>form>li{
+    position: relative;
     display: inline-block;
+    bottom: 30px;
+    right: 5px;
 }
 section{
     margin-top: 80px;
 }
 .listaSelect{
-    padding: 1em 2em;
+    padding: 3px 20px;
     background: #efebfa;
 }
 #Agregar{
@@ -330,6 +332,10 @@ section{
     margin-top: 80px;
     display: inline;
 }
+/*quitar los puntos del li que estan en el aside 1*/
+#aside1>nav>li{
+    list-style: none;
+}
 .b1{
     top: 20px;
     position: relative;
@@ -397,7 +403,12 @@ section{
     border: none;
     background:#ffffff;
 }
-
+.liNombreImg{
+    margin-right: 0px;
+}
+.txtNombre:hover{
+    background: #efebfa;
+}
 }
 
 /*web*/
@@ -460,20 +471,22 @@ section{
 #recibir{
     padding: 30px;
     height: 100px;
-    width: 80%;
+    width: 75%;
     position: absolute;
-    left: 20%;
+    left: 22%;
     top: 102px;
 }
-
 #recibir>form>li{
+    position: relative;
     display: inline-block;
+    bottom: 2px;
+    right: 0px;
 }
 section{
     margin-top: 80px;
 }
 .listaSelect{
-    padding: 1em 2em;
+    padding: 10px 10px;
     background: #efebfa;
 }
 #Agregar{
@@ -548,6 +561,10 @@ section{
     margin-top: 80px;
     display: inline;
 }
+/*quitar los puntos del li que estan en el aside 1*/
+#aside1>nav>li{
+    list-style: none;
+}
 .b1{
     position: relative;
     top: 20px;
@@ -612,5 +629,10 @@ section{
     border: none;
     background:#ffffff;
 }
-
+.liNombreImg{
+    margin-right: 0px;
+}
+.txtNombre:hover{
+    background: #efebfa;
+}
 }
