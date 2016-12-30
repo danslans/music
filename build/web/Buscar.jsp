@@ -141,10 +141,10 @@
                 </nav>
             </aside>
             </div>
-                <dialog id="bsDialog" onclick="salirImg()">
+                <div id="bsDialog" onclick="salirImg()">
                     <center>
                         <img id="imgDialog"  src=""  />
                     </center>
-                </dialog>
+                </div>
     </body>
 </html>

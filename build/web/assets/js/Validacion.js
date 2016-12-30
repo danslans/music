@@ -29,6 +29,7 @@ function salirImg(){
 }
 //funcion que muestra la imagen 
 function mostrarImg(urlImg){
+    document.getElementById("imgDialog").style="display :inline";
     $("#bsDialog").show(function () {
        document.getElementById("imgDialog").src=urlImg; 
     });

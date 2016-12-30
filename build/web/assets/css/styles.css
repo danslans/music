@@ -171,6 +171,7 @@
     top: 0;
     border: none;
     background:#ffffff;
+    display: none;
 }
 .liNombreImg{
     margin-right: 80px;
@@ -402,6 +403,7 @@ section{
     top: 0;
     border: none;
     background:#ffffff;
+    display: none;
 }
 .liNombreImg{
     margin-right: 0px;
@@ -628,6 +630,7 @@ section{
     top: 0;
     border: none;
     background:#ffffff;
+    display: none;
 }
 .liNombreImg{
     margin-right: 0px;
