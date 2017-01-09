@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-01-2017 a las 19:11:48
+-- Tiempo de generación: 10-01-2017 a las 00:24:13
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -73,9 +73,11 @@ CREATE TABLE `TBL_ASIGNAR_CANCION` (
 --
 
 INSERT INTO `TBL_ASIGNAR_CANCION` (`id`, `id_img`, `fecha`, `num_orden`) VALUES
-(1, 19, '2017-01-01', 3),
-(2, 32, '2017-01-01', 2),
-(3, 31, '2017-01-01', 1);
+(1, 62, '2017-01-09', 5),
+(2, 41, '2017-01-09', 4),
+(3, 18, '2017-01-09', 3),
+(4, 14, '2017-01-09', 2),
+(5, 8, '2017-01-09', 1);
 
 -- --------------------------------------------------------
 
@@ -94,9 +96,11 @@ CREATE TABLE `TBL_HISTORIAL_CANCION` (
 --
 
 INSERT INTO `TBL_HISTORIAL_CANCION` (`id_historial`, `fecha`, `id_img`) VALUES
-(1, '2017-01-01', 1),
-(2, '2017-01-01', 2),
-(3, '2017-01-01', 3);
+(1, '2017-01-09', 1),
+(2, '2017-01-09', 2),
+(3, '2017-01-09', 3),
+(4, '2017-01-09', 4),
+(5, '2017-01-09', 5);
 
 -- --------------------------------------------------------
 
@@ -108,7 +112,7 @@ CREATE TABLE `TBL_IMG` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `descripcion` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `direccion` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL
+  `direccion` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -121,7 +125,7 @@ INSERT INTO `TBL_IMG` (`id`, `nombre`, `descripcion`, `direccion`) VALUES
 (3, 'Alabad a jehova', 'Alabad a jehova', 'images/thumbs/3 Alabad a Jehova.png'),
 (4, 'Alabare', 'Alabare', 'images/thumbs/4 Alabare.png'),
 (5, 'aunque otros canten', 'aunque otros canten', 'images/thumbs/5 Aunque otros Canten.png'),
-(6, 'Bendecid al Señor', 'Bendecid al Señor', 'images/thumbs/6 Bendecid al Senor.png'),
+(6, 'Bendecid al Se&#241or', 'Bendecid al Se&#241or', 'images/thumbs/6 Bendecid al Senor.png'),
 (7, 'Bendecir a Jehova', 'Bendecir a Jehova', 'images/thumbs/7 Bendecire a Jehova.png'),
 (8, 'Bendito se Jehova la Roca', 'Bendito se Jehova la Roca', 'images/thumbs/8 Bendito se Jehova la Roca.png'),
 (9, 'Bueno Es', 'Bueno Es', 'images/thumbs/9 Bueno Es.png'),
@@ -144,39 +148,41 @@ INSERT INTO `TBL_IMG` (`id`, `nombre`, `descripcion`, `direccion`) VALUES
 (26, 'Gocemonos y Alegremonos', 'Gocemonos y Alegremonos', 'images/thumbs/26 Gocemonos y Alegremonos.png'),
 (27, 'Gocemonos y Alegremonos', 'Gocemonos y Alegremonos', 'images/thumbs/27 Gocemonos y Alegremonos.png'),
 (28, 'Gocense y Alegrense', 'Gocense y Alegrense', 'images/thumbs/28 Gocense y Alegrense.png'),
-(29, 'Gozate delante del Señor', 'Gozate delante del Señor', 'images/thumbs/29 Gozate delante del senor.png'),
-(30, 'Grande es el Señor', 'Grande es el Senñor', 'images/thumbs/30 Grande es el Señor.png'),
-(31, 'Grande es el Señor', 'Grande es el Sennor', 'images/thumbs/31 Grande es el Senor.png'),
+(29, 'Gozate delante del Senor', 'Gozate delante del Senor', 'images/thumbs/29 Gozate delante del senor.png'),
+(30, 'Grande es el Se&#241or', 'Grande es el Se&#241or', 'images/thumbs/30 Grande es el Senor.png'),
+(31, 'Grande es el Se&#241or', 'Grande es el Se&#241or', 'images/thumbs/31 Grande es el Senor.png'),
 (32, 'Grandes y Maravillosas', 'Grandes y Maravillosas', 'images/thumbs/32 Grandes y Maravillosas.png'),
 (33, 'Has Cambiado ', 'Has Cambiado ', 'images/thumbs/33 Has Cambiado .png'),
 (34, 'Hosanna', 'Hosanna', 'images/thumbs/34 Hosanna.png'),
 (35, 'Hoy Venimos', 'Hoy Venimos', 'images/thumbs/35 Hoy Venimos.png'),
 (36, 'Jehova esta en su templo', 'Jehova esta en su templo', 'images/thumbs/36 Jehova esta en su templo.png'),
 (37, 'La Alabanza a Dios', 'La Alabanza a Dios', 'images/thumbs/37 La Alabanza a Dios.png'),
-(38, 'Maravilloso es el Señor', 'Maravilloso es el Señor', 'images/thumbs/38 Maravilloso es el Señor.png'),
+(38, 'Maravilloso es el Se&#241or', 'Maravilloso es el Se&#241or', 'images/thumbs/38 Maravilloso es el Senor.png'),
 (39, 'Me Gozare', 'Me Gozare', 'images/thumbs/39 Me Gozare.png'),
 (40, 'Me Gozare en tu Presencia', 'Me Gozare en tu Presencia', 'images/thumbs/40 Me Gozare en tu Presencia.png'),
 (41, 'Mi Amado ', 'Mi Amado ', 'images/thumbs/41 Mi Amado .png'),
 (42, 'Mirad Bendecid', 'Mirad Bendecid', 'images/thumbs/42 Mirad Bendecid.png'),
 (43, 'No hay Dios como mi Dios', 'No hay Dios como mi Dios', 'images/thumbs/43 No hay Dios como mi Dios.png'),
-(44, 'Oh Moradora', 'Oh Moradora', 'images/thumbs/45 Oh Moradora.png'),
-(45, 'Para ti oh Jehova', 'Para ti oh Jehova', 'images/thumbs/46 Para ti oh Jehova.png'),
-(46, 'Pelearan Contra el Cordero', 'Pelearan Contra el Cordero', 'images/thumbs/47 Pelearan Contra el Cordero.png'),
-(47, 'Proclamemos con Gozo', 'Proclamemos con Gozo', 'images/thumbs/48 Proclamemos con Gozo.png'),
-(48, 'Pueblos todos Batid Manos', 'Pueblos todos Batid Manos', 'images/thumbs/49 Pueblos todos Batid Manos.png'),
-(49, 'Que viva Cristo', 'Que viva Cristo', 'images/thumbs/50 Que viva Cristo.png'),
-(50, '¿Quien Como Jehova?', '¿Quien Como Jehova?', 'images/thumbs/51 Quien Como Jehova.png'),
-(51, '¿Quien es el rey?', '¿Quien es el rey?', 'images/thumbs/53 Quien es el rey.png'),
-(52, 'Santo, Santo, Santo', 'Santo, Santo, Santo', 'images/thumbs/54 Santo, Santo, Santo.png'),
-(53, 'Santo, Santo tu eres', 'Santo, Santo tu eres', 'images/thumbs/55 Santo, Santo tu eres.png'),
-(54, '¿Senor a Quien Iremos?', '¿Senor a Quien Iremos?', 'images/thumbs/56 Senor a Quien Iremos.png'),
-(55, 'Su Gloria Cubrio los Cielos', 'Su Gloria Cubrio los Cielos', 'images/thumbs/57 Su Gloria Cubrio los Cielos.png'),
-(56, 'Su Nombre de Guerra', 'Su Nombre de Guerra', 'images/thumbs/58 Su Nombre de Guerra.png'),
-(57, 'Te alabaran oh Jehova', 'Te alabaran oh Jehova', 'images/thumbs/59 Te alabaran oh Jehova.png'),
-(58, 'Te Alabare', 'Te Alabare', 'images/thumbs/60 Te Alabare.png'),
-(59, 'Te alabare oh Dios', 'Te alabare oh Dios', 'images/thumbs/61 Te alabare oh Dios.png'),
-(60, 'Te amo oh, Jehova', 'Te amo oh, Jehova', 'images/thumbs/62 Te amo oh, Jehova.png'),
-(61, 'Toda la noche sin parar', 'Toda la noche sin parar', 'images/thumbs/63 Toda la noche sin parar.png');
+(44, 'No hay Dios tan grande como tu', 'No hay Dios tan grande como tu', 'images/thumbs/44 No hay Dios tan grande como tu.png'),
+(45, 'Oh Moradora', 'Oh Moradora', 'images/thumbs/45 Oh Moradora.png'),
+(46, 'Para ti oh Jehova', 'Para ti oh Jehova', 'images/thumbs/46 Para ti oh Jehova.png'),
+(47, 'Pelearan Contra el Cordero', 'Pelearan Contra el Cordero', 'images/thumbs/47 Pelearan Contra el Cordero.png'),
+(48, 'Proclamemos con Gozo', 'Proclamemos con Gozo', 'images/thumbs/48 Proclamemos con Gozo.png'),
+(49, 'Pueblos todos Batid Manos', 'Pueblos todos Batid Manos', 'images/thumbs/49 Pueblos todos Batid Manos.png'),
+(50, 'Que viva Cristo', 'Que viva Cristo', 'images/thumbs/50 Que viva Cristo.png'),
+(51, 'Quien Como Jehova', 'Quien Como Jehova', 'images/thumbs/51 Quien Como Jehova.png'),
+(52, 'Quien como tu, Jehova entre los dioses', 'Quien como tu, Jehova entre los dioses', 'images/thumbs/52 Quien como tu, Jehova entre los dioses.png'),
+(53, 'Quien es el rey', 'Quien es el rey', 'images/thumbs/53 Quien es el rey.png'),
+(54, 'Santo, Santo, Santo', 'Santo, Santo, Santo', 'images/thumbs/54 Santo, Santo, Santo.png'),
+(55, 'Santo, Santo tu eres', 'Santo, Santo tu eres', 'images/thumbs/55 Santo, Santo tu eres.png'),
+(56, 'Se&#241or a Quien Iremos', 'Se&#241or a Quien Iremos', 'images/thumbs/56 Senor a Quien Iremos.png'),
+(57, 'Su Gloria Cubrio los Cielos', 'Su Gloria Cubrio los Cielos', 'images/thumbs/57 Su Gloria Cubrio los Cielos.png'),
+(58, 'Su Nombre de Guerra', 'Su Nombre de Guerra', 'images/thumbs/58 Su Nombre de Guerra.png'),
+(59, 'Te alabaran oh Jehova', 'Te alabaran oh Jehova', 'images/thumbs/59 Te alabaran oh Jehova.png'),
+(60, 'Te Alabare', 'Te Alabare', 'images/thumbs/60 Te Alabare.png'),
+(61, 'Te alabare oh Dios', 'Te alabare oh Dios', 'images/thumbs/61 Te alabare oh Dios.png'),
+(62, 'Te amo oh, Jehova', 'Te amo oh, Jehova', 'images/thumbs/62 Te amo oh, Jehova.png'),
+(63, 'Toda la noche sin parar', 'Toda la noche sin parar', 'images/thumbs/63 Toda la noche sin parar.png');
 
 --
 -- Índices para tablas volcadas
@@ -210,17 +216,17 @@ ALTER TABLE `TBL_IMG`
 -- AUTO_INCREMENT de la tabla `TBL_ASIGNAR_CANCION`
 --
 ALTER TABLE `TBL_ASIGNAR_CANCION`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `TBL_HISTORIAL_CANCION`
 --
 ALTER TABLE `TBL_HISTORIAL_CANCION`
-  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `TBL_IMG`
 --
 ALTER TABLE `TBL_IMG`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
