@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-01-2017 a las 00:24:13
+-- Tiempo de generación: 22-01-2017 a las 00:24:29
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -67,17 +67,6 @@ CREATE TABLE `TBL_ASIGNAR_CANCION` (
   `fecha` date DEFAULT NULL,
   `num_orden` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `TBL_ASIGNAR_CANCION`
---
-
-INSERT INTO `TBL_ASIGNAR_CANCION` (`id`, `id_img`, `fecha`, `num_orden`) VALUES
-(1, 62, '2017-01-09', 5),
-(2, 41, '2017-01-09', 4),
-(3, 18, '2017-01-09', 3),
-(4, 14, '2017-01-09', 2),
-(5, 8, '2017-01-09', 1);
 
 -- --------------------------------------------------------
 
@@ -182,7 +171,20 @@ INSERT INTO `TBL_IMG` (`id`, `nombre`, `descripcion`, `direccion`) VALUES
 (60, 'Te Alabare', 'Te Alabare', 'images/thumbs/60 Te Alabare.png'),
 (61, 'Te alabare oh Dios', 'Te alabare oh Dios', 'images/thumbs/61 Te alabare oh Dios.png'),
 (62, 'Te amo oh, Jehova', 'Te amo oh, Jehova', 'images/thumbs/62 Te amo oh, Jehova.png'),
-(63, 'Toda la noche sin parar', 'Toda la noche sin parar', 'images/thumbs/63 Toda la noche sin parar.png');
+(63, 'Toda la noche sin parar', 'Toda la noche sin parar', 'images/thumbs/63 Toda la noche sin parar.png'),
+(64, 'Tu eres Dios', 'Tu eres Dios', 'images/thumbs/64 Tu eres Dios.png'),
+(65, 'Tu misericordia', 'Tu misericordia', 'images/thumbs/65 Tu misericordia.png'),
+(66, 'Tu Nombre Levantare', 'Tu Nombre Levantare', 'images/thumbs/66 Tu Nombre Levantare.png'),
+(67, 'Una Cosa he Demandado', 'Una Cosa he Demandado', 'images/thumbs/67 Una Cosa he Demandado.png'),
+(68, 'Vamos a Alabar a Jehova', 'Vamos a Alabar a Jehova', 'images/thumbs/68 Vamos a Alabar a Jehova.png'),
+(69, 'Venid Aclamemos', 'Venid Aclamemos', 'images/thumbs/69 Venid Aclamemos.png'),
+(70, 'Venid Todos', 'Venid Todos', 'images/thumbs/70 Venid Todos.png'),
+(71, 'Ven y Juntos  Alabemos', 'Ven y Juntos  Alabemos', 'images/thumbs/71 Ven y Juntos  Alabemos.png'),
+(72, 'Yo Celebrare', 'Yo Celebrare', 'images/thumbs/72 Yo Celebrare.png'),
+(73, 'Yo Celebrare, Cantare al Senor', 'Yo Celebrare, Cantare al Senor', 'images/thumbs/73 Yo Celebrare, Cantare al Senor.png'),
+(74, 'To se que estas aqui mi Senor', 'To se que estas aqui mi Senor', 'images/thumbs/74 To se que estas aqui mi Senor.png'),
+(75, 'Yo te adoro Senor', 'Yo te adoro Senor', 'images/thumbs/75 Yo te adoro Senor.png'),
+(76, 'Yo vine alabar a Dios', 'Yo vine alabar a Dios', 'images/thumbs/76 Yo vine alabar a Dios.png');
 
 --
 -- Índices para tablas volcadas
@@ -216,7 +218,7 @@ ALTER TABLE `TBL_IMG`
 -- AUTO_INCREMENT de la tabla `TBL_ASIGNAR_CANCION`
 --
 ALTER TABLE `TBL_ASIGNAR_CANCION`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `TBL_HISTORIAL_CANCION`
 --
@@ -226,7 +228,7 @@ ALTER TABLE `TBL_HISTORIAL_CANCION`
 -- AUTO_INCREMENT de la tabla `TBL_IMG`
 --
 ALTER TABLE `TBL_IMG`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

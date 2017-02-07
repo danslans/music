@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author danslans
  */
 public class Conexion {
-    private static  Conexion conexion=new Conexion();
+    private static final  Conexion conexion=new Conexion();
     private static final String URL =  "jdbc:mysql://node140843-musicoasis.j.layershift.co.uk/music";
     private static final String USER="root";
     private static final String PASS="SCMpby69489";
