@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 22-01-2017 a las 00:24:29
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 7.0.8
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 08-02-2017 a las 19:11:33
+-- Versión del servidor: 10.1.19-MariaDB
+-- Versión de PHP: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -25,7 +25,7 @@ DELIMITER $$
 -- Procedimientos
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar` (IN `id` INT, IN `fecha` VARCHAR(100), IN `orden` INT)  BEGIN
-INSERT Into TBL_ASIGNAR_CANCION (id_img,fecha,num_orden) VALUES(id,fecha,orden);
+INSERT Into tbl_asignar_cancion (id_img,fecha,num_orden) VALUES(id,fecha,orden);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `truncateAsignar` ()  BEGIN
@@ -38,17 +38,15 @@ END$$
 --
 -- Funciones
 --
-CREATE DEFINER=`root`@`localhost` FUNCTION `insertHistoria` () RETURNS VARCHAR(100) CHARSET utf8 COLLATE utf8_spanish2_ci begin 
+CREATE DEFINER=`root`@`localhost` FUNCTION `insertHistoria` () RETURNS VARCHAR(100) CHARSET latin1 begin 
 	declare idF int;
     declare fecha date;
     declare msn varchar(50);
-	set idF=(Select a.id from TBL_ASIGNAR_CANCION a order by a.id desc limit 1);
-    set fecha =(select a.fecha from TBL_ASIGNAR_CANCION a where a.id=idF);
+	set idF=(Select a.id_img from TBL_ASIGNAR_CANCION a order by a.id desc limit 1);
+    set fecha =(select a.fecha from TBL_ASIGNAR_CANCION a where a.id_img=idF);
 if idF >0 then
     insert into TBL_HISTORIAL_CANCION values(null,fecha,idF);
     set msn='datos ingresados';
-	ELSE	
-    set msn="null";
     end if;
     return msn;
 end$$
@@ -58,57 +56,46 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TBL_ASIGNAR_CANCION`
+-- Estructura de tabla para la tabla `tbl_asignar_cancion`
 --
 
-CREATE TABLE `TBL_ASIGNAR_CANCION` (
+CREATE TABLE `tbl_asignar_cancion` (
   `id` int(11) NOT NULL,
   `id_img` int(11) NOT NULL,
   `fecha` date DEFAULT NULL,
   `num_orden` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TBL_HISTORIAL_CANCION`
+-- Estructura de tabla para la tabla `tbl_historial_cancion`
 --
 
-CREATE TABLE `TBL_HISTORIAL_CANCION` (
+CREATE TABLE `tbl_historial_cancion` (
   `id_historial` int(11) NOT NULL,
   `fecha` date DEFAULT NULL,
   `id_img` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `TBL_HISTORIAL_CANCION`
---
-
-INSERT INTO `TBL_HISTORIAL_CANCION` (`id_historial`, `fecha`, `id_img`) VALUES
-(1, '2017-01-09', 1),
-(2, '2017-01-09', 2),
-(3, '2017-01-09', 3),
-(4, '2017-01-09', 4),
-(5, '2017-01-09', 5);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TBL_IMG`
+-- Estructura de tabla para la tabla `tbl_img`
 --
 
-CREATE TABLE `TBL_IMG` (
+CREATE TABLE `tbl_img` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `descripcion` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `direccion` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  `direccion` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `TBL_IMG`
+-- Volcado de datos para la tabla `tbl_img`
 --
 
-INSERT INTO `TBL_IMG` (`id`, `nombre`, `descripcion`, `direccion`) VALUES
+INSERT INTO `tbl_img` (`id`, `nombre`, `descripcion`, `direccion`) VALUES
 (1, 'Aclamad a Dios', 'Aclamad a Dios', 'images/thumbs/1 Aclamad a Dios.png'),
 (2, 'Alabad a jehova', 'Alabad a jehova', 'images/thumbs/2 Alabad a Jehova.png'),
 (3, 'Alabad a jehova', 'Alabad a jehova', 'images/thumbs/3 Alabad a Jehova.png'),
@@ -184,30 +171,104 @@ INSERT INTO `TBL_IMG` (`id`, `nombre`, `descripcion`, `direccion`) VALUES
 (73, 'Yo Celebrare, Cantare al Senor', 'Yo Celebrare, Cantare al Senor', 'images/thumbs/73 Yo Celebrare, Cantare al Senor.png'),
 (74, 'To se que estas aqui mi Senor', 'To se que estas aqui mi Senor', 'images/thumbs/74 To se que estas aqui mi Senor.png'),
 (75, 'Yo te adoro Senor', 'Yo te adoro Senor', 'images/thumbs/75 Yo te adoro Senor.png'),
-(76, 'Yo vine alabar a Dios', 'Yo vine alabar a Dios', 'images/thumbs/76 Yo vine alabar a Dios.png');
+(76, 'Yo vine alabar a Dios', 'Yo vine alabar a Dios', 'images/thumbs/76 Yo vine alabar a Dios.png'),
+(77, 'El gozo que siento yo', 'El gozo que siento yo', 'images/thumbs/77 El gozo que siento yo.png'),
+(78, 'El senor me lleno de gozo', 'El senor me lleno de gozo', 'images/thumbs/78 El senor me lleno de gozo.png'),
+(79, 'Estamos de fiesta con Jesus', 'Estamos de fiesta con Jesus', 'images/thumbs/79 Estamos de fiesta con Jesus.png'),
+(80, 'Estamos hoy de fiesta', 'Estamos hoy de fiesta', 'images/thumbs/80 Estamos hoy de fiesta.png'),
+(81, 'Este gozo que siento yo', 'Este gozo que siento yo', 'images/thumbs/81 Este gozo que siento yo.png'),
+(82, 'Gozo yo queria', 'Gozo yo queria', 'images/thumbs/82 Gozo yo queria.png'),
+(83, 'Hay una fiesta', 'Hay una fiesta', 'images/thumbs/83 Hay una fiesta.png'),
+(84, 'Hay un motivo', 'Hay un motivo', 'images/thumbs/84 Hay un motivo.png'),
+(85, 'Hay un pueblo', 'Hay un pueblo', 'images/thumbs/85 Hay un pueblo.png'),
+(86, 'Mas los Justos', 'Mas los Justos', 'images/thumbs/86 Mas los Justos.png'),
+(87, 'No puede estar triste', 'No puede estar triste', 'images/thumbs/87 No puede estar triste.png'),
+(88, 'Solo Dios hace al hombre feliz', 'Solo Dios hace al hombre feliz', 'images/thumbs/88 Solo Dios hace al hombre feliz.png'),
+(89, 'Yo me gozo', 'Yo me gozo', 'images/thumbs/89 Yo me gozo.png'),
+(90, 'Yo siento gozo', 'Yo siento gozo', 'images/thumbs/90 Yo siento gozo.png'),
+(91, 'Alabad a Dios', 'Alabad a Dios', 'images/thumbs/91 Alabad a Dios.png'),
+(92, 'Aunque gigante se encuentre alla', 'Aunque gigante se encuentre alla', 'images/thumbs/92 Aunque gigante se encuentre alla.png'),
+(93, 'Cada dia me siento mas alegre', 'Cada dia me siento mas alegre', 'images/thumbs/93 Cada dia me siento mas alegre.png'),
+(94, 'Clamando estoy', 'Clamando estoy', 'images/thumbs/94 Clamando estoy.png'),
+(95, 'Con mi Dios', 'Con mi Dios', 'images/thumbs/95 Con mi Dios.png'),
+(96, 'Digno Eres tu Jehova', 'Digno Eres tu Jehova', 'images/thumbs/96 Digno Eres tu Jehova.png'),
+(97, 'Dios es nuestro amparo', 'Dios es nuestro amparo', 'images/thumbs/97 Dios es nuestro amparo.png'),
+(98, 'El senor es mi pastor', 'El senor es mi pastor', 'images/thumbs/98 El senor es mi pastor.png'),
+(99, 'Escogido fui de Dios', 'Escogido fui de Dios', 'images/thumbs/99 Escogido fui de Dios.png'),
+(100, 'Es Cristo la Roca', 'Es Cristo la Roca', 'images/thumbs/100 Es Cristo la Roca.png'),
+(101, 'Jesus es mi pastor', 'Jesus es mi pastor', 'images/thumbs/101 Jesus es mi pastor.png'),
+(102, 'La Madrugada', 'La Madrugada', 'images/thumbs/102 La Madrugada.png'),
+(103, 'Los que Esperan', 'Los que Esperan', 'images/thumbs/103 Los que Esperan.png'),
+(104, 'Me alegrare', 'Me alegrare', 'images/thumbs/104 Me alegrare.png'),
+(105, 'No retrocedere', 'No retrocedere', 'images/thumbs/105 No retrocedere.png'),
+(106, 'Poderoso Gigante', 'Poderoso Gigante', 'images/thumbs/106 Poderoso Gigante.png'),
+(107, 'Quien nos separara', 'Quien nos separara', 'images/thumbs/107 Quien nos separara.png'),
+(108, 'Si tuvieres fe', 'Si tuvieres fe', 'images/thumbs/108 Si tuvieres fe.png'),
+(109, 'Solo No Estoy', 'Solo No Estoy', 'images/thumbs/109 Solo No Estoy.png'),
+(110, 'Te espero', 'Te espero', 'images/thumbs/110 Te espero.png'),
+(111, 'Tu vas delante Senor', 'Tu vas delante Senor', 'images/thumbs/111 Tu vas delante Senor.png'),
+(112, 'Tu vienes contra mi', 'Tu vienes contra mi', 'images/thumbs/112 Tu vienes contra mi.png'),
+(113, 'Vamos escalando perdanos', 'Vamos escalando perdanos', 'images/thumbs/113 Vamos escalando perdanos.png'),
+(114, 'Ya que has puesto tu mano', 'Ya que has puesto tu mano', 'images/thumbs/114 Ya que has puesto tu mano.png'),
+(115, 'Yo solo espero a Jesus', 'Yo solo espero a Jesus', 'images/thumbs/115 Yo solo espero a Jesus.png'),
+(116, 'Yo soy testigo', 'Yo soy testigo', 'images/thumbs/116 Yo soy testigo.png'),
+(117, 'En victoria estoy', 'En victoria estoy', 'images/thumbs/117 En victoria estoy.png'),
+(118, 'Hay victoria', 'Hay victoria', 'images/thumbs/118 Hay victoria.png'),
+(119, 'Hay victoria en mi Jesus', '119 Hay victoria en mi Jesus', 'images/thumbs/119 Hay victoria en mi Jesus.png'),
+(120, 'Quien dijo que no', 'Quien dijo que no', 'images/thumbs/120 Quien dijo que no.png'),
+(121, 'Cristo rompe las cademas', 'Cristo rompe las cademas', 'images/thumbs/121 Cristo rompe las cademas.png'),
+(122, 'Libre', 'Libre', 'images/thumbs/122 Libre.png'),
+(123, 'Los Muros caen', 'Los Muros caen', 'images/thumbs/123 Los Muros caen.png'),
+(124, 'Yo siento paz y gozo', 'Yo siento paz y gozo', 'images/thumbs/124 Yo siento paz y gozo.png'),
+(125, 'Alla en el cielo', 'Alla en el cielo', 'images/thumbs/125  Alla en el cielo.png'),
+(126, 'Alla en el cielo no habra mas llanto', 'Alla en el cielo no habra mas llanto', 'images/thumbs/126 Alla en el cielo no habra mas llanto.png'),
+(127, 'Bellas mansiones', 'Bellas mansiones', 'images/thumbs/127 Bellas mansiones.png'),
+(128, 'Cuando alla se pase lista', 'Cuando alla se pase lista', 'images/thumbs/128 Cuando alla se pase lista.png'),
+(129, 'Hay una patria', 'Hay una patria', 'images/thumbs/129 Hay una patria.png'),
+(130, 'Mas alla del sol', 'Mas alla del sol', 'images/thumbs/130 Mas alla del sol.png'),
+(131, 'Oh Jerusalen', 'Oh Jerusalen', 'images/thumbs/131 Oh Jerusalen.png'),
+(132, 'Se fial hasta la merte', 'Se fial hasta la merte', 'images/thumbs/132 Se fial hasta la merte.png'),
+(133, 'Yo tengo un hogar', 'Yo tengo un hogar', 'images/thumbs/133 Yo tengo un hogar.png'),
+(134, 'Como ladron en la noche', 'Como ladron en la noche', 'images/thumbs/134 Como ladron en la noche.png'),
+(135, 'Estaras tu velando', 'Estaras tu velando', 'images/thumbs/135 Estaras tu velando.png'),
+(136, 'La manana gloriosa', 'La manana gloriosa', 'images/thumbs/136 La manana gloriosa.png'),
+(137, '137 La venida de cristo', '137 La venida de cristo', 'images/thumbs/137 La venida de cristo.png'),
+(138, '138 Suena las trompetas', '138 Suena las trompetas', 'images/thumbs/138 Suena las trompetas.png'),
+(139, '139 Vestido de ternura', '139 Vestido de ternura', 'images/thumbs/139 Vestido de ternura.png'),
+(140, '140 Ahora mismo', '140 Ahora mismo', 'images/thumbs/140 Ahora mismo.png'),
+(141, '141 Algo esta descendiendo', '141 Algo esta descendiendo', 'images/thumbs/141 Algo esta descendiendo.png'),
+(142, '142 Alguien esta aqui', '142 Alguien esta aqui', 'images/thumbs/142 Alguien esta aqui.png'),
+(143, '143 Aquel fuego', '143 Aquel fuego', 'images/thumbs/143 Aquel fuego.png'),
+(144, '144 Aquel que camino', '144 Aquel que camino', 'images/thumbs/144 Aquel que camino.png'),
+(145, '145 Aqui se siente', '145 Aqui se siente', 'images/thumbs/145 Aqui se siente.png'),
+(146, '146 Ardiendo en fuego', '146 Ardiendo en fuego', 'images/thumbs/146 Ardiendo en fuego.png'),
+(147, '147 Como el ciervo brama', '147 Como el ciervo brama', 'images/thumbs/147 Como el ciervo brama.png'),
+(148, '148 Como la arena del mar', '148 Como la arena del mar', 'images/thumbs/148 Como la arena del mar.png'),
+(149, '149 Cuando el pueblo', '149 Cuando el pueblo', 'images/thumbs/149 Cuando el pueblo.png'),
+(150, '150 Cuando Faraon', '150 Cuando Faraon', 'images/thumbs/150 Cuando Faraon.png'),
+(151, '151 Desciende aqui', '151 Desciende aqui', 'images/thumbs/151 Desciende aqui.png');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `TBL_ASIGNAR_CANCION`
+-- Indices de la tabla `tbl_asignar_cancion`
 --
-ALTER TABLE `TBL_ASIGNAR_CANCION`
+ALTER TABLE `tbl_asignar_cancion`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_img` (`id_img`);
 
 --
--- Indices de la tabla `TBL_HISTORIAL_CANCION`
+-- Indices de la tabla `tbl_historial_cancion`
 --
-ALTER TABLE `TBL_HISTORIAL_CANCION`
-  ADD PRIMARY KEY (`id_historial`),
-  ADD KEY `id_img` (`id_img`);
+ALTER TABLE `tbl_historial_cancion`
+  ADD PRIMARY KEY (`id_historial`);
 
 --
--- Indices de la tabla `TBL_IMG`
+-- Indices de la tabla `tbl_img`
 --
-ALTER TABLE `TBL_IMG`
+ALTER TABLE `tbl_img`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -215,20 +276,20 @@ ALTER TABLE `TBL_IMG`
 --
 
 --
--- AUTO_INCREMENT de la tabla `TBL_ASIGNAR_CANCION`
+-- AUTO_INCREMENT de la tabla `tbl_asignar_cancion`
 --
-ALTER TABLE `TBL_ASIGNAR_CANCION`
+ALTER TABLE `tbl_asignar_cancion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `TBL_HISTORIAL_CANCION`
+-- AUTO_INCREMENT de la tabla `tbl_historial_cancion`
 --
-ALTER TABLE `TBL_HISTORIAL_CANCION`
-  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `tbl_historial_cancion`
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `TBL_IMG`
+-- AUTO_INCREMENT de la tabla `tbl_img`
 --
-ALTER TABLE `TBL_IMG`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+ALTER TABLE `tbl_img`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
