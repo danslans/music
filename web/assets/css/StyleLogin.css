@@ -1,7 +1,12 @@
 body{
-    margin: 0;
-    padding: 0;
+  margin: 0 auto;
+  padding: 100px;
 }
+
 .ulFormLogin{
-    
+    width: 400px;
+}
+.ulFormLogin>ul,li{
+    padding: 10px;
+    list-style: none;
 }

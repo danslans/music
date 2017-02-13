@@ -41,7 +41,7 @@ public class ImagenCad {
         }
     }
 
-    public void guardarAsignar(String json, String fecha) {
+    public void guardarAsignar(String json, String fecha,String idUser) {
         String exceculteProcedure = "{call insertar(";
         try {
             JSONArray array = new JSONArray(json);
@@ -51,7 +51,8 @@ public class ImagenCad {
                 int orden = object.getInt("orden");
                 if(buscarIdAsignar(id)){
                 try {
-                    String sent = exceculteProcedure + "'" + id + "'," + "'" + fecha + "'," + "'" + orden + "')}";
+                    String sent = exceculteProcedure + "'" + id + "'," + "'" + fecha + "'," + "'" + orden + "',"+"'"+idUser+"'"+")}";
+                    System.out.println(sent);
                     int resut = c.prepareCall(sent).executeUpdate();
                     if (resut > 0) {
                         c.prepareStatement("select insertHistoria()").execute();

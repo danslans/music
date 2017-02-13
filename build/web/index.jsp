@@ -8,6 +8,13 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="cad.ImagenCad"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession hs = request.getSession();
+    if (hs.getAttribute("user") != null) {
+        String nombreUser = hs.getAttribute("user").toString();
+        int rolUser = Integer.parseInt(hs.getAttribute("rol").toString());
+        int idUser= Integer.parseInt(hs.getAttribute("idUser").toString());
+%>
 <%!
     ImagenCad imagenCad = new ImagenCad();
 
@@ -32,9 +39,21 @@
             <h1 class="h1"><a class="a" href="index.jsp"><strong>MMM -</strong>Music</a></h1>
             <nav>
                 <ul id="ul">
+                     <% switch (rolUser) {
+                            case 1:
+                    %>
                     <li><a href="Insert.jsp" >Insertar</a></li>
                     <li><a href="Buscar.jsp" >Buscar</a></li>
-
+                    <li><a id="logoutAdmin" >Salir</a></li>    
+                        <%
+                                break;
+                            case 2:
+                        %>
+                    <li><a href="Buscar.jsp" >Buscar</a></li>
+                    <li><a id="logoutUser" >Salir</a></li>    
+                        <%
+                                    break;
+                            } %>
                 </ul>
             </nav>
         </header>
@@ -76,6 +95,7 @@
         <script src="assets/js/jquery.poptrox.min.js"></script>
         <script src="assets/js/skel.min.js"></script>
         <script type="text/javascript" src="assets/js/IndexController.js"></script>
+        <script type="text/javascript" src="assets/js/LogoutController.js"></script>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
@@ -86,3 +106,8 @@
 
     </body>
 </html>
+<%
+    }else{
+    response.sendRedirect("login.jsp");
+}
+%>

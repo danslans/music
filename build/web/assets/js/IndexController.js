@@ -34,6 +34,7 @@ $(document).ready(function () {
             location.reload();
         },100);
     });
+    logoutSession();
 });
 function siguiente() {
     var hrefimg = srcImg;

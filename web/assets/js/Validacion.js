@@ -23,6 +23,7 @@ $(document).ready(function () {
     $().submit(function () {
     });
     salirImg();
+    logoutSession();
 });
 function salirImg(){
     $("#bsDialog").fadeOut();
@@ -51,7 +52,6 @@ function validarIdArray(arrayId, val) {
 }
 //crea una array con los ids ya seleccionados
 function creacionArrayId(json) {
-    var newJson = "";
     var cantComa = 0;
     var c = 0;
     var arrayIds = new Array();
