@@ -1,0 +1,252 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22-feb-2017, 20:01:23
+    Author     : danslans
+*/
+/*celular*/
+@media not screen and (min-width:200px ) {
+   .ulFormLogin>ul,li{
+        position: relative;
+        padding: 10px;
+        list-style: none;
+        right: 4%;
+    }
+    h3{
+        position: relative;      
+        top: -21px;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        opacity: 0.9;
+        border-radius: 20px 20px 0px 0px;
+        background: rgba(226,226,226,1); 
+        box-shadow: 1px 2px 5px #888888;
+    }
+    .panelLogin{
+        margin-top: 10px;
+        display: inline-block;
+        position: relative;
+        background: white;
+        height: 250px;
+        width: 500px;
+        border: 0px solid grey;
+        border-radius: 20px;
+        box-shadow: 10px 10px 45px #888888;
+    }
+}
+@media not screen and (max-width:201px ) {
+    .ulFormLogin>ul,li{
+        position: relative;
+        padding: 10px;
+        list-style: none;
+        right: 4%;
+    }
+    h3{
+        position: relative;      
+        top: -21px;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        opacity: 0.9;
+        border-radius: 20px 20px 0px 0px;
+        background: rgba(226,226,226,1); 
+        box-shadow: 1px 2px 5px #888888;
+    }
+    .panelLogin{
+        margin-top: 10px;
+        display: inline-block;
+        position: relative;
+        background: white;
+        height: 250px;
+        width: 500px;
+        border: 0px solid grey;
+        border-radius: 20px;
+        box-shadow: 10px 10px 45px #888888;
+    }
+}
+@media not screen and (max-width:220px ) {
+    .ulFormLogin>ul,li{
+        position: relative;
+        padding: 10px;
+        list-style: none;
+        right: 4%;
+    }
+    h3{
+        position: relative;      
+        top: -21px;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        opacity: 0.9;
+        border-radius: 20px 20px 0px 0px;
+        background: rgba(226,226,226,1); 
+        box-shadow: 1px 2px 5px #888888;
+    }
+    .panelLogin{
+        margin-top: 10px;
+        display: inline-block;
+        position: relative;
+        background: white;
+        height: 250px;
+        width: 500px;
+        border: 0px solid grey;
+        border-radius: 20px;
+        box-shadow: 10px 10px 45px #888888;
+    }
+}
+/*celular importante */
+@media not screen and (max-width:300px ) {
+    .ulFormLogin>ul,li{
+        position: relative;
+        padding: 10px;
+        list-style: none;
+        right: 4%;
+    }
+    h3{
+        position: relative;      
+        top: -21px;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        opacity: 0.9;
+        border-radius: 20px 20px 0px 0px;
+        background: rgba(226,226,226,1); 
+        box-shadow: 1px 2px 5px #888888;
+    }
+    .panelLogin{
+        margin-top: 10px;
+        display: inline-block;
+        position: relative;
+        background: white;
+        height: 250px;
+        width: 500px;
+        border: 0px solid grey;
+        border-radius: 20px;
+        box-shadow: 10px 10px 45px #888888;
+    }
+}
+@media not screen and (max-width:366px ) {
+    .ulFormLogin>ul,li{
+        position: relative;
+        padding: 10px;
+        list-style: none;
+        right: 4%;
+    }
+    h3{
+        position: relative;      
+        top: -21px;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        opacity: 0.9;
+        border-radius: 20px 20px 0px 0px;
+        background: rgba(226,226,226,1); 
+        box-shadow: 1px 2px 5px #888888;
+    }
+    .panelLogin{
+        margin-top: 10px;
+        display: inline-block;
+        position: relative;
+        background: white;
+        height: 250px;
+        width: 500px;
+        border: 0px solid grey;
+        border-radius: 20px;
+        box-shadow: 10px 10px 45px #888888;
+    }
+}
+@media not screen and (max-width:400px ) {
+    .ulFormLogin>ul,li{
+        position: relative;
+        padding: 10px;
+        list-style: none;
+        right: 4%;
+    }
+    h3{
+        position: relative;      
+        top: -21px;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        opacity: 0.9;
+        border-radius: 20px 20px 0px 0px;
+        background: rgba(226,226,226,1); 
+        box-shadow: 1px 2px 5px #888888;
+    }
+    .panelLogin{
+        margin-top: 10px;
+        display: inline-block;
+        position: relative;
+        background: white;
+        height: 250px;
+        width: 500px;
+        border: 0px solid grey;
+        border-radius: 20px;
+        box-shadow: 10px 10px 45px #888888;
+    }
+}
+@media not screen and (max-width:450px ) {
+    .ulFormLogin>ul,li{
+        position: relative;
+        padding: 10px;
+        list-style: none;
+        right: 4%;
+    }
+    h3{
+        position: relative;      
+        top: -21px;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        opacity: 0.9;
+        border-radius: 20px 20px 0px 0px;
+        background: rgba(226,226,226,1); 
+        box-shadow: 1px 2px 5px #888888;
+    }
+    .panelLogin{
+        margin-top: 10px;
+        display: inline-block;
+        position: relative;
+        background: white;
+        height: 250px;
+        width: 500px;
+        border: 0px solid grey;
+        border-radius: 20px;
+        box-shadow: 10px 10px 45px #888888;
+    }
+}
+@media not screen and (max-width:500px ) {
+    .ulFormLogin>ul,li{
+        position: relative;
+        padding: 10px;
+        list-style: none;
+        right: 4%;
+    }
+    h3{
+        position: relative;      
+        top: -21px;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        opacity: 0.9;
+        border-radius: 20px 20px 0px 0px;
+        background: rgba(226,226,226,1); 
+        box-shadow: 1px 2px 5px #888888;
+    }
+    .panelLogin{
+        margin-top: 10px;
+        display: inline-block;
+        position: relative;
+        background: white;
+        height: 250px;
+        width: 500px;
+        border: 0px solid grey;
+        border-radius: 20px;
+        box-shadow: 10px 10px 45px #888888;
+    }
+}
+

@@ -1,0 +1,236 @@
+body{
+    margin: auto;  
+}
+/*web*/
+@media not screen and (max-width: 1000px) {
+    .content{
+        display: flex;
+    }
+    #header{
+        display: flex;
+        background: #512DA8;
+        justify-content: space-between;
+    }
+    #ul{
+        display: flex;
+        list-style: none;   
+        height: 30px;
+        width: 800px;        
+        margin-top: 20px;
+        justify-content: flex-start;
+    }
+    .itemsMenu{
+       display: flex;
+       height: 100%;
+       width: 200px;
+       text-align: center;
+    }
+    .itemsMenu>.icons{
+        padding: 10px 20px 10px 20px;        
+    }
+    .urlTextNav{
+        font-family: serif;
+        font-size: x-large;
+        color: white;
+        text-decoration: none;
+        padding: 0px 15px 0px 15px ;
+    }
+    .urlTextNav:hover{
+        color: #D1C4E9;
+        text-decoration: none;
+    }
+    .a{
+        color: white;
+        text-decoration: none;
+    }
+    .a:hover{
+        color: #D1C4E9;
+        text-decoration: none;
+    }
+    
+/*
+    #imgBuscar>li{
+        display: inline-block;
+        list-style: none;
+    }
+    #imgBuscar>li>.imgSong{
+        height: 200px;
+        width: 300px;
+        padding-bottom: 20px;
+    }
+    #check{
+        height: 300px;
+        width: 500px;
+        position: absolute;
+    }
+    /*contenedor div de lista de las caciones seleccionadas
+    #recibir{
+        padding: 30px;
+        height: 100px;
+        width: 75%;
+        position: absolute;
+        left: 22%;
+        top: 102px;
+    }
+    #recibir>form>li{
+        position: relative;
+        display: inline-block;
+        bottom: 2px;
+        right: 0px;
+    }
+    section{
+        margin-top: 80px;
+    }
+    .listaSelect{
+        padding: 10px 10px;
+        background: #efebfa;
+    }
+    #Agregar{
+        position: absolute;
+        left: 90%;
+        top:29px;
+    }
+    .input{
+        position: relative;
+        padding: 13px;
+        left: 10px;
+        top: 29px;
+    }
+    #buscar{
+        position: relative;
+        left: 20px;
+        top: 29px;
+    }
+    .boton{
+        border: none;
+        background: #673AB7;
+        padding:15px;
+        padding-bottom: 13px;
+        color: #FFFFFF;
+    }
+    .boton:hover{
+        background: #D1C4E9;
+    }
+    #number{
+        position: relative;
+        left: 20px;
+        top: 29px; 
+    }
+    /*dialogo img
+    #dialogo{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        top: 0;
+        border: none;
+    }
+    .selectImg{
+        background-color: #673AB7;
+    }
+
+
+    /*section del index
+    #section{
+        margin: 0;
+        position: absolute;
+        width: 81%;
+    }
+    #aside{
+        position: absolute;
+        width: 19%;
+        height: 100%;
+        margin-left: 81%;
+    }
+    /*section de la pantalla buscas
+    #section1{
+        margin: 0;
+        position: absolute;
+        width: 75%;
+        margin-top: 80px;
+    }
+    #aside1{
+        position: absolute;
+        width: 25%;
+        height: 100%;
+        margin-left: 75%;
+        margin-top: 80px;
+        display: inline;
+    }
+    /*quitar los puntos del li que estan en el aside 1
+    #aside1>nav>li{
+        list-style: none;
+    }
+    /*boton borrar
+    .b1{
+        
+    }
+
+
+    /*presentacion de imagenes en el index
+    #section>ul>li{
+        display: inline-block;
+    }
+    #section>ul>li>img{
+        height: 200px;
+        width: 200px;
+    }
+
+    /*imagen del dialogo
+    #imgDialog{
+        width: 100%;
+        height: 650px;
+    }
+    #x{
+        color: #512DA8;
+        font-size: 40px;
+        position: absolute;
+        top: 0px;
+    }
+    /*atras y siguiente
+    #atras{
+        position: absolute;
+        padding: 20px;
+        height: 100%;
+        width: 45%;
+        left: 4%;
+        top: 0;
+    }
+    #siguiente{
+        position: absolute;
+        padding: 20px;
+        height: 100%;
+        width: 45%;
+        left: 50%;
+        top: 0; 
+    }
+    /*icono para ver (impletentar en otras pantallas)*/
+    /*
+    #icon{
+        position: absolute;
+        height: 30px;
+        margin-left: 240px;
+    }
+    #icon:hover{
+        background-color: #f2f2f2;
+        opacity: 0.8;
+    }
+
+    #bsDialog{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        top: 0;
+        border: none;
+        background:#ffffff;
+        display: none;
+    }
+    .liNombreImg{
+        margin-right: 0px;
+    }
+    .txtNombre:hover{
+        background: #efebfa;
+    }
+    */
+}

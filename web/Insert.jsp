@@ -22,19 +22,19 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>TheMusicSheet</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/StyleAppWeb.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
     <body> 
         <!-- Header -->
         <header id="header">
-            <h1><a href="index.jsp"><strong>MMM -</strong>Music</a></h1>
+            <h1><a href="index.jsp"><strong>TheMusicSheet</strong></a></h1>
             <nav>
                 <ul id="ul">
                     <% switch (rolUser) {

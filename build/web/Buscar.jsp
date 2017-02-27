@@ -29,9 +29,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <title>MM-Music</title>
+        <title>TheMusicSheet</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/StyleAppWeb.css">
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
@@ -45,7 +45,7 @@
 
         <!-- Header -->
         <header id="header">
-            <h1><a href="index.jsp"><strong>MMM -</strong>Music</a></h1>
+            <h1><a href="index.jsp"><strong>TheMusicSheet</strong></a></h1>
             <nav>
                 <ul id="ul">
                     <% switch (rolUser) {

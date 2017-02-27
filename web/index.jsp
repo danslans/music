@@ -13,7 +13,7 @@
     if (hs.getAttribute("user") != null) {
         String nombreUser = hs.getAttribute("user").toString();
         int rolUser = Integer.parseInt(hs.getAttribute("rol").toString());
-        int idUser= Integer.parseInt(hs.getAttribute("idUser").toString());
+        int idUser = Integer.parseInt(hs.getAttribute("idUser").toString());
 %>
 <%!
     ImagenCad imagenCad = new ImagenCad();
@@ -22,40 +22,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>MM-Music</title>
+        <title>TheMusicSheet</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/StyleAppWeb.css">
+        <link rel="stylesheet" href="assets/css/StyleIcons.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     </head>
-    <body >
+    <body id="index">
         <!-- Header -->
         <header id="header">
-            <h1 class="h1"><a class="a" href="index.jsp"><strong>MMM -</strong>Music</a></h1>
-            <nav>
-                <ul id="ul">
-                     <% switch (rolUser) {
-                            case 1:
-                    %>
-                    <li><a href="Insert.jsp" >Insertar</a></li>
-                    <li><a href="Buscar.jsp" >Buscar</a></li>
-                    <li><a id="logoutAdmin" >Salir</a></li>    
-                        <%
-                                break;
-                            case 2:
+            <div class="content">
+                <div id="title">
+                    <h1 class="h1"><a class="a" href="index.jsp">TheMusicSheet</a></h1>
+                </div>
+                <nav>
+                    <ul id="ul">
+                        <% switch (rolUser) {
+                                case 1:
                         %>
-                    <li><a href="Buscar.jsp" >Buscar</a></li>
-                    <li><a id="logoutUser" >Salir</a></li>    
-                        <%
-                                    break;
-                            } %>
-                </ul>
-            </nav>
+                        <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcPlus"></span><a href="Insert.jsp" class="urlTextNav" >Insertar</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutAdmin" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
+                                <%
+                                        break;
+                                    case 2:
+                                %>
+                        <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutUser" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
+                                <%
+                                            break;
+                                    } %>
+                    </ul>
+                </nav>
+            </div>
         </header>
         <!-- Main -->
         <div id="contenedor">
@@ -94,6 +100,7 @@
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.poptrox.min.js"></script>
         <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/ie/JS_Ic_Point.js"></script>
         <script type="text/javascript" src="assets/js/IndexController.js"></script>
         <script type="text/javascript" src="assets/js/LogoutController.js"></script>
         <!-- jQuery library -->
@@ -107,7 +114,7 @@
     </body>
 </html>
 <%
-    }else{
-    response.sendRedirect("login.jsp");
-}
+    } else {
+        response.sendRedirect("login.jsp");
+    }
 %>
