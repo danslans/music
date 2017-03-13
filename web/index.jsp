@@ -29,8 +29,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/StyleAppWeb.css">
         <link rel="stylesheet" href="assets/css/StyleIcons.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="assets/css/StyleInputs.css">
+        <link rel="stylesheet" href="assets/css/StyleAppTablet.css">
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     </head>
@@ -49,11 +49,19 @@
                         <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcPlus"></span><a href="Insert.jsp" class="urlTextNav" >Insertar</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
-                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutAdmin" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
-                                <%
-                                        break;
-                                    case 2:
-                                %>
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutAdmin" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcMore" id="more">
+                                <div id="subMenu" class="subMenu">
+                                    <ul id="ulSub">
+                                        <li class="iconsSub"><input type="button" id="borrar" value="Borrar"  class="IcBtnList botonEmpty" /></li> 
+                                    </ul>
+                                </div>
+                            </span></li>
+                            <%
+                                    break;
+                                case 2:
+                            %>
+                        <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutUser" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
                                 <%
@@ -66,14 +74,14 @@
         <!-- Main -->
         <div id="contenedor">
             <section id="section">	
-                <ul>
+                <ul id="ulAllImages">
                     <%
                         ResultSet resultSet = imagenCad.buscar();
                         while (resultSet.next()) {
 
                     %>
-                    <li><img src='<%= resultSet.getString("direccion")%>' id="<%= resultSet.getString("id_img")%>" title="<%= resultSet.getString("nombre")%>" onclick="dialogo(this, '<%= resultSet.getString("direccion")%>')" alt="" height="300px" width="500px" />
-                        <h3><%= resultSet.getString("nombre")%></h3>
+                    <li class="itemsAllImagen"><img src='<%= resultSet.getString("direccion")%>' class="imgAllItem" id="<%= resultSet.getString("id_img")%>" title="<%= resultSet.getString("nombre")%>" onclick="dialogo(this, '<%= resultSet.getString("direccion")%>')" alt=""/>
+                        <p><%= resultSet.getString("nombre")%></p>
                         <input type="hidden" name="img" value="<%= resultSet.getString("direccion")%>"/>
                     </li>
                     <%
@@ -81,36 +89,31 @@
                     %>
                 </ul>
             </section>
-            <aside id="aside">
-                <nav>
-                    <input type="button" id="borrar" value="Borrar"  class="boton b1" />
-                </nav>
-            </aside>
         </div>
-        <dialog  id="dialogo">
-            <span id="x" onclick="salir()">x</span>
+                
+        <div  id="dialogo">
+            <span id="x" class="IcCerrar" onclick="salir()"></span>
             <center>
-                <div id="atras" onclick="atras()"></div>
+                <div id="atras" class="IcBack" onclick="atras()"></div>
                 <img id="imgDialog"  src=""  />
-                <div id="siguiente" onclick="siguiente()"></div>
+                <div id="siguiente" class="IcNext" onclick="siguiente()"></div>
             </center>
-        </dialog>
-
-        <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.poptrox.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
-        <script src="assets/js/ie/JS_Ic_Point.js"></script>
+        </div>
+        <!-- My Library -->
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.poptrox.min.js"></script>
+        <script type="text/javascript" src="assets/js/skel.min.js"></script>
+        <script type="text/javascript" src="assets/js/ie/JS_Ic_Point.js"></script>
+        <script type="text/javascript" src="assets/js/MoreController.js"></script>
         <script type="text/javascript" src="assets/js/IndexController.js"></script>
         <script type="text/javascript" src="assets/js/LogoutController.js"></script>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-
-
     </body>
 </html>
 <%

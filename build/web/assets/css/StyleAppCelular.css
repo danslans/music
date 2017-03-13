@@ -80,14 +80,14 @@ and open the template in the editor.
     
 }
 /*clase general para los botones*/
-.boton{
+.botonEmpty{
     border: none;
     background: #673AB7;
     padding:10px;
     padding-bottom: 13px;
     color: #FFFFFF;
 }
-.boton:hover{
+.botonEmpty:hover{
     background: #D1C4E9;
 }
 /*boton que envia la cantidad de insercion*/

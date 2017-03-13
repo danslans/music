@@ -33,3 +33,42 @@ and open the template in the editor.
     background-repeat: no-repeat;
     display: none;
 }
+.IcMore{
+    background-image: url(../..//images/icons/mas.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+}
+.IcBtnList{
+    background-image: url(../..//images/icons/delete.png);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 10px center; 
+    color: #673AB7;
+}
+.IcCerrar{
+    background-image: url(../..//images/icons/cancel.png);
+    background-size: 60px;
+    background-repeat: no-repeat;
+}
+.IcBack{
+    background-image: url(../..//images/icons/back.png);
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    cursor: pointer;
+    opacity: 0.2;
+}
+.IcBack:active{
+    opacity: 0.5;
+}
+.IcNext{
+    background-image: url(../..//images/icons/next.png);
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    cursor: pointer;
+    opacity: 0.2;
+}
+.IcNext:active{
+    opacity: 0.5;
+}

@@ -32,39 +32,45 @@
         <title>TheMusicSheet</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/StyleAppWeb.css">
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <!-- Latest compiled JavaScript -->
-        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script type="text/javascript" src="assets/js/Validacion.js"></script>
-        <script type="text/javascript" src="assets/js/LogoutController.js"></script>
+        <link rel="stylesheet" href="assets/css/StyleIcons.css">
+        <link rel="stylesheet" href="assets/css/StyleInputs.css">
     </head>
     <body>
-
         <!-- Header -->
         <header id="header">
-            <h1><a href="index.jsp"><strong>TheMusicSheet</strong></a></h1>
-            <nav>
-                <ul id="ul">
-                    <% switch (rolUser) {
-                            case 1:
-                    %>
-                    <li><a href="Insert.jsp" >Insertar</a></li>
-                    <li><a href="Buscar.jsp" >Buscar</a></li>
-                    <li><a id="logoutAdmin" >Salir</a></li>    
-                        <%
-                                break;
-                            case 2:
+            <div class="content">
+                <div id="title">
+                    <h1 class="h1"><a class="a" href="index.jsp">TheMusicSheet</a></h1>
+                </div>
+                <nav>
+                    <ul id="ul">
+                        <% switch (rolUser) {
+                                case 1:
                         %>
-                    <li><a href="Buscar.jsp" >Buscar</a></li>
-                    <li><a id="logoutUser" >Salir</a></li>    
-                        <%
+                        <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcPlus"></span><a href="Insert.jsp" class="urlTextNav" >Insertar</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutAdmin" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcMore" id="more">
+                                <div id="subMenu" class="subMenu">
+                                    <ul id="ulSub">
+
+                                    </ul>
+                                </div>
+                            </span></li>
+                            <%
                                     break;
-                            } %>
-                </ul>
-            </nav>
+                                case 2:
+                            %>
+                        <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutUser" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
+                                <%
+                                            break;
+                                    } %>
+                    </ul>
+                </nav>
+            </div>
         </header>
         <%
             String nombre = "";
@@ -80,99 +86,115 @@
             }
 
         %>
-        <input type="text" id="nCancion" class="input" value="<%=nombre%>" name="nombreCancion" placeholder="Nombre de la canción" required="required">
-        <input type="hidden" name="lista" id="lista" value="<%= cadena%>">
-        <input type="button" class="boton" id="buscar"  value="Buscar" onclick="redirect(false)" >
-        <div id="recibir">
-            <form id="formAgregar" method="POST" action="GetPost">
-                <%
-                    if (resultSet != null) {
-                        int cant;
-                        int c = 0;
-                        if (request.getParameter("total") == null) {
-                            cant = 0;
-                        } else {
-                            cant = Integer.parseInt(request.getParameter("total"));
-                        }
-                        while (resultSet.next()) {
-                            c++;
-                %>
-                <li id="<%= resultSet.getString("id")%>" onclick="quitar(this, '<%=resultSet.getString("id")%>')">
-                    <p class="listaSelect"><%= resultSet.getString("nombre")%></p>
-                    <input type="hidden"  name="idImagen<%=c%>" value="<%= resultSet.getString("id")%>" />
-                </li>
-                <%
-                    }
-                %>
-                <input type="hidden" id="total" name="total" value="<%=cant%>" />
-                <%
-                    }
-                %>
-                <input type="hidden" name="lista" id="lista" value="<%= cadena%>"/>
-                <input type="hidden" name="idUser" id="idUser" value="<%=idUser%>" />
-                <% switch (rolUser) {
-                        case 1:
-                %>
-                <input type="submit" id="Agregar" class="boton" value="Agregar" />
-                <%
-        break;
-                            }%>
-            </form>
-        </div>
-        <div>
-            <section id="section1">
-                <ul id="imgBuscar">
+        <div id="contenedor">
+            <input type="text" id="nCancion" class="input" value="<%=nombre%>" name="nombreCancion" placeholder="Nombre de la canción" required="required">
+            <input type="hidden" name="lista" id="lista" value="<%= cadena%>">
+            <input type="button" class="botonMenu" id="buscar"  value="Buscar" onclick="redirect(false)" >
+            <div id="recibir">
+                <form id="formAgregar" method="POST" action="GetPost">
                     <%
-                        if (request.getParameter("nombreCancion") != null) {
-                            if (!request.getParameter("nombreCancion").equals("")) {
-                                ImagenCad cad = new ImagenCad();
-                                ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
-                                try {
-                                    while (rs.next()) {
+                        if (resultSet != null) {
+                            int cant;
+                            int c = 0;
+                            if (request.getParameter("total") == null) {
+                                cant = 0;
+                            } else {
+                                cant = Integer.parseInt(request.getParameter("total"));
+                            }
+                            while (resultSet.next()) {
+                                c++;
                     %>
-                    <li class="liNombreImg"><img src="images/icons/view1.png" id="icon" onclick="mostrarImg('<%=rs.getString("direccion")%>')"/>
-                        <img id="<%= rs.getString("id")%>" class="imgSong" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("nombre")%>"  onclick="SelectImagen(<%= rs.getString("id")%>)"  />
-                        <p onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
+                    <li id="<%= resultSet.getString("id")%>" onclick="quitar(this, '<%=resultSet.getString("id")%>')">
+                        <p class="listaSelect"><%= resultSet.getString("nombre")%></p>
+                        <input type="hidden"  name="idImagen<%=c%>" value="<%= resultSet.getString("id")%>" />
                     </li>
                     <%
-                                    }
-                                } catch (SQLException ex) {
-                                    Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
                         }
                     %>
-                </ul>
-            </section>
-            <aside id="aside1">
-                <nav>
+                    <input type="hidden" id="total" name="total" value="<%=cant%>" />
                     <%
-                        if (request.getParameter("nombreCancion") != null) {
-                            if (!request.getParameter("nombreCancion").equals("")) {
-                                ImagenCad cad = new ImagenCad();
-                                ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
-                                try {
-                                    while (rs.next()) {
-                    %>
-                    <li>
-                        <p class="txtNombre" onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
-                    </li>
-                    <%
-                                    }
-                                } catch (SQLException ex) {
-                                    Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
                         }
                     %>
-                </nav>
-            </aside>
+                    <input type="hidden" name="lista" id="lista" value="<%= cadena%>"/>
+                    <input type="hidden" name="idUser" id="idUser" value="<%=idUser%>" />
+                    <% switch (rolUser) {
+                            case 1:
+                    %>
+                    <input type="submit" id="Agregar" class="botonMenu" value="Agregar" />
+                    <%
+                                break;
+                        }%>
+                </form>
+            </div>
+            <div>
+                <section id="section1">
+                    <ul id="imgBuscar">
+                        <%
+                            if (request.getParameter("nombreCancion") != null) {
+                                if (!request.getParameter("nombreCancion").equals("")) {
+                                    ImagenCad cad = new ImagenCad();
+                                    ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
+                                    try {
+                                        while (rs.next()) {
+                        %>
+                        <li class="liNombreImg"><img src="images/icons/view1.png" id="icon" onclick="mostrarImg('<%=rs.getString("direccion")%>')"/>
+                            <img id="<%= rs.getString("id")%>" class="imgSong" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("nombre")%>"  onclick="SelectImagen(<%= rs.getString("id")%>)"  />
+                            <p onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
+                        </li>
+                        <%
+                                        }
+                                    } catch (SQLException ex) {
+                                        Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                }
+                            }
+                        %>
+                    </ul>
+                </section>
+                <aside id="aside1">
+                    <nav>
+                        <%
+                            if (request.getParameter("nombreCancion") != null) {
+                                if (!request.getParameter("nombreCancion").equals("")) {
+                                    ImagenCad cad = new ImagenCad();
+                                    ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
+                                    try {
+                                        while (rs.next()) {
+                        %>
+                        <li>
+                            <p class="txtNombre" onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
+                        </li>
+                        <%
+                                        }
+                                    } catch (SQLException ex) {
+                                        Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                }
+                            }
+                        %>
+                    </nav>
+                </aside>
+            </div>
         </div>
         <div id="bsDialog" onclick="salirImg()">
             <center>
                 <img id="imgDialog"  src=""  />
             </center>
         </div>
+        <!-- My Library -->
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.poptrox.min.js"></script>
+        <script type="text/javascript" src="assets/js/skel.min.js"></script>
+        <script type="text/javascript" src="assets/js/ie/JS_Ic_Point.js"></script>
+        <script type="text/javascript" src="assets/js/MoreController.js"></script>
+        <script type="text/javascript" src="assets/js/LogoutController.js"></script>
+        <script type="text/javascript" src="assets/js/Validacion.js"></script>
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
 </html>
 <%
