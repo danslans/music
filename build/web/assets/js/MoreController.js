@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*JavasScript Que controla el menu (los puntos)*/
 $(document).ready(function () {
     var state=false;
    $("#more").click(function () {
