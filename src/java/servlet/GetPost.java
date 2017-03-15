@@ -9,6 +9,7 @@ import cad.ImagenCad;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.AsignarImagen;
+import org.json.JSONException;
 import sun.util.calendar.Gregorian;
 /**
  *
@@ -73,14 +75,20 @@ public class GetPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        //PrintWriter out = response.getWriter();
+        PrintWriter out = response.getWriter();
         String json =request.getParameter("lista");
         ImagenCad cad=new ImagenCad();
         Calendar c=GregorianCalendar.getInstance();
        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd");
         String fecha=dateFormat.format(c.getTime());
-        cad.guardarAsignar("["+json+"]", fecha,request.getParameter("idUser"));
-        response.sendRedirect("index.jsp");
+        try {
+        cad.guardarAsignar("["+json+"]", fecha,request.getParameter("idUser"));    
+        out.println("Agregado Correctamente");
+        } catch (SQLException | JSONException e) {
+               out.println("Ha ocurrido un error por favor contactese con su Arquitecto de Software"+e);
+        }
+        
+        //response.sendRedirect("index.jsp");
     }
 
     /**

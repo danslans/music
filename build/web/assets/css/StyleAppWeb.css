@@ -4,7 +4,7 @@ body{
     margin: auto;  
 }
 /*web*/
-@media not screen and (max-width: 100px) {
+@media not screen and (max-width: 1000px) {
     /*this section is for header*/
     .content{
         display: flex;
@@ -24,10 +24,10 @@ body{
         justify-content: flex-start;
     }
     .itemsMenu{
-       display: flex;
-       height: 100%;
-       width: 200px;
-       text-align: center;
+        display: flex;
+        height: 100%;
+        width: 200px;
+        text-align: center;
     }
     .itemsMenu>.icons{
         padding: 10px 20px 10px 20px;        
@@ -61,7 +61,7 @@ body{
         z-index: 1;
         display: none;
     }
-    
+
     #ulSub{
         list-style: none;
         position: relative;
@@ -129,6 +129,7 @@ body{
     .itemsAllImagen:hover{
         background-color:#512DA8; 
         color: white;
+        cursor: zoom-in;
     }
     /*Diseño de la PROYECXION INDEX */ 
     #dialogo{
@@ -141,7 +142,7 @@ body{
         height: 100%;
     }
     #imgDialog{
-        height: 50em;
+        height: 100%;
         width: 50%;
     }
     #x{
@@ -151,9 +152,91 @@ body{
         top: 0px;
         z-index: 1;
     }
-    
-    /*diseño del */
-    
+
+    /*diseño del buscador (Buscar)  */
+
+    .menuBuscar{
+        display: flex;
+    }
+    #formBusqueda{
+        width: 300px;
+        display: flex;
+        justify-content: center;
+    }
+    #recibir{
+        height: 100px;
+        width: 100%;
+    }
+    /*diseño de la lista que se ha seleccionado*/
+    #ulSelectedImg{
+        position: relative;
+        height: 100px;
+        width: 100%;
+        list-style: none;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        justify-content: space-around;
+    }
+    .itemsSelectedImg{
+        background-color: #D1C4E9;
+        height: 31px;
+        width: 200px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        text-align: center;
+        justify-content: center;
+        margin-right: 10px;
+    }
+    /*Busqueda dinamica, seccion de la pantalla BUSQUEDA donde se muestra las imagenes seleccionadas*/
+    #contentBusqueda{
+        display: flex;
+    }
+    #section1{
+        width: 70%;
+        height:600px;
+        overflow: scroll;
+    }
+    .itemsAllImagenBuscar{
+        background: #D1C4E9;
+        height: 100%;
+        width: 300px;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 10px;
+        margin-left: 0px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 10px;
+    }
+    #ulAllImagesBuscar{
+        list-style: none;
+        margin-left: -40px;
+        padding: 0;
+        margin: 0;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        justify-content: space-around;
+    }
+    .itemsAllImagenBuscar>.imgAllItemBuscar{
+        height:200px;
+        width:200px;
+    }
+    #iconVer{
+        position: relative;
+        height: 20px;
+        width: 20px;
+
+    }
 }
 
 
@@ -316,31 +399,31 @@ body{
         top: 0; 
     }
     /*icono para ver (impletentar en otras pantallas)*/
-    /*
-    #icon{
-        position: absolute;
-        height: 30px;
-        margin-left: 240px;
-    }
-    #icon:hover{
-        background-color: #f2f2f2;
-        opacity: 0.8;
-    }
+/*
+#icon{
+    position: absolute;
+    height: 30px;
+    margin-left: 240px;
+}
+#icon:hover{
+    background-color: #f2f2f2;
+    opacity: 0.8;
+}
 
-    #bsDialog{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        top: 0;
-        border: none;
-        background:#ffffff;
-        display: none;
-    }
-    .liNombreImg{
-        margin-right: 0px;
-    }
-    .txtNombre:hover{
-        background: #efebfa;
-    }
-    */
+#bsDialog{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 0;
+    border: none;
+    background:#ffffff;
+    display: none;
+}
+.liNombreImg{
+    margin-right: 0px;
+}
+.txtNombre:hover{
+    background: #efebfa;
+}
+*/

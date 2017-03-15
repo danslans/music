@@ -54,7 +54,13 @@
                         <li class="itemsMenu"><span class="icons IcMore" id="more">
                                 <div id="subMenu" class="subMenu">
                                     <ul id="ulSub">
-
+                                        <% switch (rolUser) {
+                                                case 1:
+                                        %>
+                                        <li><input type="submit" id="Agregar" class="botonMenu" value="Agregar" /></li>
+                                        <%
+                                                    break;
+                                            }%>
                                     </ul>
                                 </div>
                             </span></li>
@@ -86,12 +92,15 @@
             }
 
         %>
-        <div id="contenedor">
-            <input type="text" id="nCancion" class="input" value="<%=nombre%>" name="nombreCancion" placeholder="Nombre de la canción" required="required">
-            <input type="hidden" name="lista" id="lista" value="<%= cadena%>">
-            <input type="button" class="botonMenu" id="buscar"  value="Buscar" onclick="redirect(false)" >
+        <div id="contenedor" class="menuBuscar">
+            <div id="formBusqueda">
+                <input type="text" id="nCancion" class="input" value="<%=nombre%>" name="nombreCancion" placeholder="Nombre de la canción" required="required">
+                <input type="hidden" name="lista" id="lista" value="<%= cadena%>">
+                <input type="button" class="botonMenu" id="buscar"  value="Buscar" onclick="redirect(false)" >
+            </div>
             <div id="recibir">
-                <form id="formAgregar" method="POST" action="GetPost">
+                <div id="formAgregar">
+                    <ul id="ulSelectedImg">
                     <%
                         if (resultSet != null) {
                             int cant;
@@ -104,77 +113,72 @@
                             while (resultSet.next()) {
                                 c++;
                     %>
-                    <li id="<%= resultSet.getString("id")%>" onclick="quitar(this, '<%=resultSet.getString("id")%>')">
+                    <li class="itemsSelectedImg" id="<%= resultSet.getString("id")%>" onclick="quitar(this, '<%=resultSet.getString("id")%>')">
                         <p class="listaSelect"><%= resultSet.getString("nombre")%></p>
                         <input type="hidden"  name="idImagen<%=c%>" value="<%= resultSet.getString("id")%>" />
                     </li>
                     <%
                         }
                     %>
+                    </ul>
                     <input type="hidden" id="total" name="total" value="<%=cant%>" />
                     <%
                         }
                     %>
                     <input type="hidden" name="lista" id="lista" value="<%= cadena%>"/>
                     <input type="hidden" name="idUser" id="idUser" value="<%=idUser%>" />
-                    <% switch (rolUser) {
-                            case 1:
-                    %>
-                    <input type="submit" id="Agregar" class="botonMenu" value="Agregar" />
+
+                </div>
+            </div>
+        </div>
+        <div id="contentBusqueda">
+            <section id="section1">
+                <ul id="ulAllImagesBuscar">
                     <%
-                                break;
-                        }%>
-                </form>
-            </div>
-            <div>
-                <section id="section1">
-                    <ul id="imgBuscar">
-                        <%
-                            if (request.getParameter("nombreCancion") != null) {
-                                if (!request.getParameter("nombreCancion").equals("")) {
-                                    ImagenCad cad = new ImagenCad();
-                                    ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
-                                    try {
-                                        while (rs.next()) {
-                        %>
-                        <li class="liNombreImg"><img src="images/icons/view1.png" id="icon" onclick="mostrarImg('<%=rs.getString("direccion")%>')"/>
-                            <img id="<%= rs.getString("id")%>" class="imgSong" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("nombre")%>"  onclick="SelectImagen(<%= rs.getString("id")%>)"  />
-                            <p onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
-                        </li>
-                        <%
-                                        }
-                                    } catch (SQLException ex) {
-                                        Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                        if (request.getParameter("nombreCancion") != null) {
+                            if (!request.getParameter("nombreCancion").equals("")) {
+                                ImagenCad cad = new ImagenCad();
+                                ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
+                                try {
+                                    while (rs.next()) {
+                    %>
+                    <li class="itemsAllImagenBuscar"><img src="images/icons/view1.png" id="iconVer" onclick="mostrarImg('<%=rs.getString("direccion")%>')"/>
+                        <img id="<%= rs.getString("id")%>" class="imgAllItemBuscar" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("nombre")%>"  onclick="SelectImagen(<%= rs.getString("id")%>)"  />
+                        <p onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
+                    </li>
+                    <%
                                     }
+                                } catch (SQLException ex) {
+                                    Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             }
-                        %>
-                    </ul>
-                </section>
-                <aside id="aside1">
-                    <nav>
-                        <%
-                            if (request.getParameter("nombreCancion") != null) {
-                                if (!request.getParameter("nombreCancion").equals("")) {
-                                    ImagenCad cad = new ImagenCad();
-                                    ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
-                                    try {
-                                        while (rs.next()) {
-                        %>
-                        <li>
-                            <p class="txtNombre" onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
-                        </li>
-                        <%
-                                        }
-                                    } catch (SQLException ex) {
-                                        Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    %>
+                </ul>
+            </section>
+            <aside id="aside1">
+                <nav>
+                    <%
+                        if (request.getParameter("nombreCancion") != null) {
+                            if (!request.getParameter("nombreCancion").equals("")) {
+                                ImagenCad cad = new ImagenCad();
+                                ResultSet rs = cad.BuscarParam(request.getParameter("nombreCancion"));
+                                try {
+                                    while (rs.next()) {
+                    %>
+                    <li>
+                        <p class="txtNombre" onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
+                    </li>
+                    <%
                                     }
+                                } catch (SQLException ex) {
+                                    Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             }
-                        %>
-                    </nav>
-                </aside>
-            </div>
+                        }
+                    %>
+                </nav>
+            </aside>
         </div>
         <div id="bsDialog" onclick="salirImg()">
             <center>
@@ -188,7 +192,7 @@
         <script type="text/javascript" src="assets/js/ie/JS_Ic_Point.js"></script>
         <script type="text/javascript" src="assets/js/MoreController.js"></script>
         <script type="text/javascript" src="assets/js/LogoutController.js"></script>
-        <script type="text/javascript" src="assets/js/Validacion.js"></script>
+        <script type="text/javascript" src="assets/js/BuscarController.js"></script>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

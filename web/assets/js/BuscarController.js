@@ -24,6 +24,7 @@ $(document).ready(function () {
     });
     salirImg();
     logoutSession();
+    sendFormularyImg();
 });
 function salirImg(){
     $("#bsDialog").fadeOut();
@@ -170,4 +171,20 @@ function limpiarObjert(jsonObjet) {
         }
     }
     return Json;
+}
+
+function  sendFormularyImg() {
+    $("#Agregar").click(function () {
+        var lista=$("#lista").val();
+        var idUser=$("#idUser").val();
+        var datos="lista="+lista+"&idUser="+idUser;
+        sedAjax(datos,"GetPost");
+    });
+}
+function sedAjax(datos, pag) {
+    $.ajax({type: 'POST', data: datos, url: pag, success: function (data, textStatus, jqXHR) {
+            if(data!==""){
+             alert(data);   
+            }
+        }});
 }

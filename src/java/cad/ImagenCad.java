@@ -41,7 +41,7 @@ public class ImagenCad {
         }
     }
 
-    public void guardarAsignar(String json, String fecha,String idUser) {
+    public void guardarAsignar(String json, String fecha,String idUser)throws SQLException,JSONException{
         String exceculteProcedure = "{call insertar(";
         try {
             JSONArray array = new JSONArray(json);
