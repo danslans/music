@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 13-02-2017 a las 04:15:32
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 7.0.8
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-03-2017 a las 20:19:22
+-- Versión del servidor: 10.1.19-MariaDB
+-- Versión de PHP: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -60,10 +60,10 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TBL_ASIGNAR_CANCION`
+-- Estructura de tabla para la tabla `tbl_asignar_cancion`
 --
 
-CREATE TABLE `TBL_ASIGNAR_CANCION` (
+CREATE TABLE `tbl_asignar_cancion` (
   `id` int(11) NOT NULL,
   `id_img` int(11) NOT NULL,
   `fecha` date DEFAULT NULL,
@@ -74,10 +74,10 @@ CREATE TABLE `TBL_ASIGNAR_CANCION` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TBL_HISTORIAL_CANCION`
+-- Estructura de tabla para la tabla `tbl_historial_cancion`
 --
 
-CREATE TABLE `TBL_HISTORIAL_CANCION` (
+CREATE TABLE `tbl_historial_cancion` (
   `id_historial` int(11) NOT NULL,
   `fecha` date DEFAULT NULL,
   `id_img` int(11) DEFAULT NULL,
@@ -87,10 +87,10 @@ CREATE TABLE `TBL_HISTORIAL_CANCION` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TBL_IMG`
+-- Estructura de tabla para la tabla `tbl_img`
 --
 
-CREATE TABLE `TBL_IMG` (
+CREATE TABLE `tbl_img` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `descripcion` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
@@ -98,10 +98,10 @@ CREATE TABLE `TBL_IMG` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `TBL_IMG`
+-- Volcado de datos para la tabla `tbl_img`
 --
 
-INSERT INTO `TBL_IMG` (`id`, `nombre`, `descripcion`, `direccion`) VALUES
+INSERT INTO `tbl_img` (`id`, `nombre`, `descripcion`, `direccion`) VALUES
 (1, 'Aclamad a Dios', 'Aclamad a Dios', 'images/thumbs/1 Aclamad a Dios.png'),
 (2, 'Alabad a jehova', 'Alabad a jehova', 'images/thumbs/2 Alabad a Jehova.png'),
 (3, 'Alabad a jehova', 'Alabad a jehova', 'images/thumbs/3 Alabad a Jehova.png'),
@@ -252,15 +252,168 @@ INSERT INTO `TBL_IMG` (`id`, `nombre`, `descripcion`, `direccion`) VALUES
 (148, '148 Como la arena del mar', '148 Como la arena del mar', 'images/thumbs/148 Como la arena del mar.png'),
 (149, '149 Cuando el pueblo', '149 Cuando el pueblo', 'images/thumbs/149 Cuando el pueblo.png'),
 (150, '150 Cuando Faraon', '150 Cuando Faraon', 'images/thumbs/150 Cuando Faraon.png'),
-(151, '151 Desciende aqui', '151 Desciende aqui', 'images/thumbs/151 Desciende aqui.png');
+(151, '151 Desciende aqui', '151 Desciende aqui', 'images/thumbs/151 Desciende aqui.png'),
+(152, '152 Donde esta el espiritu de Dios', '152 Donde esta el espiritu de Dios', 'images/thumbs/152 Donde esta el espiritu de Dios.png'),
+(153, '153 El culto de hoy', '153 El culto de hoy', 'images/thumbs/153 El culto de hoy.png'),
+(154, '154 Elias oraba', '154 Elias oraba', 'images/thumbs/154 Elias oraba.png'),
+(155, '155 El maestro de Galilea', '155 El maestro de Galilea', 'images/thumbs/155 El maestro de Galilea.png'),
+(156, '156 En el altar de Dios', '156 En el altar de Dios', 'images/thumbs/156 En el altar de Dios.png'),
+(157, '157 En el principio', '157 En el principio', 'images/thumbs/157 En el principio.png'),
+(158, '158 Zarza', '158 Zarza', 'images/thumbs/158 Zarza.png'),
+(159, '159 Espiritu de Dios desciende', '159 Espiritu de Dios desciende', 'images/thumbs/159 Espiritu de Dios desciende.png'),
+(160, '160 Estaban todos unanimes', '160 Estaban todos unanimes', 'images/thumbs/160 Estaban todos unanimes.png'),
+(161, '161 Estamos pidiendo', '161 Estamos pidiendo', 'images/thumbs/161 Estamos pidiendo.png'),
+(162, '162 Este avivamiento', '162 Este avivamiento', 'images/thumbs/162 Este avivamiento.png'),
+(163, '163 Estoy sintiendo un poder', '163 Estoy sintiendo un poder', 'images/thumbs/163 Estoy sintiendo un poder.png'),
+(164, '164 Fuego de Dios', '164 Fuego de Dios', 'images/thumbs/164 Fuego de Dios.png'),
+(165, '165 Fuego, Fuego', '165 Fuego, Fuego', 'images/thumbs/165 Fuego, Fuego.png'),
+(166, '166 Hare un altar para ti', '166 Hare un altar para ti', 'images/thumbs/166 Hare un altar para ti.png'),
+(167, '167 Jacob lucho con el angel', '167 Jacob lucho con el angel', 'images/thumbs/167 Jacob lucho con el angel.png'),
+(168, '168 Jesus esta pasando por aqui', '168 Jesus esta pasando por aqui', 'images/thumbs/168 Jesus esta pasando por aqui.png'),
+(169, '169 La gloria de jehova', '169 La gloria de jehova', 'images/thumbs/169 La gloria de jehova.png'),
+(170, '170 La gloria de jehova cayo en el Sinai', '170 La gloria de jehova cayo en el Sinai', 'images/thumbs/170 La gloria de jehova cayo en el Sinai.png'),
+(171, '171 La Gloria de Dios', '171 La Gloria de Dios', 'images/thumbs/171 La Gloria de Dios.png'),
+(172, '172 Lo que el Espiritu diga', '172 Lo que el Espiritu diga', 'images/thumbs/172 Lo que el Espiritu diga.png'),
+(173, '173 Manda poder', '173 Manda poder', 'images/thumbs/173 Manda poder.png'),
+(174, '174 Manda Poder del Cielo', '174 Manda Poder del Cielo', 'images/thumbs/174 Manda Poder del Cielo.png'),
+(175, '175 Maravilloso poder', '175 Maravilloso poder', 'images/thumbs/175 Maravilloso poder.png'),
+(176, '176 Mi unico anhelo', '176 Mi unico anhelo', 'images/thumbs/176 Mi unico anhelo.png'),
+(177, '177 No te dejare', '177 No te dejare', 'images/thumbs/177 No te dejare.png'),
+(178, '178 Oh poder pentescostal', '178 Oh poder pentescostal', 'images/thumbs/178 Oh poder pentescostal.png'),
+(179, '179 Paseate Nazareno', '179 Paseate Nazareno', 'images/thumbs/179 Paseate Nazareno.png'),
+(180, '180 Pon Aceite', '180 Pon Aceite', 'images/thumbs/180 Pon Aceite.png'),
+(181, '181 Porque el fuego esta encendido', '181 Porque el fuego esta encendido', 'images/thumbs/181 Porque el fuego esta encendido.png'),
+(182, '182 Rios de agua viva', '182 Rios de agua viva', 'images/thumbs/182 Rios de agua viva.png'),
+(183, '183 Se mueve la mano de Dios', '183 Se mueve la mano de Dios', 'images/thumbs/'),
+(184, '184 Si empezamos a cantar', '184 Si empezamos a cantar', 'images/thumbs/184 Si empezamos a cantar.png'),
+(185, '185 Si has Conocido al Senor', '185 Si has Conocido al Senor', 'images/thumbs/185 Si has Conocido al Senor.png'),
+(186, '186 Si tu quieres sentir', '186 Si tu quieres sentir', 'images/thumbs/186 Si tu quieres sentir.png'),
+(187, '187 Un fuego ardiente', '187 Un fuego ardiente', 'images/thumbs/187 Un fuego ardiente.png'),
+(188, '188 Vamos orando', '188 Vamos orando', 'images/thumbs/188 Vamos orando.png'),
+(189, '189 Ven espiritu divino', '189 Ven espiritu divino', 'images/thumbs/189 Ven espiritu divino.png'),
+(190, '190 Ya llego el Espiritu', '190 Ya llego el Espiritu', 'images/thumbs/190 Ya llego el Espiritu.png'),
+(191, '191 Yo siento como que la gloria bajo', '191 Yo siento como que la gloria bajo', 'images/thumbs/191 Yo siento como que la gloria bajo.png'),
+(192, '192 Yo siento que me lleno de poder', '192 Yo siento que me lleno de poder', 'images/thumbs/192 Yo siento que me lleno de poder.png'),
+(193, '193 Yo si se', '193 Yo si se', 'images/thumbs/193 Yo si se.png'),
+(194, '194 Yo tengo una peticion', '194 Yo tengo una peticion', 'images/thumbs/194 Yo tengo una peticion.png'),
+(195, '195 Yo vine a buscar una bendicion', '195 Yo vine a buscar una bendicion', 'images/thumbs/195 Yo vine a buscar una bendicion.png'),
+(196, '196 Yo vine aqui', '196 Yo vine aqui', 'images/thumbs/196 Yo vine aqui.png'),
+(197, '197 Abba padre', '197 Abba padre', 'images/thumbs/197 Abba padre.png'),
+(198, '198 A cada instante', '198 A cada instante', 'images/thumbs/198 A cada instante.png'),
+(199, '199 A Cristo', '199 A Cristo', 'images/thumbs/199 A Cristo.png'),
+(200, '200 Adorad al cordero santo', '200 Adorad al cordero santo', 'images/thumbs/200 Adorad al cordero santo.png'),
+(201, '201 Adorarte', '201 Adorarte', 'images/thumbs/201 Adorarte.png'),
+(202, '202 A el alto y sublime', '202 A el alto y sublime', 'images/thumbs/202 A el alto y sublime.png'),
+(203, '203 A el sea la gloria', '203 A el sea la gloria', 'images/thumbs/203 A el sea la gloria.png'),
+(204, '204 Agnus dei', '204 Agnus dei', 'images/thumbs/204 Agnus dei.png'),
+(205, '205 A Jehova cantare', '205 A Jehova cantare', 'images/thumbs/205 A Jehova cantare.png'),
+(206, '206 Alabadle', '206 Alabadle', 'images/thumbs/206 Alabadle.png'),
+(207, '207 Aleluya', '207 Aleluya', 'images/thumbs/207 Aleluya.png'),
+(208, '208 Al estar ante ti', '208 Al estar ante ti', 'images/thumbs/208 Al estar ante ti.png'),
+(209, '209 Al estar aqui', '209 Al estar aqui', 'images/thumbs/209 Al estar aqui.png'),
+(210, '210 Al que esta sentado en el trono', '210 Al que esta sentado en el trono', 'images/thumbs/210 Al que esta sentado en el trono.png'),
+(211, '211 A quien tengo yo en los cielos', '211 A quien tengo yo en los cielos', 'images/thumbs/211 A quien tengo yo en los cielos.png'),
+(212, '212 A ti Atribuimos', '212 A ti Atribuimos', 'images/thumbs/212 A ti Atribuimos.png'),
+(213, '213 A ti Jesus', '213 A ti Jesus', 'images/thumbs/213 A ti Jesus.png'),
+(214, '214 Bendecire al Senor', '214 Bendecire al Senor', 'images/thumbs/214 Bendecire al Senor.png'),
+(215, '215 Bendito sea el Senor', '215 Bendito sea el Senor', 'images/thumbs/215 Bendito sea el Senor.png'),
+(216, '216 Canta al Senor', '216 Canta al Senor', 'images/thumbs/216 Canta al Senor.png'),
+(217, '217 Con mi canto', '217 Con mi canto', 'images/thumbs/217 Con mi canto.png'),
+(218, '218 Con mis labios', '218 Con mis labios', 'images/thumbs/218 Con mis labios.png'),
+(219, '219 Con mis labios', '219 Con mis labios', 'images/thumbs/219 Con mis labios.png'),
+(220, '220 Cristo, altisimo Senor', '220 Cristo, altisimo Senor', 'images/thumbs/220 Cristo, altisimo Senor.png'),
+(221, '221 Cristo, yo te amo', '221 Cristo, yo te amo', 'images/thumbs/221 Cristo, yo te amo.png'),
+(222, '222 Cuando pienso', '222 Cuando pienso', 'images/thumbs/222 Cuando pienso.png'),
+(223, '223 Cuando pienso en tu santidad', '223 Cuando pienso en tu santidad', 'images/thumbs/223 Cuando pienso en tu santidad.png'),
+(224, '224 Cuando veo tu amor', '224 Cuando veo tu amor', 'images/thumbs/224 Cuando veo tu amor.png'),
+(225, '225 Damos honor a ti', '225 Damos honor a ti', 'images/thumbs/225 Damos honor a ti.png'),
+(226, '226 Declaramos tu Majestad', '226 Declaramos tu Majestad', 'images/thumbs/226 Declaramos tu Majestad.png'),
+(227, '227 Deja que el Senor', '227 Deja que el Senor', 'images/thumbs/227 Deja que el Senor.png'),
+(228, '228 Delante de tu trono', '228 Delante de tu trono', 'images/thumbs/228 Delante de tu trono.png'),
+(229, '229 De oidas', '229 De oidas', 'images/thumbs/229 De oidas.png'),
+(230, '230 De tal manera', '230 De tal manera', 'images/thumbs/230 De tal manera.png'),
+(231, '231 Dios el mas grande', '231 Dios el mas grande', 'images/thumbs/231 Dios el mas grande.png'),
+(232, '232 Dios esta aqui', '232 Dios esta aqui', 'images/thumbs/232 Dios esta aqui.png'),
+(233, '233 Dios ha sido bueno', '233 Dios ha sido bueno', 'images/thumbs/233 Dios ha sido bueno.png'),
+(234, '234 El Senor es mi luz', '234 El Senor es mi luz', 'images/thumbs/234 El Senor es mi luz.png'),
+(235, '235 E Senor es mi Rey', '235 E Senor es mi Rey', 'images/thumbs/235 E Senor es mi Rey.png'),
+(236, '236 Entra en la presencia', '236 Entra en la presencia', 'images/thumbs/236 Entra en la presencia.png'),
+(237, '237 En tu presencia', '237 En tu presencia', 'images/thumbs/237 En tu presencia.png'),
+(238, '238 En tus atrios estoy', '238 En tus atrios estoy', 'images/thumbs/238 En tus atrios estoy.png'),
+(239, '239 Eres', '239 Eres', 'images/thumbs/239 Eres.png'),
+(240, '240 Eres Digno', '240 Eres Digno', 'images/thumbs/240 Eres Digno.png'),
+(241, '241 Estar en tu presencia', '241 Estar en tu presencia', 'images/thumbs/241 Estar en tu presencia.png'),
+(242, '242 Exaltad a Jehova', '242 Exaltad a Jehova', 'images/thumbs/242 Exaltad a Jehova.png'),
+(243, '243 Exaltate', '243 Exaltate', 'images/thumbs/243 Exaltate.png'),
+(244, '244 Hay momentos', '244 Hay momentos', 'images/thumbs/244 Hay momentos.png'),
+(245, '245 Hay una fuente en mi', '245 Hay una fuente en mi', 'images/thumbs/245 Hay una fuente en mi.png'),
+(246, '246 Hemos venido a tu Casa', '246 Hemos venido a tu Casa', 'images/thumbs/246 Hemos venido a tu Casa.png'),
+(247, '247 Hermoso Eres', '247 Hermoso Eres', 'images/thumbs/247 Hermoso Eres.png'),
+(248, '248 He venido a Adorarte', '248 He venido a Adorarte', 'images/thumbs/248 He venido a Adorarte.png'),
+(249, '249 Hijo de Dios', '249 Hijo de Dios', 'images/thumbs/249 Hijo de Dios.png'),
+(250, '250 Hosanna', '250 Hosanna', 'images/thumbs/250 Hosanna.png'),
+(251, '251 La gracia se Derramo', '251 La gracia se Derramo', 'images/thumbs/251 La gracia se Derramo.png'),
+(252, '252 Magnifico', '252 Magnifico', 'images/thumbs/252 Magnifico.png'),
+(253, '253 Majestuoso, poderoso', '253 Majestuoso, poderoso', 'images/thumbs/253 Majestuoso, poderoso.png'),
+(254, '254 Maravilloso Jesus, es para mi', '254 Maravilloso Jesus, es para mi', 'images/thumbs/254 Maravilloso Jesus, es para mi.png'),
+(255, '255 Mas yo por la abundancia', '255 Mas yo por la abundancia', 'images/thumbs/255 Mas yo por la abundancia.png'),
+(256, '256 Mejor que vida es tu misericordia', '256 Mejor que vida es tu misericordia', 'images/thumbs/256 Mejor que vida es tu misericordia.png'),
+(257, '257 Mi anhelo', '257 Mi anhelo', 'images/thumbs/257 Mi anhelo.png'),
+(258, '258 Mi pensamiento eres tu, Senor', '258 Mi pensamiento eres tu, Senor', 'images/thumbs/258 Mi pensamiento eres tu, Senor.png'),
+(259, '259 Momentos especiales', '259 Momentos especiales', 'images/thumbs/259 Momentos especiales.png'),
+(260, '260 No hay nadie como tu', '260 No hay nadie como tu', 'images/thumbs/260 No hay nadie como tu.png'),
+(261, '261 No se porque', '261 No se porque', 'images/thumbs/261 No se porque.png'),
+(262, '262 Oh ven', '262 Oh ven', 'images/thumbs/262 Oh ven.png'),
+(263, '263 Palabras de verdad', '263 Palabras de verdad', 'images/thumbs/263 Palabras de verdad.png'),
+(264, '264 Porque para siempre Dios', '264 Porque para siempre Dios', 'images/thumbs/264 Porque para siempre Dios.png'),
+(265, '265 Que dulce', '265 Que dulce', 'images/thumbs/265 Que dulce.png'),
+(266, '266 Que te alaben', '266 Que te alaben', 'images/thumbs/266 Que te alaben.png'),
+(267, '267 Queremos darte gloria', '267 Queremos darte gloria', 'images/thumbs/267 Queremos darte gloria.png'),
+(268, '268 Quiero levantar mis manos', '268 Quiero levantar mis manos', 'images/thumbs/268 Quiero levantar mis manos.png'),
+(269, '269 Quiero llenar', '269 Quiero llenar', 'images/thumbs/269 Quiero llenar.png'),
+(270, '270 Santo eres tu', '270 Santo eres tu', 'images/thumbs/270 Santo eres tu.png'),
+(271, '271 Santo es el Senor', '271 Santo es el Senor', 'images/thumbs/271 Santo es el Senor.png'),
+(272, '272 Santo, mi corazon te adora', '272 Santo, mi corazon te adora', 'images/thumbs/272 Santo, mi corazon te adora.png'),
+(273, '273 Santo, Senor de gloria', '273 Santo, Senor de gloria', 'images/thumbs/273 Santo, Senor de gloria.png'),
+(274, '274 Sentado en su trono', '274 Sentado en su trono', 'images/thumbs/274 Sentado en su trono.png'),
+(275, '275 Senor eres grande', '275 Senor eres grande', 'images/thumbs/275 Senor eres grande.png'),
+(276, '276 Senor tu eres', '276 Senor tu eres', 'images/thumbs/276 Senor tu eres.png'),
+(277, '277 Sin Dios nada somos', '277 Sin Dios nada somos', 'images/thumbs/277 Sin Dios nada somos.png'),
+(278, '278 Soberano Dios', '278 Soberano Dios', 'images/thumbs/278 Soberano Dios.png'),
+(279, '279 Solo tu eres santo', '279 Solo tu eres santo', 'images/thumbs/279 Solo tu eres santo.png'),
+(280, '280 Te adoramos', '280 Te adoramos', 'images/thumbs/280 Te adoramos.png'),
+(281, '281 Te Adoro', '281 Te Adoro', 'images/thumbs/281 Te Adoro.png'),
+(282, '282 Te Alabamos senor', '282 Te Alabamos senor', 'images/thumbs/282 Te Alabamos senor.png'),
+(283, '283 Te alabamos, te adoramos', '283 Te alabamos, te adoramos', 'images/thumbs/283 Te alabamos, te adoramos.png'),
+(284, '284 Te alabo', '284 Te alabo', 'images/thumbs/284 Te alabo.png'),
+(285, '285 Te alabo, te bendigo', '285 Te alabo, te bendigo', 'images/thumbs/285 Te alabo, te bendigo.png'),
+(286, '286 Te exaltare, mi Dios, mi Rey', '286 Te exaltare, mi Dios, mi Rey', 'images/thumbs/286 Te exaltare, mi Dios, mi Rey.png'),
+(287, '287 Te vengo a bendecir', '287 Te vengo a bendecir', 'images/thumbs/287 Te vengo a bendecir.png'),
+(288, '288 Toda gloria y majestad', '288 Toda gloria y majestad', 'images/thumbs/288 Toda gloria y majestad.png'),
+(289, '289 Toda honra', '289 Toda honra', 'images/thumbs/289 Toda honra.png'),
+(290, '290 Toma mi mano', '290 Toma mi mano', 'images/thumbs/290 Toma mi mano.png'),
+(291, '291 Torre fuerte', '291 Torre fuerte', 'images/thumbs/291 Torre fuerte.png'),
+(292, '292 Tu amor por mi', '292 Tu amor por mi', 'images/thumbs/292 Tu amor por mi.png'),
+(293, '293 Tu eres Digno', '293 Tu eres Digno', 'images/thumbs/293 Tu eres Digno.png'),
+(294, '294 Tu eres Dios', '294 Tu eres Dios', 'images/thumbs/294 Tu eres Dios.png'),
+(295, '295 Tu estas aqui', '295 Tu estas aqui', 'images/thumbs/295 Tu estas aqui.png'),
+(296, '296 Tu fidelidad', '296 Tu fidelidad', 'images/thumbs/296 Tu fidelidad.png'),
+(297, '297 Tu habitas', '297 Tu habitas', 'images/thumbs/297 Tu habitas.png'),
+(298, '298 Tu mereces gloria', '298 Tu mereces gloria', 'images/thumbs/298 Tu mereces gloria.png'),
+(299, '299 Tu mirada', '299 Tu mirada', 'images/thumbs/299 Tu mirada.png'),
+(300, '300 Tu nombre es santo', '300 Tu nombre es santo', 'images/thumbs/300 Tu nombre es santo.png'),
+(301, '301 Tu nombre ho Dios', '301 Tu nombre ho Dios', 'images/thumbs/301 Tu nombre ho Dios.png'),
+(302, '302 Tu presencia Senor', '302 Tu presencia Senor', 'images/thumbs/302 Tu presencia Senor.png'),
+(303, '303 Vamos a la ciudad', '303 Vamos a la ciudad', 'images/thumbs/303 Vamos a la ciudad.png'),
+(304, '304 Vengo a Rendirme', '304 Vengo a Rendirme', 'images/thumbs/304 Vengo a Rendirme.png');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TBL_PERSONA`
+-- Estructura de tabla para la tabla `tbl_persona`
 --
 
-CREATE TABLE `TBL_PERSONA` (
+CREATE TABLE `tbl_persona` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
@@ -269,10 +422,10 @@ CREATE TABLE `TBL_PERSONA` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `TBL_PERSONA`
+-- Volcado de datos para la tabla `tbl_persona`
 --
 
-INSERT INTO `TBL_PERSONA` (`id`, `nombre`, `username`, `pwd`, `rol`) VALUES
+INSERT INTO `tbl_persona` (`id`, `nombre`, `username`, `pwd`, `rol`) VALUES
 (1, 'Daniel Gomez', 'danslans', '*F09BE671F5D94A97CFF8F09BAC87F45E7224FB6D', 1),
 (2, 'juan pablo', 'spokentitan', '*4E340E67A90B535FE1E5CBDF6C788A21B2EE6853', 2),
 (3, 'Jeison Andres', 'jap', '*674EDDBD9440EDFF4BBEB1C8EE9A28C79B2DFCA1', 1);
@@ -280,19 +433,19 @@ INSERT INTO `TBL_PERSONA` (`id`, `nombre`, `username`, `pwd`, `rol`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TBL_ROL`
+-- Estructura de tabla para la tabla `tbl_rol`
 --
 
-CREATE TABLE `TBL_ROL` (
+CREATE TABLE `tbl_rol` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `TBL_ROL`
+-- Volcado de datos para la tabla `tbl_rol`
 --
 
-INSERT INTO `TBL_ROL` (`id`, `nombre`) VALUES
+INSERT INTO `tbl_rol` (`id`, `nombre`) VALUES
 (1, 'AdminSong'),
 (2, 'UserSong');
 
@@ -301,38 +454,38 @@ INSERT INTO `TBL_ROL` (`id`, `nombre`) VALUES
 --
 
 --
--- Indices de la tabla `TBL_ASIGNAR_CANCION`
+-- Indices de la tabla `tbl_asignar_cancion`
 --
-ALTER TABLE `TBL_ASIGNAR_CANCION`
+ALTER TABLE `tbl_asignar_cancion`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_img` (`id_img`),
   ADD KEY `id_persona` (`id_persona`);
 
 --
--- Indices de la tabla `TBL_HISTORIAL_CANCION`
+-- Indices de la tabla `tbl_historial_cancion`
 --
-ALTER TABLE `TBL_HISTORIAL_CANCION`
+ALTER TABLE `tbl_historial_cancion`
   ADD PRIMARY KEY (`id_historial`),
   ADD KEY `id_img` (`id_img`);
 
 --
--- Indices de la tabla `TBL_IMG`
+-- Indices de la tabla `tbl_img`
 --
-ALTER TABLE `TBL_IMG`
+ALTER TABLE `tbl_img`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `TBL_PERSONA`
+-- Indices de la tabla `tbl_persona`
 --
-ALTER TABLE `TBL_PERSONA`
+ALTER TABLE `tbl_persona`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD KEY `rol` (`rol`);
 
 --
--- Indices de la tabla `TBL_ROL`
+-- Indices de la tabla `tbl_rol`
 --
-ALTER TABLE `TBL_ROL`
+ALTER TABLE `tbl_rol`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -340,24 +493,24 @@ ALTER TABLE `TBL_ROL`
 --
 
 --
--- AUTO_INCREMENT de la tabla `TBL_ASIGNAR_CANCION`
+-- AUTO_INCREMENT de la tabla `tbl_asignar_cancion`
 --
-ALTER TABLE `TBL_ASIGNAR_CANCION`
+ALTER TABLE `tbl_asignar_cancion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `TBL_HISTORIAL_CANCION`
+-- AUTO_INCREMENT de la tabla `tbl_historial_cancion`
 --
-ALTER TABLE `TBL_HISTORIAL_CANCION`
+ALTER TABLE `tbl_historial_cancion`
   MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `TBL_IMG`
+-- AUTO_INCREMENT de la tabla `tbl_img`
 --
-ALTER TABLE `TBL_IMG`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
+ALTER TABLE `tbl_img`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
 --
--- AUTO_INCREMENT de la tabla `TBL_PERSONA`
+-- AUTO_INCREMENT de la tabla `tbl_persona`
 --
-ALTER TABLE `TBL_PERSONA`
+ALTER TABLE `tbl_persona`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
