@@ -31,15 +31,17 @@
         <link rel="stylesheet" href="assets/css/StyleIcons.css">
         <link rel="stylesheet" href="assets/css/StyleInputs.css">
         <link rel="stylesheet" href="assets/css/StyleAppTablet.css">
-        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <link rel="stylesheet" href="assets/css/StyleAppCelular.css">
+       <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     </head>
     <body id="index">
         <!-- Header -->
         <header id="header">
+            <span id="menuMobile" class="iconsMenuMobile IcMunuMobile"></span>
             <div class="content">
                 <div id="title">
-                    <h1 class="h1"><a class="a" href="index.jsp">TheMusicSheet</a></h1>
+                    <h1 ><a class="a" href="index.jsp">TheMusicSheet</a></h1>
                 </div>
                 <nav>
                     <ul id="ul">
@@ -90,7 +92,7 @@
                 </ul>
             </section>
         </div>
-                
+
         <div  id="dialogo">
             <span id="x" class="IcCerrar" onclick="salir()"></span>
             <center>
@@ -98,6 +100,33 @@
                 <img id="imgDialog"  src=""  />
                 <div id="siguiente" class="IcNext" onclick="siguiente()"></div>
             </center>
+        </div>
+        <!-- Menu Mobile!-->
+        <div id="ContentMenuMobile" class="ContentMenuMobile">
+            <div class="titleMenu">
+                <h1 class="h1"><a class="a" href="index.jsp">TheMusicSheet</a></h1>
+            </div>
+            <nav class="menuMobile">
+                <ul id="ulMobile">
+                    <% switch (rolUser) {
+                            case 1:
+                    %>
+                    <li class="itemsMenuMobile"><span class="icons IcHomeMobile"></span><a href="index.jsp" class="urlTextNavMobile">Inicio</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcPlusMobile"></span><a href="Insert.jsp" class="urlTextNavMobile" >Insertar</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcSearchMobile"></span><a href="Buscar.jsp" class="urlTextNavMobile">Buscar</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcExitMobile"></span><a id="logoutAdmin" class="urlTextNavMobile">Salir</a><span class="icons IcPoint"></span></li>
+                        <%
+                                break;
+                            case 2:
+                        %>
+                    <li class="itemsMenuMobile"><span class="icons IcHomeMobile"></span><a href="index.jsp" class="urlTextNavMobile">Inicio</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcSearchMobile"></span><a href="Buscar.jsp" class="urlTextNavMobile">Buscar</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcExitMobile"></span><a id="logoutUser" class="urlTextNavMobile">Salir</a><span class="icons IcPoint"></span></li>    
+                            <%
+                                        break;
+                                } %>
+                </ul>
+            </nav>
         </div>
         <!-- My Library -->
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>

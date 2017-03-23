@@ -70,11 +70,13 @@ function atras() {
 }
 
 function dialogo(id, src) {
+    $("#menuMobile").fadeOut();
     $("#dialogo").show();
     srcImg = src;
     document.getElementById("imgDialog").src = src;
 }
 function salir() {
+    $("#menuMobile").fadeIn();
     var dialog = $("#dialogo").fadeOut();
 }
 function sedAjax(datos, pag) {

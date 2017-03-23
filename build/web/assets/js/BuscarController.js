@@ -1,5 +1,5 @@
 /* funcion de permite selecionar las imagenes*/
-function SelectImagen(val) {
+function SelectImagen(val,check) {
     var nom = $('#nCancion').val();//nombre de la cancion 
     var array = $("#lista").val();//Json
     var arrayId = creacionArrayId(array.toString());
@@ -172,7 +172,6 @@ function limpiarObjert(jsonObjet) {
     }
     return Json;
 }
-
 function  sendFormularyImg() {
     $("#Agregar").click(function () {
         var lista=$("#lista").val();
@@ -181,6 +180,7 @@ function  sendFormularyImg() {
         sedAjax(datos,"GetPost");
     });
 }
+
 function sedAjax(datos, pag) {
     $.ajax({type: 'POST', data: datos, url: pag, success: function (data, textStatus, jqXHR) {
             if(data!==""){

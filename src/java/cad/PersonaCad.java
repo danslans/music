@@ -22,7 +22,7 @@ public class PersonaCad {
 
     private final Connection c = Conexion.connectBD();
 
-    public Persona consultarPersona(Persona p) {
+    public Persona consultarPersona(Persona p) throws SQLException,Exception {
         try {
             PreparedStatement ps;
             ps = c.prepareStatement("SELECT * FROM TBL_PERSONA WHERE username=? AND pwd=password(?)");

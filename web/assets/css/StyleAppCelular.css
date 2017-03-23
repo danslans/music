@@ -7,185 +7,356 @@ and open the template in the editor.
     Created on : 24-feb-2017, 20:50:07
     Author     : danslans
 */
+@import "compass/css3";
+
+body{
+    margin: auto;  
+}
 /*celular*/
 @media not screen and (max-width:200px ) {
-    #header{
-        margin: 0;
-        margin-top: -20px;
-        background: #512DA8;
+  /*this section is for header*/
+    .content{
+     
     }
-    #header,a:hover{
-    color: #FFFFFF;
-}
-#header,a{
-    color: #FFFFFF;
-}
-#header>nav>ul>li{
-    background: #ffffff;
-    list-style: none;
-    padding-bottom: 8px;
-    padding-top: 8px;
-}   
-#header>nav>ul{
-    margin-left: -40px;
-}
-#header ul>li>a{
-    font-family: sans-serif;
-    font-size: 20px;
-    color: #212121;
-    margin-left: 40px;
-}
-#header ul>li:hover{
-    background: #D1C4E9;
-}
-#header ul>li>a:hover{
-    background: #D1C4E9;
-    color: #FFFFFF;
-}
-/*lista de las imagenes en el html buscar*/
-#imgBuscar>li{
-    list-style: none;
-}
-#imgBuscar>li>.imgSong{
-    height: 0px;
-    width: 0px;
-    padding-bottom: 20px;
-}
-/*dialogo donde aparece la cancion*/
-#dialogo{
+    #header{
+        display: flex;
+        background: #512DA8;
+        justify-content: space-between;
+        box-shadow:10px 3px 10px 3px #D1C4E9; 
+        width: 100%;
+    }
+    #ul{
+        display: flex;
+        list-style: none;   
+        height: 30px;
+        width: 800px;        
+        margin-top: 20px;
+        justify-content: flex-start;
+    }
+    .itemsMenu{
+        background-color: #512DA8;
+        display: flex;
+        height: 100%;
+        width: 200px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .itemsMenu>.icons{
+        padding: 10px 20px 10px 20px;        
+    }
+    .urlTextNav{
+        font-family: serif;
+        font-size: x-large;
+        color: white;
+        text-decoration: none;
+        padding: 0px 15px 0px 15px ;
+    }
+    .urlTextNav:hover{
+        color: #D1C4E9;
+        text-decoration: none;
+    }
+    .a{
+        color: white;
+        text-decoration: none;
+    }
+    .a:hover{
+        color: #D1C4E9;
+        text-decoration: none;
+    }
+    /*Submenu from more ALL MENU*/
+    .subMenu{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        right: 80px;
+        top: 30px;
+        z-index: 1;
+        display: none;
+    }
+
+    #ulSub{
+        list-style: none;
+        position: relative;
+        height: 100px;
+        width: 100px;      
+    }
+    #ulSub>.iconsSub{
+        position: relative;
+        width: 120px;
+        padding-top: 1px;
+        border-radius: 10px 0px 10px 0px ;
+        padding-bottom: 2px;
+        right: 40px;
+        background: none;
+    }
+    /*atras y siguiente INDEX*/
+    #atras{
+        position: absolute;
+        padding: 20px;
+        height: 100%;
+        width: 45%;
+        left: 4%;
+        top: 0;
+    }
+    #siguiente{
+        position: absolute;
+        padding: 20px;
+        height: 100%;
+        width: 45%;
+        left: 50%;
+        top: 0; 
+    }
+    /*diseño de las imagenes INDEX*/
+    #contenedor{
+        position: relative;
+        top: 10px;
+    }
+    #section{
+        width: 100%;
+    }
+    /*el ul que contiene las imagenes INDEX */
+    #ulAllImages{
+        list-style: none;
+        display: flex;
+        overflow-x: scroll;
+        margin-left: -40px;
+    }
+    /*los items (imagenes) INDEX*/
+    .itemsAllImagen{
+        background: #D1C4E9;
+        height: 100%;
+        width: 500px;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 10px;
+        margin-left: 10px;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 10px;
+    }
+    .itemsAllImagen>.imgAllItem{
+        height:300px;
+        width:400px;
+    }
+    .itemsAllImagen:hover{
+        background-color:#512DA8; 
+        color: white;
+        cursor: zoom-in;
+    }
+    /*Diseño de la PROYECXION INDEX */ 
+    #dialogo{
+        display: none;
+        background: black;
+        position:absolute;
+        overflow: scroll;
+        top:0px; 
+        width: 100%;
+        height: 100%;
+    }
+    #imgDialog{
+        height: 100%;
+        width: 50%;
+    }
+    #x{
+        position: fixed;
+        height: 60px;
+        width: 60px;
+        top: 0px;
+        z-index: 1;
+    }
+
+    /*diseño del buscador (Buscar)  */
+
+    .menuBuscar{
+        display: flex;
+    }
+    #formBusqueda{
+        width: 300px;
+        display: flex;
+        justify-content: center;
+    }
+    #recibir{
+        height: 100px;
+        width: 100%;
+    }
+    /*diseño de la lista que se ha seleccionado*/
+    #ulSelectedImg{
+        position: relative;
+        height: 100px;
+        width: 100%;
+        list-style: none;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        justify-content: flex-start;
+    }
+    .itemsSelectedImg{
+        background-color: #D1C4E9;
+        height: 31px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 1px;
+        text-align: left;
+        justify-content: center;
+        margin-right: 10px;
+    }
+    /*Busqueda dinamica, seccion de la pantalla BUSQUEDA donde se muestra las imagenes seleccionadas*/
+    #contentBusqueda{
+        margin-top: 20px;
+        display: flex;
+    }
+    #section1{
+        width: 70%;
+        height:600px;
+        overflow: scroll;
+    }
+    .itemsAllImagenBuscar{
+        background: #D1C4E9;
+        height: 100%;
+        width: 300px;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-left: 0px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 10px;
+    }
+    #ulAllImagesBuscar{
+        list-style: none;
+        margin-left: -40px;
+        padding: 0;
+        margin: 0;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        justify-content: space-around;
+    }
+    .itemsAllImagenBuscar>.imgAllItemBuscar{
+        position: relative;
+        top: -20px;
+        height:250px;
+        width:100%;
+        cursor: zoom-in;
+    }
+    .itemsAllImagenBuscar>p{
+        margin-top: -10px;
+    }
+    .iconVer{
+        position: relative;
+        padding-top: 1px;
+        padding-left: 30px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+        top: 10px;
+        left: 120px;
+        z-index: 1;
+    }
+    #listSongs{
+        width: 30%;
+        height:600px;
+        overflow: scroll;
+    }
+    #listSongs>.listNameSongs{
+
+        list-style: none;
+        height: 50px;
+        width: 200px;
+        text-align: center;
+        margin-bottom: 10px;
+        margin-left: 30px;
+        font-size: 15px;
+        font-family:monospace;
+    }
+    /* seccion de ver imagen */
+    #bsDialog{
+    overflow: scroll;
     position: absolute;
     width: 100%;
     height: 100%;
     margin: 0;
     top: 0;
     border: none;
-    background:#ffffff;
-}
-/*boton agregar*/
-#Agregar{
-    position: absolute;
-    left: 80%;
-    top:146px;
-}
-/*clase general para los inputs*/
-.input{
-    position: relative;
-    padding: 4px;
-    left: 10px;
-}
-/*boton buscar*/
-#buscar{
-    position: relative;
-    left: 20px;
-    
-}
-/*clase general para los botones*/
-.botonEmpty{
-    border: none;
-    background: #673AB7;
-    padding:10px;
-    padding-bottom: 13px;
-    color: #FFFFFF;
-}
-.botonEmpty:hover{
-    background: #D1C4E9;
-}
-/*boton que envia la cantidad de insercion*/
-#number{
-   position: relative;
-    left: 20px;
-}
-/*lista de las canciones selecionadas*/
-.listaSelect{
-    padding: 10px 2.8em;
-    background: #efebfa;
-}
-/*contenedor div de lista de las caciones seleccionadas*/ 
-#recibir{
-    width: 100%;
-}
-
-#recibir>form>li{
-    list-style: none;
-}
-
-
-/*presentacion de imagenes en el index*/
-#section>ul>li{
-    display: inline-block;
-}
-#section>ul>li>img{
-    height: 200px;
-    width: 200px;
-}
-/*imagen del dialogo*/
-#imgDialog{
-   width: 100%;
-   height: 50%;
-}
-.b1{
-    position: absolute;
-    top: 150px;
-    left: 80%;
-}
-
-#section1{
-    
-}
-#aside1{
+    background-color:black;
     display: none;
+    z-index: 1;
+}
+  /*Menu MObile*/  
+  #ulMobile{
+        list-style: none;           
+    }
     
-}
-#x{
-    color: #512DA8;
-    font-size: 40px;
-    position: absolute;
-    top: 0px;
-}
-/*atras y siguiente*/
-#atras{
-    position: absolute;
-    padding: 20px;
-    height: 100%;
-    width: 45%;
-    left: 4%;
-    top: 0;
-}
-#siguiente{
-    position: absolute;
-    padding: 20px;
-    height: 100%;
-    width: 45%;
-    left: 50%;
-    top: 0;    
-}
-#icon{
-    position: absolute;
-    height: 20px;
-    margin-left: 240px;
-    margin-top: 15px;
-}
-#icon:hover{
-    background-color: #f2f2f2;
-    opacity: 0.8;
-}
-
-#bsDialog{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    top: 0;
-    border: none;
-    background:#ffffff;
-    display: none;
-}
-.liNombreImg{
-    margin-right: 80px;
-}
-.liNombreImg:hover{
-    background: #efebfa; 
-}
+    .ContentMenuMobile{
+        position: absolute;
+        display: none;
+        top: -20px;
+        width: 300px;
+        height: 400px;
+    }
+    .titleMenu{
+        position: relative;
+        background-color: #512DA8;
+        width: 300px;
+        height: 150px;
+        text-align: center;
+        box-shadow: 2px 2px 20px 2px #512DA8;
+    }
+    .titleMenu>.h1{
+        position: relative;
+        top: 50%;
+    }
+    .menuMobile{
+        background-color:#FFFFFF;
+        width: 300px;
+        height: 342px;
+        margin-top: 1px;
+    }
+    .itemsMenuMobile{
+        position: relative;
+        background-color:#FFFFFF ;
+        display: flex;
+        height: 50px;
+        width: 300px;
+        text-align: center;
+        right: 40px;
+        margin-bottom: 3px;
+        box-shadow: 1px 3px 10px 1px #f2f2f2;
+    }
+    .itemsMenuMobile:active{
+        background-color: #f2f2f2;
+    }
+    .itemsMenuMobile>.icons{
+        padding: 10px 20px 10px 20px;        
+    }
+    
+    .urlTextNavMobile{
+        position: relative;
+        top: 15px;
+        font-family: sans-serif;
+        font-size: medium;
+        color: #212121;
+        text-decoration: none;
+        padding: 0px 15px 0px 15px ;
+    }
+    .urlTextNavMobile:hover{
+        color: #757575;
+        text-decoration: none;
+    }
+    .iconsMenuMobile{
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        padding: 20px 10px 10px 20px;        
+        z-index: 1;
+        display: inline;
+    }
+    
 }
 
 

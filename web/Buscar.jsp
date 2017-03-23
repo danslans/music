@@ -32,6 +32,8 @@
         <title>TheMusicSheet</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/StyleAppWeb.css">
+        <link rel="stylesheet" href="assets/css/StyleAppTablet.css">
+        <link rel="stylesheet" href="assets/css/StyleAppCelular.css">
         <link rel="stylesheet" href="assets/css/StyleIcons.css">
         <link rel="stylesheet" href="assets/css/StyleInputs.css">
     </head>
@@ -142,8 +144,8 @@
                                 try {
                                     while (rs.next()) {
                     %>
-                    <li class="itemsAllImagenBuscar"><img src="images/icons/view1.png" id="iconVer" onclick="mostrarImg('<%=rs.getString("direccion")%>')"/>
-                        <img id="<%= rs.getString("id")%>" class="imgAllItemBuscar" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("nombre")%>"  onclick="SelectImagen(<%= rs.getString("id")%>)"  />
+                    <li class="itemsAllImagenBuscar"><span id="<%= rs.getString("id")%>ch" class="iconVer IcAdd"onclick="SelectImagen(<%= rs.getString("id")%>,this.id)" ></span>
+                        <img id="<%= rs.getString("id")%>" class="imgAllItemBuscar" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("nombre")%>" onclick="mostrarImg('<%=rs.getString("direccion")%>')" />
                         <p onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
                     </li>
                     <%
@@ -156,8 +158,7 @@
                     %>
                 </ul>
             </section>
-            <aside id="aside1">
-                <nav>
+            <aside id="listSongs">
                     <%
                         if (request.getParameter("nombreCancion") != null) {
                             if (!request.getParameter("nombreCancion").equals("")) {
@@ -166,7 +167,7 @@
                                 try {
                                     while (rs.next()) {
                     %>
-                    <li>
+                    <li class="listNameSongs">
                         <p class="txtNombre" onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
                     </li>
                     <%
@@ -177,10 +178,11 @@
                             }
                         }
                     %>
-                </nav>
+                
             </aside>
         </div>
         <div id="bsDialog" onclick="salirImg()">
+            <span id="x" class="IcCerrar" onclick="salirImg()"></span>
             <center>
                 <img id="imgDialog"  src=""  />
             </center>

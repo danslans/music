@@ -12,31 +12,50 @@ and open the template in the editor.
     background-size: 30px;
     background-repeat: no-repeat;
 }
+.IcHome:active{
+    opacity: 0.5;
+}
 .IcSearch{
     background-image: url(../..//images/icons/search.png);
     background-size: 30px;
     background-repeat: no-repeat;
+}
+.IcSearch:active{
+    opacity: 0.5;
 }
 .IcPlus{
     background-image: url(../..//images/icons/plus.png);
     background-size: 30px;
     background-repeat: no-repeat;
 }
+.IcPlus:active{
+    opacity: 0.5;
+}
 .IcExit{
     background-image: url(../..//images/icons/exit.png);
     background-size: 30px;
     background-repeat: no-repeat;
 }
+.IcExit:active{
+    opacity: 0.5;
+}
+
 .IcPoint{
     background-image: url(../..//images/icons/point.png);
     background-size: 30px;
     background-repeat: no-repeat;
     display: none;
 }
+.IcPoint:active{
+    opacity: 0.5;
+}
 .IcMore{
     background-image: url(../..//images/icons/mas.png);
     background-size: 30px;
     background-repeat: no-repeat;
+}
+.IcMore:active{
+    opacity: 0.9;
 }
 .IcBtnList{
     background-image: url(../..//images/icons/delete.png);
@@ -45,6 +64,7 @@ and open the template in the editor.
     background-position: 10px center; 
     color: #673AB7;
 }
+
 .IcCerrar{
     background-image: url(../..//images/icons/cancel.png);
     background-size: 60px;
@@ -71,4 +91,71 @@ and open the template in the editor.
 }
 .IcNext:active{
     opacity: 0.5;
+}
+.IcAdd{
+    background-image: url(../..//images/icons/add.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.IcAdd:active{
+    opacity: 0.5;
+}
+.IcCheckActive{
+    background-image: url(../..//images/icons/checked.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+}
+.IcCheckActive:active{
+    opacity: 0.5;
+}
+
+/*icons Mobile*/
+.IcHomeMobile{
+    position: relative;
+    top: 10px;
+    background-image: url(../..//images/icons/homeMobile.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+}
+.IcHomeMobile:active{
+    opacity: 0.5;
+}
+.IcSearchMobile{
+    position: relative;
+    top: 10px;
+    background-image: url(../..//images/icons/searchMobile.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+}
+.IcSearchMobile:active{
+    opacity: 0.5;
+}
+.IcPlusMobile{
+    position: relative;
+    top: 10px;
+    background-image: url(../..//images/icons/addMobile.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+}
+.IcPlusMobile:active{
+    opacity: 0.5;
+}
+.IcExitMobile{
+    position: relative;
+    top: 10px;
+    background-image: url(../..//images/icons/logoutMobile.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+}
+.IcExitMobile:active{
+    opacity: 0.5;
+}
+.IcMunuMobile{
+    background-image: url(../..//images/icons/menuMobile.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+}
+.IcMunuMobile:active{
+       opacity: 0.5;
 }

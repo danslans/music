@@ -8,6 +8,7 @@ package servlet;
 import cad.PersonaCad;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -68,22 +69,26 @@ public class LoginServlet extends HttpServlet {
         p.setPwd(request.getParameter("pass"));
         if (p.validarPersona()) {
             PersonaCad cad = new PersonaCad();
-            Persona resultPersona = cad.consultarPersona(p);
-            switch (resultPersona.getRol()) {
-                case 1:
-                    session(resultPersona, request);
-                    break;
-                case 2:
-                    session(resultPersona, request);
-                    break;
-                default:
-                    pw.println("Usuario o contraseña incorrecta");
-                    break;
+            try {
+                Persona resultPersona = cad.consultarPersona(p);
+                switch (resultPersona.getRol()) {
+                    case 1:
+                        session(resultPersona, request);
+                        break;
+                    case 2:
+                        session(resultPersona, request);
+                        break;
+                    default:
+                        pw.println("Usuario o contraseña incorrecta");
+                        break;
+                }
+            } catch (Exception  e) {
+                pw.println("Ocurrio un error con la conexión");
             }
-        }else{
-                    pw.println("No llegaron los parametros");
+        } else {
+            pw.println("No llegaron los parametros");
         }
-        
+
     }
 
     private void session(Persona resultPersona, HttpServletRequest request) {

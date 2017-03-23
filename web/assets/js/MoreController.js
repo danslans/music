@@ -5,7 +5,10 @@
  */
 /*JavasScript Que controla el menu (los puntos)*/
 $(document).ready(function () {
+    dimensiones();
     var state=false;
+    var stateMenu=false;
+    var menuMobile=$("#menuMobile");
    $("#more").click(function () {
        if(state){
         $("#subMenu").fadeOut("slow");   
@@ -16,5 +19,38 @@ $(document).ready(function () {
        }
         
     }); 
+   menuMobile.click(function () {
+       if(stateMenu){
+        $("#ContentMenuMobile").fadeOut("slow");   
+        stateMenu=false;
+       }else{
+        $("#ContentMenuMobile").fadeIn("slow");      
+        stateMenu=true;
+       } 
+    }); 
+    
+    
 });
+function dimensiones() {
+    var quitar="display:none;";
+    var poner ="display:inline;";
+    
+    if(window.innerWidth>1000){
+        document.getElementById("title").style=poner;
+        document.getElementById("menuMobile").style=quitar;
+        //alert(window.innerWidth);
+    }else if(window.innerWidth>600 && window.innerWidth<999){
+        document.getElementById("title").style=quitar;
+        document.getElementById("ul").style=quitar;
+        //alert(window.innerWidth);
+    }else if(window.innerWidth>200 && window.innerWidth<599){
+        document.getElementById("title").style=quitar;
+        document.getElementById("ul").style=quitar;
+        //alert(window.innerWidth);
+    }
+}
+function activeCheck(idcheck){
+    
+document.getElementById(idcheck).className="IcCheckActive";
+}
 
