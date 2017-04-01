@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : danslans
 */
 /*celular*/
-@media not screen and (min-width:200px ) {
+@media not screen and (max-width:200px ) {
    .ulFormLogin>ul,li{
         position: relative;
         padding: 10px;

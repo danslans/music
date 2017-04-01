@@ -25,12 +25,17 @@ $(document).ready(function () {
     salirImg();
     logoutSession();
     sendFormularyImg();
+    dimensionesPageBuscar();
 });
 function salirImg(){
+    if(window.innerWidth<1000){
+    $("#menuMobile").fadeIn();    
+    }
     $("#bsDialog").fadeOut();
 }
 //funcion que muestra la imagen 
 function mostrarImg(urlImg){
+    $("#menuMobile").fadeOut();
     document.getElementById("imgDialog").style="display :inline";
     $("#bsDialog").show(function () {
        document.getElementById("imgDialog").src=urlImg; 
@@ -180,7 +185,31 @@ function  sendFormularyImg() {
         sedAjax(datos,"GetPost");
     });
 }
-
+function dimensionesPageBuscar() {
+    var quitar="display:none;";
+    var poner ="display:inline;";
+    var ponerFlex ="display:flex;";
+    
+    if(window.innerWidth>1000){
+        document.getElementById("listSongs").style=poner;
+        var imgs=document.getElementsByClassName("imgAllItemBuscar");
+        if(imgs.length>=1){
+        for(var i=0;i<imgs.length;i++){
+         imgs[i].style=poner;   
+        }    
+        }
+    }else if(window.innerWidth>600 && window.innerWidth<999){
+        document.getElementById("listSongs").style=poner;
+        var imgs=document.getElementsByClassName("imgAllItemBuscar");
+        if(imgs.length>=1){
+        for(var i=0;i<imgs.length;i++){
+         imgs[i].style=poner;   
+        }    
+        }
+    }else if(window.innerWidth>200 && window.innerWidth<599){
+        
+    }
+}
 function sedAjax(datos, pag) {
     $.ajax({type: 'POST', data: datos, url: pag, success: function (data, textStatus, jqXHR) {
             if(data!==""){

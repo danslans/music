@@ -30,12 +30,15 @@ and open the template in the editor.
         <link rel="stylesheet" href="assets/css/StyleAppWeb.css">
         <link rel="stylesheet" href="assets/css/StyleIcons.css">
         <link rel="stylesheet" href="assets/css/StyleInputs.css">
+        <link rel="stylesheet" href="assets/css/StyleAppTablet.css">
+        <link rel="stylesheet" href="assets/css/StyleAppCelular.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
     <body> 
         <!-- Header -->
         <header id="header">
+            <span id="menuMobile" class="iconsMenuMobile IcMunuMobile"></span>
             <div class="content">
                 <div id="title">
                     <h1 class="h1"><a class="a" href="index.jsp">TheMusicSheet</a></h1>
@@ -48,7 +51,7 @@ and open the template in the editor.
                         <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcPlus"></span><a href="Insert.jsp" class="urlTextNav" >Insertar</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
-                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutAdmin" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logout" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcMore" id="more">
                                 <div id="subMenu" class="subMenu">
                                     <ul id="ulSub">
@@ -61,7 +64,7 @@ and open the template in the editor.
                             %>
                         <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
-                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutUser" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logout" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
                                 <%
                                             break;
                                     } %>
@@ -75,6 +78,33 @@ and open the template in the editor.
                 <input type="hidden" name="number"  value="true">
                 <input type="submit" class="botonMenu" id="number">
             </form>
+        </div>
+        <!-- Menu Mobile!-->
+        <div id="ContentMenuMobile" class="ContentMenuMobile">
+            <div class="titleMenu">
+                <h1 class="h1"><a class="a" href="index.jsp">TheMusicSheet</a></h1>
+            </div>
+            <nav class="menuMobile">
+                <ul id="ulMobile">
+                    <% switch (rolUser) {
+                            case 1:
+                    %>
+                    <li class="itemsMenuMobile"><span class="icons IcHomeMobile"></span><a href="index.jsp" class="urlTextNavMobile">Inicio</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcPlusMobile"></span><a href="Insert.jsp" class="urlTextNavMobile" >Insertar</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcSearchMobile"></span><a href="Buscar.jsp" class="urlTextNavMobile">Buscar</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile" onclick="closeSession()"><span class="icons IcExitMobile"></span><a id="logout" class="urlTextNavMobile">Salir</a><span class="icons IcPoint"></span></li>
+                        <%
+                                break;
+                            case 2:
+                        %>
+                    <li class="itemsMenuMobile"><span class="icons IcHomeMobile"></span><a href="index.jsp" class="urlTextNavMobile">Inicio</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcSearchMobile"></span><a href="Buscar.jsp" class="urlTextNavMobile">Buscar</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile" onclick="closeSession()"><span class="icons IcExitMobile"></span><a id="logout" class="urlTextNavMobile">Salir</a><span class="icons IcPoint"></span></li>    
+                            <%
+                                        break;
+                                } %>
+                </ul>
+            </nav>
         </div>
         <!-- My library-->
         <script type="text/javascript" src="assets/js/InsertarController.js"></script>

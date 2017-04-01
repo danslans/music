@@ -69,6 +69,18 @@ function atras() {
     }
 }
 
+function dimensionesPageIndex(){
+    var quitar="display:none;";
+    var poner ="display:inline;";
+    var ponerFlex ="display:flex;";
+    if(window.innerWidth>1000){
+        
+    }else if(window.innerWidth>600 && window.innerWidth<999){
+        
+    }else if(window.innerWidth>200 && window.innerWidth<599){
+        
+    }
+}
 function dialogo(id, src) {
     $("#menuMobile").fadeOut();
     $("#dialogo").show();
@@ -76,7 +88,7 @@ function dialogo(id, src) {
     document.getElementById("imgDialog").src = src;
 }
 function salir() {
-    $("#menuMobile").fadeIn();
+    $("#menuMobile").fadeOut();
     var dialog = $("#dialogo").fadeOut();
 }
 function sedAjax(datos, pag) {

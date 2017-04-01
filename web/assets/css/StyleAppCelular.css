@@ -18,18 +18,22 @@ body{
     .content{
      
     }
+    #title{
+        display: none;
+    }
     #header{
         display: flex;
         background: #512DA8;
         justify-content: space-between;
         box-shadow:10px 3px 10px 3px #D1C4E9; 
         width: 100%;
+        height: 70px;
     }
     #ul{
-        display: flex;
+        display: none;
         list-style: none;   
         height: 30px;
-        width: 800px;        
+        width: 100%;        
         margin-top: 20px;
         justify-content: flex-start;
     }
@@ -43,6 +47,9 @@ body{
     }
     .itemsMenu>.icons{
         padding: 10px 20px 10px 20px;        
+    }
+    .iconsMore{
+        padding: 30px 20px 10px 10px;        
     }
     .urlTextNav{
         font-family: serif;
@@ -65,11 +72,11 @@ body{
     }
     /*Submenu from more ALL MENU*/
     .subMenu{
-        position: relative;
+        position: absolute;
         width: 100%;
         height: 100%;
-        right: 80px;
-        top: 30px;
+        right: 100px;
+        top: 40px;
         z-index: 1;
         display: none;
     }
@@ -155,7 +162,7 @@ body{
     }
     #imgDialog{
         height: 100%;
-        width: 50%;
+        width: 100%;
     }
     #x{
         position: fixed;
@@ -189,7 +196,7 @@ body{
         display: -moz-box;
         display: -ms-flexbox;
         display: -webkit-flex;
-        display: flex;
+        display: none;
         -webkit-flex-flow: row wrap;
         justify-content: flex-start;
     }
@@ -209,7 +216,7 @@ body{
         display: flex;
     }
     #section1{
-        width: 70%;
+        width: 100%;
         height:600px;
         overflow: scroll;
     }
@@ -239,6 +246,7 @@ body{
         justify-content: space-around;
     }
     .itemsAllImagenBuscar>.imgAllItemBuscar{
+        display: none;
         position: relative;
         top: -20px;
         height:250px;
@@ -246,7 +254,10 @@ body{
         cursor: zoom-in;
     }
     .itemsAllImagenBuscar>p{
-        margin-top: -10px;
+        text-align: left;
+        margin-top: 0px;
+        font-size: 15px;
+        font-family:monospace;
     }
     .iconVer{
         position: relative;
@@ -259,6 +270,7 @@ body{
         z-index: 1;
     }
     #listSongs{
+        display: none;
         width: 30%;
         height:600px;
         overflow: scroll;
@@ -276,6 +288,7 @@ body{
     }
     /* seccion de ver imagen */
     #bsDialog{
+        display: none;
     overflow: scroll;
     position: absolute;
     width: 100%;
@@ -288,6 +301,10 @@ body{
     z-index: 1;
 }
   /*Menu MObile*/  
+  #menuMobile{
+      display: none;
+      z-index: 2;
+  }
   #ulMobile{
         list-style: none;           
     }
@@ -298,6 +315,7 @@ body{
         top: -20px;
         width: 300px;
         height: 400px;
+        z-index: 1;
     }
     .titleMenu{
         position: relative;
@@ -316,6 +334,7 @@ body{
         width: 300px;
         height: 342px;
         margin-top: 1px;
+        z-index: 1;
     }
     .itemsMenuMobile{
         position: relative;

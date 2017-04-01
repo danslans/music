@@ -27,25 +27,25 @@ $(document).ready(function () {
         $("#ContentMenuMobile").fadeIn("slow");      
         stateMenu=true;
        } 
-    }); 
-    
-    
+    });    
 });
 function dimensiones() {
     var quitar="display:none;";
     var poner ="display:inline;";
+    var ponerFlex ="display:flex;";
     
     if(window.innerWidth>1000){
+        document.getElementById("ul").style=ponerFlex;
         document.getElementById("title").style=poner;
         document.getElementById("menuMobile").style=quitar;
         //alert(window.innerWidth);
     }else if(window.innerWidth>600 && window.innerWidth<999){
-        document.getElementById("title").style=quitar;
-        document.getElementById("ul").style=quitar;
+        document.getElementById("menuMobile").style=poner;
+        //document.getElementById("ul").style=quitar;
         //alert(window.innerWidth);
     }else if(window.innerWidth>200 && window.innerWidth<599){
-        document.getElementById("title").style=quitar;
-        document.getElementById("ul").style=quitar;
+        document.getElementById("menuMobile").style=poner;
+        //document.getElementById("ul").style=quitar;
         //alert(window.innerWidth);
     }
 }

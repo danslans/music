@@ -40,6 +40,7 @@
     <body>
         <!-- Header -->
         <header id="header">
+            <span id="menuMobile" class="iconsMenuMobile IcMunuMobile"></span>
             <div class="content">
                 <div id="title">
                     <h1 class="h1"><a class="a" href="index.jsp">TheMusicSheet</a></h1>
@@ -52,8 +53,21 @@
                         <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcPlus"></span><a href="Insert.jsp" class="urlTextNav" >Insertar</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
-                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutAdmin" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>
-                        <li class="itemsMenu"><span class="icons IcMore" id="more">
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logout" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>
+                        
+                            <%
+                                    break;
+                                case 2:
+                            %>
+                        <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logout" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
+                                <%
+                                            break;
+                                    } %>
+                    </ul>
+                </nav>
+                    <li class="itemsMenu"><span class="iconsMore IcMore" id="more">
                                 <div id="subMenu" class="subMenu">
                                     <ul id="ulSub">
                                         <% switch (rolUser) {
@@ -66,18 +80,6 @@
                                     </ul>
                                 </div>
                             </span></li>
-                            <%
-                                    break;
-                                case 2:
-                            %>
-                        <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
-                        <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
-                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutUser" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
-                                <%
-                                            break;
-                                    } %>
-                    </ul>
-                </nav>
             </div>
         </header>
         <%
@@ -144,9 +146,19 @@
                                 try {
                                     while (rs.next()) {
                     %>
-                    <li class="itemsAllImagenBuscar"><span id="<%= rs.getString("id")%>ch" class="iconVer IcAdd"onclick="SelectImagen(<%= rs.getString("id")%>,this.id)" ></span>
+                    <li class="itemsAllImagenBuscar">
+                        <%
+                            switch(rolUser){
+                                case 1:
+                            
+                        %>
+                        <span id="<%= rs.getString("id")%>ch" class="iconVer IcAdd"onclick="SelectImagen(<%= rs.getString("id")%>,this.id)" ></span>
+                        <% 
+                          break;  
+                        }
+                        %>
                         <img id="<%= rs.getString("id")%>" class="imgAllItemBuscar" src="<%=rs.getString("direccion")%>"  title="<%= rs.getString("nombre")%>" onclick="mostrarImg('<%=rs.getString("direccion")%>')" />
-                        <p onclick="SelectImagen(<%= rs.getString("id")%>)"><%=rs.getString("nombre")%></p>
+                        <p onclick="mostrarImg('<%=rs.getString("direccion")%>')"><%=rs.getString("nombre")%></p>
                     </li>
                     <%
                                     }
@@ -187,6 +199,34 @@
                 <img id="imgDialog"  src=""  />
             </center>
         </div>
+<!-- Menu Mobile!-->
+        <div id="ContentMenuMobile" class="ContentMenuMobile">
+            <div class="titleMenu">
+                <h1 class="h1"><a class="a" href="index.jsp">TheMusicSheet</a></h1>
+            </div>
+            <nav class="menuMobile">
+                <ul id="ulMobile">
+                    <% switch (rolUser) {
+                            case 1:
+                    %>
+                    <li class="itemsMenuMobile"><span class="icons IcHomeMobile"></span><a href="index.jsp" class="urlTextNavMobile">Inicio</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcPlusMobile"></span><a href="Insert.jsp" class="urlTextNavMobile" >Insertar</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcSearchMobile"></span><a href="Buscar.jsp" class="urlTextNavMobile">Buscar</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile" onclick="closeSession()"><span class="icons IcExitMobile"></span><a id="logout" class="urlTextNavMobile">Salir</a><span class="icons IcPoint"></span></li>
+                        <%
+                                break;
+                            case 2:
+                        %>
+                    <li class="itemsMenuMobile"><span class="icons IcHomeMobile"></span><a href="index.jsp" class="urlTextNavMobile">Inicio</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile"><span class="icons IcSearchMobile"></span><a href="Buscar.jsp" class="urlTextNavMobile">Buscar</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile" onclick="closeSession()"><span class="icons IcExitMobile"></span><a id="logout" class="urlTextNavMobile">Salir</a><span class="icons IcPoint"></span></li>    
+                            <%
+                                        break;
+                                } %>
+                </ul>
+            </nav>
+        </div>   
+                <div id="addSongsContador" class="IcFloatAdd"></div>
         <!-- My Library -->
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/jquery.poptrox.min.js"></script>

@@ -1,8 +1,8 @@
 function logoutSession() {
-    $("#logoutAdmin").click(function (){
-        window.location.href="LogoutServlet?salir=true";
-    });
-    $("#logoutUser").click(function (){
+    $("#logout").click(function (){
         window.location.href="LogoutServlet?salir=true";
     });
 }
+function closeSession() {
+    window.location.href="LogoutServlet?salir=true";
+} 

@@ -51,26 +51,32 @@
                         <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcPlus"></span><a href="Insert.jsp" class="urlTextNav" >Insertar</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
-                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutAdmin" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>
-                        <li class="itemsMenu"><span class="icons IcMore" id="more">
-                                <div id="subMenu" class="subMenu">
-                                    <ul id="ulSub">
-                                        <li class="iconsSub"><input type="button" id="borrar" value="Borrar"  class="IcBtnList botonEmpty" /></li> 
-                                    </ul>
-                                </div>
-                            </span></li>
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logout" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>
                             <%
                                     break;
                                 case 2:
                             %>
                         <li class="itemsMenu"><span class="icons IcHome"></span><a href="index.jsp" class="urlTextNav">Inicio</a><span class="icons IcPoint"></span></li>
                         <li class="itemsMenu"><span class="icons IcSearch"></span><a href="Buscar.jsp" class="urlTextNav">Buscar</a><span class="icons IcPoint"></span></li>
-                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logoutUser" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
+                        <li class="itemsMenu"><span class="icons IcExit"></span><a id="logout" class="urlTextNav">Salir</a><span class="icons IcPoint"></span></li>    
                                 <%
                                             break;
                                     } %>
                     </ul>
                 </nav>
+                     <li class="itemsMenu"><span class="iconsMore IcMore" id="more">
+                                <div id="subMenu" class="subMenu">
+                                    <ul id="ulSub">
+                                        <% switch (rolUser) {
+                                                case 1:
+                                        %>
+                                        <li class="iconsSub"><input type="button" id="borrar" value="Borrar"  class="IcBtnList botonEmpty" /></li> 
+                                        <%
+                                                    break;
+                                            }%>
+                                    </ul>
+                                </div>
+                            </span></li>
             </div>
         </header>
         <!-- Main -->
@@ -114,14 +120,14 @@
                     <li class="itemsMenuMobile"><span class="icons IcHomeMobile"></span><a href="index.jsp" class="urlTextNavMobile">Inicio</a><span class="icons IcPoint"></span></li>
                     <li class="itemsMenuMobile"><span class="icons IcPlusMobile"></span><a href="Insert.jsp" class="urlTextNavMobile" >Insertar</a><span class="icons IcPoint"></span></li>
                     <li class="itemsMenuMobile"><span class="icons IcSearchMobile"></span><a href="Buscar.jsp" class="urlTextNavMobile">Buscar</a><span class="icons IcPoint"></span></li>
-                    <li class="itemsMenuMobile"><span class="icons IcExitMobile"></span><a id="logoutAdmin" class="urlTextNavMobile">Salir</a><span class="icons IcPoint"></span></li>
+                    <li class="itemsMenuMobile" onclick="closeSession()"><span class="icons IcExitMobile"></span><a id="logout" class="urlTextNavMobile">Salir</a><span class="icons IcPoint"></span></li>
                         <%
                                 break;
                             case 2:
                         %>
                     <li class="itemsMenuMobile"><span class="icons IcHomeMobile"></span><a href="index.jsp" class="urlTextNavMobile">Inicio</a><span class="icons IcPoint"></span></li>
                     <li class="itemsMenuMobile"><span class="icons IcSearchMobile"></span><a href="Buscar.jsp" class="urlTextNavMobile">Buscar</a><span class="icons IcPoint"></span></li>
-                    <li class="itemsMenuMobile"><span class="icons IcExitMobile"></span><a id="logoutUser" class="urlTextNavMobile">Salir</a><span class="icons IcPoint"></span></li>    
+                    <li class="itemsMenuMobile" onclick="closeSession()"><span class="icons IcExitMobile"></span><a id="logout" class="urlTextNavMobile">Salir</a><span class="icons IcPoint"></span></li>    
                             <%
                                         break;
                                 } %>

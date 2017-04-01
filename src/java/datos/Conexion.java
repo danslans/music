@@ -19,9 +19,9 @@ import java.util.logging.Logger;
  */
 public class Conexion {
     private static final  Conexion conexion=new Conexion();
-    private static final String URL =  "jdbc:mysql://node140843-musicoasis.j.layershift.co.uk/music";
+    private static final String URL =  "jdbc:mysql://node147185-themusic.j.layershift.co.uk/music";
     private static final String USER="root";
-    private static final String PASS="SCMpby69489";
+    private static final String PASS="TNFsyh82256";
     private static final String URLLOCAL="jdbc:mysql://localhost:3306/music";
     private static final String USERLOCAL="root";
     private static final String PASSLOCAL="";
